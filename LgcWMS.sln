@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LgcWMS", "LgcWMS\LgcWMS.csproj", "{0D62C977-5E89-4598-9955-11B0E9951FCB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LgcWMS.Business", "LgcWMS.Business\LgcWMS.Business.csproj", "{63BDB940-7684-45E7-BDFF-4208326D8F9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LgcWMS.Data", "LgcWMS.Data\LgcWMS.Data.csproj", "{0C3DE4CD-5821-4153-AEEA-5BEC29772B04}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.FW", "..\LgcWeb\AS.FW\AS.FW.csproj", "{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +27,11 @@ Global
 		{0C3DE4CD-5821-4153-AEEA-5BEC29772B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C3DE4CD-5821-4153-AEEA-5BEC29772B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C3DE4CD-5821-4153-AEEA-5BEC29772B04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D969C8F-1744-4EE2-AE26-EE5FFD7D2044}
 	EndGlobalSection
 EndGlobal
