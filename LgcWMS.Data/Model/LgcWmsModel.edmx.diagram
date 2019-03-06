@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8025dff0d6c64586a755587c668390ef" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.ASFW_CATTYPE" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LCG_CLIENTE_CLIENTE" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_CLIENTE" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_CLIENTE_PROVEEDORES" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_DESPACHO" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_GUIAS" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_RECOLECCION" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_RECOLECCION_ITEM" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LCG_CLIEN__Clien__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_CLIEN__Clien__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_E__PROVE__74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__PROVE__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__DESPA__078C1F06" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__RECOL__0697FACD" ManuallyRouted="false" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__RECOL__7EF6D905" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
