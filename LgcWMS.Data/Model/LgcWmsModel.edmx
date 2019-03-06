@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LgcWMS.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ASFW_CATTYPE">
+          <Key>
+            <PropertyRef Name="CATTYPEID" />
+          </Key>
+          <Property Name="CATTYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+          <Property Name="VISIBLE" Type="bit" Nullable="false" />
+          <Property Name="ACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="LCG_CLIENTE_CLIENTE">
+          <Key>
+            <PropertyRef Name="C_ClienteID" />
+          </Key>
+          <Property Name="C_ClienteID" Type="int" Nullable="false" />
+          <Property Name="ClienteID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LGC_CLIENTE">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaApertura" Type="datetime" Nullable="false" />
+          <Property Name="FechaDiligenciamiento" Type="datetime" Nullable="false" />
+          <Property Name="FechaRadicacion" Type="datetime" />
+          <Property Name="FechaUltimaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="TipoPersona" Type="int" Nullable="false" />
+          <Property Name="NombreRazonSocial" Type="varchar" MaxLength="256" />
+          <Property Name="NIToCC" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ClaseSociedad" Type="int" Nullable="false" />
+          <Property Name="EscrituraConstitucionNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EscrituraConstitucionNotaria" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="EscrituraConstitucionDe" Type="int" />
+          <Property Name="UltimaReformaEscrituraNo" Type="varchar" MaxLength="10" />
+          <Property Name="UltimaReformaEscrituraNotaria" Type="varchar" MaxLength="5" />
+          <Property Name="UltimaReformaEscrituraDe" Type="int" />
+          <Property Name="MatriculaCamaraComercioNo" Type="varchar" MaxLength="20" />
+          <Property Name="FechaCertificado" Type="datetime" />
+          <Property Name="CapitalSocialRegistrado" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DescripcionActividadesEconomicas" Type="varchar" MaxLength="256" />
+          <Property Name="DireccionSedePrincipal" Type="text" />
+          <Property Name="Ciudad" Type="int" />
+          <Property Name="Departamento" Type="int" />
+          <Property Name="TelefonoNo" Type="varchar" MaxLength="12" />
+          <Property Name="Fax" Type="varchar" MaxLength="12" />
+          <Property Name="Celular" Type="varchar" MaxLength="12" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="60" />
+          <Property Name="PaginaWeb" Type="varchar" MaxLength="30" />
+          <Property Name="Regimen" Type="int" />
+          <Property Name="GranContribuyente" Type="bit" />
+          <Property Name="RegimenComun" Type="bit" />
+          <Property Name="Autoretencion" Type="bit" />
+          <Property Name="NoResolucion" Type="varchar" MaxLength="10" />
+          <Property Name="FechaResolucion" Type="datetime" />
+          <Property Name="ReferenciaBancariaBanco" Type="int" />
+          <Property Name="ReferenciaBancariaNoCuenta" Type="varchar" MaxLength="20" />
+          <Property Name="ReferenciaBancariaTipoCuenta" Type="int" />
+          <Property Name="ReferenciaBancariaSucursal" Type="varchar" MaxLength="20" />
+          <Property Name="ReferencuaBancariaTelefono" Type="varchar" MaxLength="10" />
+          <Property Name="VerificacionListaClinton" Type="bit" Nullable="false" />
+          <Property Name="VerificacionListaClintonFecha" Type="datetime" />
+          <Property Name="VerificaionReferencias" Type="bit" Nullable="false" />
+          <Property Name="VerificacionReferenciasFecha" Type="datetime" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="DescripcionMercanciaTramite" Type="varchar" MaxLength="256" />
+          <Property Name="EscrituraConstitucionDepDe" Type="int" />
+          <Property Name="UltimaReformaEscrituraDepDe" Type="int" />
+        </EntityType>
+        <EntityType Name="LGC_CLIENTE_PROVEEDORES">
+          <Key>
+            <PropertyRef Name="PROVEEDOR_ID" />
+          </Key>
+          <Property Name="PROVEEDOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+          <Property Name="EJECUTIVO" Type="varchar" MaxLength="50" />
+          <Property Name="EJECUTIVO_MAIL" Type="varchar" MaxLength="100" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="12" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CIUDAD" Type="int" Nullable="false" />
+          <Property Name="ClienteID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LGC_DESPACHO">
+          <Key>
+            <PropertyRef Name="DESPACHO_ID" />
+          </Key>
+          <Property Name="DESPACHO_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REMITENTE" Type="int" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CONSECUTIVO_AVMK" Type="varchar" MaxLength="10" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="varchar" MaxLength="10" />
+          <Property Name="FECHA_ENVIO_ARCHIVO" Type="date" />
+          <Property Name="MES" Type="text" />
+          <Property Name="AÑO" Type="int" />
+          <Property Name="FECHA_REDENCION" Type="date" />
+          <Property Name="CEDULA" Type="bigint" Nullable="false" />
+          <Property Name="DESTINATARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ENTREGAR_A" Type="varchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CIUDAD" Type="int" Nullable="false" />
+          <Property Name="DEPARTAMENTO" Type="int" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="12" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="12" />
+          <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" />
+          <Property Name="CODIGO_PREMIO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PREMIO" Type="text" />
+          <Property Name="ESPECIFICACIONES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROVEEDOR_ID" Type="int" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="GUIA_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LGC_GUIAS">
+          <Key>
+            <PropertyRef Name="GUIA_ID" />
+          </Key>
+          <Property Name="GUIA_ID" Type="bigint" Nullable="false" />
+          <Property Name="GUIA_PREFIJO" Type="varchar" MaxLength="5" />
+          <Property Name="TIPO_ID" Type="int" Nullable="false" />
+          <Property Name="RECOLECCION_ID" Type="bigint" Nullable="false" />
+          <Property Name="DESPACHO_ID" Type="bigint" />
+          <Property Name="ORIGEN" Type="int" Nullable="false" />
+          <Property Name="REMITENTE_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="REMITENTE_DIRECCION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="REMITENTE_TELEFONO" Type="varchar" MaxLength="12" />
+          <Property Name="DESTINO" Type="int" Nullable="false" />
+          <Property Name="DESTINATARIO_NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESTINATARIO_DIRECCION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DESTINATARIO_TELEFONO" Type="varchar" MaxLength="12" />
+          <Property Name="FECHA_ENVIO" Type="date" Nullable="false" />
+          <Property Name="FECHA_ENTREGA" Type="date" />
+          <Property Name="UNIDADES" Type="int" Nullable="false" />
+          <Property Name="PESO" Type="int" Nullable="false" />
+          <Property Name="PESO_VOL" Type="int" Nullable="false" />
+          <Property Name="PESO_LIQ" Type="int" Nullable="false" />
+          <Property Name="VALOR_DECLARADO" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DICE_CONTENER" Type="text" />
+          <Property Name="ELABORADO_POR" Type="int" Nullable="false" />
+          <Property Name="ENCARGADO_A" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LGC_RECOLECCION">
+          <Key>
+            <PropertyRef Name="RECOLECCION_ID" />
+          </Key>
+          <Property Name="RECOLECCION_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="10" />
+          <Property Name="CONSECUTIVO_AVMK" Type="varchar" MaxLength="10" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="varchar" MaxLength="10" />
+          <Property Name="PROVEEDOR_ID" Type="int" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="CIUDAD" Type="int" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="12" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="12" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" />
+          <Property Name="ESPECIFICACIONES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LGC_RECOLECCION_ITEM">
+          <Key>
+            <PropertyRef Name="ITEM_ID" />
+          </Key>
+          <Property Name="ITEM_ID" Type="bigint" Nullable="false" />
+          <Property Name="RECOLECCION_ID" Type="bigint" Nullable="false" />
+          <Property Name="EAN" Type="int" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="decimal" Precision="8" Scale="0" />
+        </EntityType>
+        <Association Name="FK__LCG_CLIEN__Clien__10216507">
+          <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="1" />
+          <End Role="LCG_CLIENTE_CLIENTE" Type="Self.LCG_CLIENTE_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="LCG_CLIENTE_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_CLIEN__Clien__0A688BB1">
+          <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="1" />
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_E__PROVE__74794A92">
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="1" />
+          <End Role="LGC_DESPACHO" Type="Self.LGC_DESPACHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Principal>
+            <Dependent Role="LGC_DESPACHO">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_G__DESPA__078C1F06">
+          <End Role="LGC_DESPACHO" Type="Self.LGC_DESPACHO" Multiplicity="0..1" />
+          <End Role="LGC_GUIAS" Type="Self.LGC_GUIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_DESPACHO">
+              <PropertyRef Name="DESPACHO_ID" />
+            </Principal>
+            <Dependent Role="LGC_GUIAS">
+              <PropertyRef Name="DESPACHO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_G__RECOL__0697FACD">
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="1" />
+          <End Role="LGC_GUIAS" Type="Self.LGC_GUIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_RECOLECCION">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Principal>
+            <Dependent Role="LGC_GUIAS">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_R__PROVE__7755B73D">
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="1" />
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_R__RECOL__7EF6D905">
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="1" />
+          <End Role="LGC_RECOLECCION_ITEM" Type="Self.LGC_RECOLECCION_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_RECOLECCION">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION_ITEM">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LgcWMSDataModelStoreContainer">
+          <EntitySet Name="ASFW_CATTYPE" EntityType="Self.ASFW_CATTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LCG_CLIENTE_CLIENTE" EntityType="Self.LCG_CLIENTE_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_CLIENTE" EntityType="Self.LGC_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_CLIENTE_PROVEEDORES" EntityType="Self.LGC_CLIENTE_PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_DESPACHO" EntityType="Self.LGC_DESPACHO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_GUIAS" EntityType="Self.LGC_GUIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_RECOLECCION" EntityType="Self.LGC_RECOLECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGC_RECOLECCION_ITEM" EntityType="Self.LGC_RECOLECCION_ITEM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__LCG_CLIEN__Clien__10216507" Association="Self.FK__LCG_CLIEN__Clien__10216507">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="LCG_CLIENTE_CLIENTE" EntitySet="LCG_CLIENTE_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_CLIEN__Clien__0A688BB1" Association="Self.FK__LGC_CLIEN__Clien__0A688BB1">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_E__PROVE__74794A92" Association="Self.FK__LGC_WMS_E__PROVE__74794A92">
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_G__DESPA__078C1F06" Association="Self.FK__LGC_WMS_G__DESPA__078C1F06">
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
+            <End Role="LGC_GUIAS" EntitySet="LGC_GUIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_G__RECOL__0697FACD" Association="Self.FK__LGC_WMS_G__RECOL__0697FACD">
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+            <End Role="LGC_GUIAS" EntitySet="LGC_GUIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__PROVE__7755B73D" Association="Self.FK__LGC_WMS_R__PROVE__7755B73D">
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__RECOL__7EF6D905" Association="Self.FK__LGC_WMS_R__RECOL__7EF6D905">
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+            <End Role="LGC_RECOLECCION_ITEM" EntitySet="LGC_RECOLECCION_ITEM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LgcWMS.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ASFW_CATTYPE">
+          <Key>
+            <PropertyRef Name="CATTYPEID" />
+          </Key>
+          <Property Name="CATTYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VISIBLE" Type="Boolean" Nullable="false" />
+          <Property Name="ACTIVE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="LCG_CLIENTE_CLIENTE">
+          <Key>
+            <PropertyRef Name="C_ClienteID" />
+          </Key>
+          <Property Name="C_ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="ClienteID" Type="Guid" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LGC_CLIENTE" Relationship="Self.FK__LCG_CLIEN__Clien__10216507" FromRole="LCG_CLIENTE_CLIENTE" ToRole="LGC_CLIENTE" />
+        </EntityType>
+        <EntityType Name="LGC_CLIENTE">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Guid" Nullable="false" />
+          <Property Name="FechaApertura" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaDiligenciamiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaRadicacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltimaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoPersona" Type="Int32" Nullable="false" />
+          <Property Name="NombreRazonSocial" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="NIToCC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClaseSociedad" Type="Int32" Nullable="false" />
+          <Property Name="EscrituraConstitucionNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EscrituraConstitucionNotaria" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EscrituraConstitucionDe" Type="Int32" />
+          <Property Name="UltimaReformaEscrituraNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UltimaReformaEscrituraNotaria" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UltimaReformaEscrituraDe" Type="Int32" />
+          <Property Name="MatriculaCamaraComercioNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCertificado" Type="DateTime" Precision="3" />
+          <Property Name="CapitalSocialRegistrado" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DescripcionActividadesEconomicas" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionSedePrincipal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="Int32" />
+          <Property Name="Departamento" Type="Int32" />
+          <Property Name="TelefonoNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PaginaWeb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Regimen" Type="Int32" />
+          <Property Name="GranContribuyente" Type="Boolean" />
+          <Property Name="RegimenComun" Type="Boolean" />
+          <Property Name="Autoretencion" Type="Boolean" />
+          <Property Name="NoResolucion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaResolucion" Type="DateTime" Precision="3" />
+          <Property Name="ReferenciaBancariaBanco" Type="Int32" />
+          <Property Name="ReferenciaBancariaNoCuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenciaBancariaTipoCuenta" Type="Int32" />
+          <Property Name="ReferenciaBancariaSucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReferencuaBancariaTelefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="VerificacionListaClinton" Type="Boolean" Nullable="false" />
+          <Property Name="VerificacionListaClintonFecha" Type="DateTime" Precision="3" />
+          <Property Name="VerificaionReferencias" Type="Boolean" Nullable="false" />
+          <Property Name="VerificacionReferenciasFecha" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="DescripcionMercanciaTramite" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EscrituraConstitucionDepDe" Type="Int32" />
+          <Property Name="UltimaReformaEscrituraDepDe" Type="Int32" />
+          <NavigationProperty Name="LCG_CLIENTE_CLIENTE" Relationship="Self.FK__LCG_CLIEN__Clien__10216507" FromRole="LGC_CLIENTE" ToRole="LCG_CLIENTE_CLIENTE" />
+          <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="Self.FK__LGC_CLIEN__Clien__0A688BB1" FromRole="LGC_CLIENTE" ToRole="LGC_CLIENTE_PROVEEDORES" />
+        </EntityType>
+        <EntityType Name="LGC_CLIENTE_PROVEEDORES">
+          <Key>
+            <PropertyRef Name="PROVEEDOR_ID" />
+          </Key>
+          <Property Name="PROVEEDOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EJECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EJECUTIVO_MAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="ClienteID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="LGC_CLIENTE" Relationship="Self.FK__LGC_CLIEN__Clien__0A688BB1" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_CLIENTE" />
+          <NavigationProperty Name="LGC_DESPACHO" Relationship="Self.FK__LGC_WMS_E__PROVE__74794A92" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_DESPACHO" />
+          <NavigationProperty Name="LGC_RECOLECCION" Relationship="Self.FK__LGC_WMS_R__PROVE__7755B73D" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_RECOLECCION" />
+        </EntityType>
+        <EntityType Name="LGC_DESPACHO">
+          <Key>
+            <PropertyRef Name="DESPACHO_ID" />
+          </Key>
+          <Property Name="DESPACHO_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REMITENTE" Type="Int32" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONSECUTIVO_AVMK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ENVIO_ARCHIVO" Type="DateTime" Precision="0" />
+          <Property Name="MES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AÑO" Type="Int32" />
+          <Property Name="FECHA_REDENCION" Type="DateTime" Precision="0" />
+          <Property Name="CEDULA" Type="Int64" Nullable="false" />
+          <Property Name="DESTINATARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ENTREGAR_A" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTAMENTO" Type="Int32" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_PREMIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PREMIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECIFICACIONES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROVEEDOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="GUIA_ID" Type="Int64" />
+          <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="Self.FK__LGC_WMS_E__PROVE__74794A92" FromRole="LGC_DESPACHO" ToRole="LGC_CLIENTE_PROVEEDORES" />
+          <NavigationProperty Name="LGC_GUIAS" Relationship="Self.FK__LGC_WMS_G__DESPA__078C1F06" FromRole="LGC_DESPACHO" ToRole="LGC_GUIAS" />
+        </EntityType>
+        <EntityType Name="LGC_GUIAS">
+          <Key>
+            <PropertyRef Name="GUIA_ID" />
+          </Key>
+          <Property Name="GUIA_ID" Type="Int64" Nullable="false" />
+          <Property Name="GUIA_PREFIJO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECOLECCION_ID" Type="Int64" Nullable="false" />
+          <Property Name="DESPACHO_ID" Type="Int64" />
+          <Property Name="ORIGEN" Type="Int32" Nullable="false" />
+          <Property Name="REMITENTE_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REMITENTE_DIRECCION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REMITENTE_TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINO" Type="Int32" Nullable="false" />
+          <Property Name="DESTINATARIO_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESTINATARIO_DIRECCION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESTINATARIO_TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ENVIO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FECHA_ENTREGA" Type="DateTime" Precision="0" />
+          <Property Name="UNIDADES" Type="Int32" Nullable="false" />
+          <Property Name="PESO" Type="Int32" Nullable="false" />
+          <Property Name="PESO_VOL" Type="Int32" Nullable="false" />
+          <Property Name="PESO_LIQ" Type="Int32" Nullable="false" />
+          <Property Name="VALOR_DECLARADO" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DICE_CONTENER" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ELABORADO_POR" Type="Int32" Nullable="false" />
+          <Property Name="ENCARGADO_A" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LGC_DESPACHO" Relationship="Self.FK__LGC_WMS_G__DESPA__078C1F06" FromRole="LGC_GUIAS" ToRole="LGC_DESPACHO" />
+          <NavigationProperty Name="LGC_RECOLECCION" Relationship="Self.FK__LGC_WMS_G__RECOL__0697FACD" FromRole="LGC_GUIAS" ToRole="LGC_RECOLECCION" />
+        </EntityType>
+        <EntityType Name="LGC_RECOLECCION">
+          <Key>
+            <PropertyRef Name="RECOLECCION_ID" />
+          </Key>
+          <Property Name="RECOLECCION_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONSECUTIVO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONSECUTIVO_AVMK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PROVEEDOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECIFICACIONES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="Self.FK__LGC_WMS_R__PROVE__7755B73D" FromRole="LGC_RECOLECCION" ToRole="LGC_CLIENTE_PROVEEDORES" />
+          <NavigationProperty Name="LGC_GUIAS" Relationship="Self.FK__LGC_WMS_G__RECOL__0697FACD" FromRole="LGC_RECOLECCION" ToRole="LGC_GUIAS" />
+          <NavigationProperty Name="LGC_RECOLECCION_ITEM" Relationship="Self.FK__LGC_WMS_R__RECOL__7EF6D905" FromRole="LGC_RECOLECCION" ToRole="LGC_RECOLECCION_ITEM" />
+        </EntityType>
+        <EntityType Name="LGC_RECOLECCION_ITEM">
+          <Key>
+            <PropertyRef Name="ITEM_ID" />
+          </Key>
+          <Property Name="ITEM_ID" Type="Int64" Nullable="false" />
+          <Property Name="RECOLECCION_ID" Type="Int64" Nullable="false" />
+          <Property Name="EAN" Type="Int32" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="Decimal" Precision="8" Scale="0" />
+          <NavigationProperty Name="LGC_RECOLECCION" Relationship="Self.FK__LGC_WMS_R__RECOL__7EF6D905" FromRole="LGC_RECOLECCION_ITEM" ToRole="LGC_RECOLECCION" />
+        </EntityType>
+        <Association Name="FK__LCG_CLIEN__Clien__10216507">
+          <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="1" />
+          <End Role="LCG_CLIENTE_CLIENTE" Type="Self.LCG_CLIENTE_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="LCG_CLIENTE_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_CLIEN__Clien__0A688BB1">
+          <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="1" />
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_E__PROVE__74794A92">
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="1" />
+          <End Role="LGC_DESPACHO" Type="Self.LGC_DESPACHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Principal>
+            <Dependent Role="LGC_DESPACHO">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_R__PROVE__7755B73D">
+          <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="1" />
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE_PROVEEDORES">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_G__DESPA__078C1F06">
+          <End Role="LGC_DESPACHO" Type="Self.LGC_DESPACHO" Multiplicity="0..1" />
+          <End Role="LGC_GUIAS" Type="Self.LGC_GUIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_DESPACHO">
+              <PropertyRef Name="DESPACHO_ID" />
+            </Principal>
+            <Dependent Role="LGC_GUIAS">
+              <PropertyRef Name="DESPACHO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_G__RECOL__0697FACD">
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="1" />
+          <End Role="LGC_GUIAS" Type="Self.LGC_GUIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_RECOLECCION">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Principal>
+            <Dependent Role="LGC_GUIAS">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_R__RECOL__7EF6D905">
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="1" />
+          <End Role="LGC_RECOLECCION_ITEM" Type="Self.LGC_RECOLECCION_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_RECOLECCION">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION_ITEM">
+              <PropertyRef Name="RECOLECCION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LgcWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ASFW_CATTYPE" EntityType="Self.ASFW_CATTYPE" />
+          <EntitySet Name="LCG_CLIENTE_CLIENTE" EntityType="Self.LCG_CLIENTE_CLIENTE" />
+          <EntitySet Name="LGC_CLIENTE" EntityType="Self.LGC_CLIENTE" />
+          <EntitySet Name="LGC_CLIENTE_PROVEEDORES" EntityType="Self.LGC_CLIENTE_PROVEEDORES" />
+          <EntitySet Name="LGC_DESPACHO" EntityType="Self.LGC_DESPACHO" />
+          <EntitySet Name="LGC_GUIAS" EntityType="Self.LGC_GUIAS" />
+          <EntitySet Name="LGC_RECOLECCION" EntityType="Self.LGC_RECOLECCION" />
+          <EntitySet Name="LGC_RECOLECCION_ITEM" EntityType="Self.LGC_RECOLECCION_ITEM" />
+          <AssociationSet Name="FK__LCG_CLIEN__Clien__10216507" Association="Self.FK__LCG_CLIEN__Clien__10216507">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="LCG_CLIENTE_CLIENTE" EntitySet="LCG_CLIENTE_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_CLIEN__Clien__0A688BB1" Association="Self.FK__LGC_CLIEN__Clien__0A688BB1">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_E__PROVE__74794A92" Association="Self.FK__LGC_WMS_E__PROVE__74794A92">
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__PROVE__7755B73D" Association="Self.FK__LGC_WMS_R__PROVE__7755B73D">
+            <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_G__DESPA__078C1F06" Association="Self.FK__LGC_WMS_G__DESPA__078C1F06">
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
+            <End Role="LGC_GUIAS" EntitySet="LGC_GUIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_G__RECOL__0697FACD" Association="Self.FK__LGC_WMS_G__RECOL__0697FACD">
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+            <End Role="LGC_GUIAS" EntitySet="LGC_GUIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__RECOL__7EF6D905" Association="Self.FK__LGC_WMS_R__RECOL__7EF6D905">
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+            <End Role="LGC_RECOLECCION_ITEM" EntitySet="LGC_RECOLECCION_ITEM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LgcWMSDataModelStoreContainer" CdmEntityContainer="LgcWebEntities">
+          <EntitySetMapping Name="ASFW_CATTYPE">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.ASFW_CATTYPE">
+              <MappingFragment StoreEntitySet="ASFW_CATTYPE">
+                <ScalarProperty Name="CATTYPEID" ColumnName="CATTYPEID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VISIBLE" ColumnName="VISIBLE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCG_CLIENTE_CLIENTE">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LCG_CLIENTE_CLIENTE">
+              <MappingFragment StoreEntitySet="LCG_CLIENTE_CLIENTE">
+                <ScalarProperty Name="C_ClienteID" ColumnName="C_ClienteID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_CLIENTE">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_CLIENTE">
+              <MappingFragment StoreEntitySet="LGC_CLIENTE">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+                <ScalarProperty Name="FechaDiligenciamiento" ColumnName="FechaDiligenciamiento" />
+                <ScalarProperty Name="FechaRadicacion" ColumnName="FechaRadicacion" />
+                <ScalarProperty Name="FechaUltimaActualizacion" ColumnName="FechaUltimaActualizacion" />
+                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
+                <ScalarProperty Name="NombreRazonSocial" ColumnName="NombreRazonSocial" />
+                <ScalarProperty Name="NIToCC" ColumnName="NIToCC" />
+                <ScalarProperty Name="ClaseSociedad" ColumnName="ClaseSociedad" />
+                <ScalarProperty Name="EscrituraConstitucionNo" ColumnName="EscrituraConstitucionNo" />
+                <ScalarProperty Name="EscrituraConstitucionNotaria" ColumnName="EscrituraConstitucionNotaria" />
+                <ScalarProperty Name="EscrituraConstitucionDe" ColumnName="EscrituraConstitucionDe" />
+                <ScalarProperty Name="UltimaReformaEscrituraNo" ColumnName="UltimaReformaEscrituraNo" />
+                <ScalarProperty Name="UltimaReformaEscrituraNotaria" ColumnName="UltimaReformaEscrituraNotaria" />
+                <ScalarProperty Name="UltimaReformaEscrituraDe" ColumnName="UltimaReformaEscrituraDe" />
+                <ScalarProperty Name="MatriculaCamaraComercioNo" ColumnName="MatriculaCamaraComercioNo" />
+                <ScalarProperty Name="FechaCertificado" ColumnName="FechaCertificado" />
+                <ScalarProperty Name="CapitalSocialRegistrado" ColumnName="CapitalSocialRegistrado" />
+                <ScalarProperty Name="DescripcionActividadesEconomicas" ColumnName="DescripcionActividadesEconomicas" />
+                <ScalarProperty Name="DireccionSedePrincipal" ColumnName="DireccionSedePrincipal" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="TelefonoNo" ColumnName="TelefonoNo" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="PaginaWeb" ColumnName="PaginaWeb" />
+                <ScalarProperty Name="Regimen" ColumnName="Regimen" />
+                <ScalarProperty Name="GranContribuyente" ColumnName="GranContribuyente" />
+                <ScalarProperty Name="RegimenComun" ColumnName="RegimenComun" />
+                <ScalarProperty Name="Autoretencion" ColumnName="Autoretencion" />
+                <ScalarProperty Name="NoResolucion" ColumnName="NoResolucion" />
+                <ScalarProperty Name="FechaResolucion" ColumnName="FechaResolucion" />
+                <ScalarProperty Name="ReferenciaBancariaBanco" ColumnName="ReferenciaBancariaBanco" />
+                <ScalarProperty Name="ReferenciaBancariaNoCuenta" ColumnName="ReferenciaBancariaNoCuenta" />
+                <ScalarProperty Name="ReferenciaBancariaTipoCuenta" ColumnName="ReferenciaBancariaTipoCuenta" />
+                <ScalarProperty Name="ReferenciaBancariaSucursal" ColumnName="ReferenciaBancariaSucursal" />
+                <ScalarProperty Name="ReferencuaBancariaTelefono" ColumnName="ReferencuaBancariaTelefono" />
+                <ScalarProperty Name="VerificacionListaClinton" ColumnName="VerificacionListaClinton" />
+                <ScalarProperty Name="VerificacionListaClintonFecha" ColumnName="VerificacionListaClintonFecha" />
+                <ScalarProperty Name="VerificaionReferencias" ColumnName="VerificaionReferencias" />
+                <ScalarProperty Name="VerificacionReferenciasFecha" ColumnName="VerificacionReferenciasFecha" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="DescripcionMercanciaTramite" ColumnName="DescripcionMercanciaTramite" />
+                <ScalarProperty Name="EscrituraConstitucionDepDe" ColumnName="EscrituraConstitucionDepDe" />
+                <ScalarProperty Name="UltimaReformaEscrituraDepDe" ColumnName="UltimaReformaEscrituraDepDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_CLIENTE_PROVEEDORES">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_CLIENTE_PROVEEDORES">
+              <MappingFragment StoreEntitySet="LGC_CLIENTE_PROVEEDORES">
+                <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="EJECUTIVO" ColumnName="EJECUTIVO" />
+                <ScalarProperty Name="EJECUTIVO_MAIL" ColumnName="EJECUTIVO_MAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_DESPACHO">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_DESPACHO">
+              <MappingFragment StoreEntitySet="LGC_DESPACHO">
+                <ScalarProperty Name="DESPACHO_ID" ColumnName="DESPACHO_ID" />
+                <ScalarProperty Name="REMITENTE" ColumnName="REMITENTE" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+                <ScalarProperty Name="CONSECUTIVO_AVMK" ColumnName="CONSECUTIVO_AVMK" />
+                <ScalarProperty Name="CONSECUTIVO_CLIENTE" ColumnName="CONSECUTIVO_CLIENTE" />
+                <ScalarProperty Name="FECHA_ENVIO_ARCHIVO" ColumnName="FECHA_ENVIO_ARCHIVO" />
+                <ScalarProperty Name="MES" ColumnName="MES" />
+                <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+                <ScalarProperty Name="FECHA_REDENCION" ColumnName="FECHA_REDENCION" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="DESTINATARIO" ColumnName="DESTINATARIO" />
+                <ScalarProperty Name="ENTREGAR_A" ColumnName="ENTREGAR_A" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="CODIGO_PREMIO" ColumnName="CODIGO_PREMIO" />
+                <ScalarProperty Name="PREMIO" ColumnName="PREMIO" />
+                <ScalarProperty Name="ESPECIFICACIONES" ColumnName="ESPECIFICACIONES" />
+                <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_GUIAS">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_GUIAS">
+              <MappingFragment StoreEntitySet="LGC_GUIAS">
+                <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
+                <ScalarProperty Name="GUIA_PREFIJO" ColumnName="GUIA_PREFIJO" />
+                <ScalarProperty Name="TIPO_ID" ColumnName="TIPO_ID" />
+                <ScalarProperty Name="RECOLECCION_ID" ColumnName="RECOLECCION_ID" />
+                <ScalarProperty Name="DESPACHO_ID" ColumnName="DESPACHO_ID" />
+                <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
+                <ScalarProperty Name="REMITENTE_NOMBRE" ColumnName="REMITENTE_NOMBRE" />
+                <ScalarProperty Name="REMITENTE_DIRECCION" ColumnName="REMITENTE_DIRECCION" />
+                <ScalarProperty Name="REMITENTE_TELEFONO" ColumnName="REMITENTE_TELEFONO" />
+                <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
+                <ScalarProperty Name="DESTINATARIO_NOMBRE" ColumnName="DESTINATARIO_NOMBRE" />
+                <ScalarProperty Name="DESTINATARIO_DIRECCION" ColumnName="DESTINATARIO_DIRECCION" />
+                <ScalarProperty Name="DESTINATARIO_TELEFONO" ColumnName="DESTINATARIO_TELEFONO" />
+                <ScalarProperty Name="FECHA_ENVIO" ColumnName="FECHA_ENVIO" />
+                <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+                <ScalarProperty Name="UNIDADES" ColumnName="UNIDADES" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+                <ScalarProperty Name="PESO_VOL" ColumnName="PESO_VOL" />
+                <ScalarProperty Name="PESO_LIQ" ColumnName="PESO_LIQ" />
+                <ScalarProperty Name="VALOR_DECLARADO" ColumnName="VALOR_DECLARADO" />
+                <ScalarProperty Name="DICE_CONTENER" ColumnName="DICE_CONTENER" />
+                <ScalarProperty Name="ELABORADO_POR" ColumnName="ELABORADO_POR" />
+                <ScalarProperty Name="ENCARGADO_A" ColumnName="ENCARGADO_A" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_RECOLECCION">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_RECOLECCION">
+              <MappingFragment StoreEntitySet="LGC_RECOLECCION">
+                <ScalarProperty Name="RECOLECCION_ID" ColumnName="RECOLECCION_ID" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+                <ScalarProperty Name="CONSECUTIVO_AVMK" ColumnName="CONSECUTIVO_AVMK" />
+                <ScalarProperty Name="CONSECUTIVO_CLIENTE" ColumnName="CONSECUTIVO_CLIENTE" />
+                <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
+                <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="ESPECIFICACIONES" ColumnName="ESPECIFICACIONES" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGC_RECOLECCION_ITEM">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_RECOLECCION_ITEM">
+              <MappingFragment StoreEntitySet="LGC_RECOLECCION_ITEM">
+                <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+                <ScalarProperty Name="RECOLECCION_ID" ColumnName="RECOLECCION_ID" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
