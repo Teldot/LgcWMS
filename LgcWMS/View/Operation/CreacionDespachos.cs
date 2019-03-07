@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LgcWMS.View.Operation
 {
-    public partial class ImportOrdEnvios : Form
+    public partial class CreacionDespachos : Form
     {
-        public ImportOrdEnvios()
+        public CreacionDespachos()
         {
             InitializeComponent();
         }
@@ -22,12 +22,17 @@ namespace LgcWMS.View.Operation
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }

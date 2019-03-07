@@ -73,6 +73,12 @@
     <Compile Include="View\Access\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Operation\CreacionDespachos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Operation\CreacionDespachos.Designer.cs">
+      <DependentUpon>CreacionDespachos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Operation\ImportOrdEnvios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Access\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Operation\CreacionDespachos.resx">
+      <DependentUpon>CreacionDespachos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Operation\ImportOrdEnvios.resx">
+      <DependentUpon>ImportOrdEnvios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
