@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LgcWMS
+namespace LgcWMS.View.Operation
 {
-    public partial class Form1 : Form
+    public partial class ImportOrdEnvios : Form
     {
-        public Form1()
+        public ImportOrdEnvios()
         {
             InitializeComponent();
         }

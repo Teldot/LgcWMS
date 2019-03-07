@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LgcWMS.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LgcWMS.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ASFW_ACTIVESESSION">
+          <Key>
+            <PropertyRef Name="ACTIVESESSIONID" />
+          </Key>
+          <Property Name="ACTIVESESSIONID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="LASTACTIVITY" Type="datetime" Nullable="false" />
+          <Property Name="COMPANYID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ASFW_CATTYPE">
           <Key>
             <PropertyRef Name="CATTYPEID" />
@@ -14,6 +23,39 @@
           <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
           <Property Name="VISIBLE" Type="bit" Nullable="false" />
           <Property Name="ACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="ASFW_COMPANY">
+          <Key>
+            <PropertyRef Name="COMPANYID" />
+          </Key>
+          <Property Name="COMPANYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DOCNUMBER" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TELEPHONE" Type="varchar" MaxLength="12" />
+          <Property Name="CELLPHONE" Type="varchar" MaxLength="12" />
+          <Property Name="ADRESS" Type="varchar" MaxLength="60" />
+          <Property Name="CLIENT_ID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="ASFW_USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOC_NUMBER" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="15" />
+          <Property Name="SECOND_NAME" Type="varchar" MaxLength="15" />
+          <Property Name="FIRST_LASTNAME" Type="varchar" MaxLength="15" />
+          <Property Name="SECOND_LASTNAME" Type="varchar" MaxLength="15" />
+          <Property Name="BIRTHDATE" Type="date" />
+          <Property Name="PROFILEID" Type="bigint" />
+          <Property Name="USER" Type="varchar" MaxLength="20" />
+          <Property Name="PASS" Type="varchar" MaxLength="50" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="COMPANYID" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="60" />
+          <Property Name="INTENTS" Type="int" />
+          <Property Name="LAST_INTENT" Type="datetime" />
+          <Property Name="CONFIG_PARMS" Type="text" />
         </EntityType>
         <EntityType Name="LCG_CLIENTE_CLIENTE">
           <Key>
@@ -84,6 +126,7 @@
           <Property Name="EJECUTIVO" Type="varchar" MaxLength="50" />
           <Property Name="EJECUTIVO_MAIL" Type="varchar" MaxLength="100" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="EXT" Type="varchar" MaxLength="5" />
           <Property Name="CELULAR" Type="varchar" MaxLength="12" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CIUDAD" Type="int" Nullable="false" />
@@ -176,6 +219,54 @@
           <Property Name="CANTIDAD" Type="int" Nullable="false" />
           <Property Name="VALOR" Type="decimal" Precision="8" Scale="0" />
         </EntityType>
+        <Association Name="FK__ASFW_ACTI__COMPA__5224328E">
+          <End Role="ASFW_COMPANY" Type="Self.ASFW_COMPANY" Multiplicity="1" />
+          <End Role="ASFW_ACTIVESESSION" Type="Self.ASFW_ACTIVESESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="ASFW_ACTIVESESSION">
+              <PropertyRef Name="COMPANYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_ACTI__USERI__114A936A">
+          <End Role="ASFW_USER" Type="Self.ASFW_USER" Multiplicity="1" />
+          <End Role="ASFW_ACTIVESESSION" Type="Self.ASFW_ACTIVESESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ASFW_ACTIVESESSION">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_COMP__CLIEN__7E02B4CC">
+          <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="0..1" />
+          <End Role="ASFW_COMPANY" Type="Self.ASFW_COMPANY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="ASFW_COMPANY">
+              <PropertyRef Name="CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_USER__COMPA__5812160E">
+          <End Role="ASFW_COMPANY" Type="Self.ASFW_COMPANY" Multiplicity="1" />
+          <End Role="ASFW_USER" Type="Self.ASFW_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="ASFW_USER">
+              <PropertyRef Name="COMPANYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__LCG_CLIEN__Clien__10216507">
           <End Role="LGC_CLIENTE" Type="Self.LGC_CLIENTE" Multiplicity="1" />
           <End Role="LCG_CLIENTE_CLIENTE" Type="Self.LCG_CLIENTE_CLIENTE" Multiplicity="*" />
@@ -236,6 +327,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__LGC_WMS_R__CLIEN__7849DB76">
+          <End Role="ASFW_COMPANY" Type="Self.ASFW_COMPANY" Multiplicity="1" />
+          <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__LGC_WMS_R__PROVE__7755B73D">
           <End Role="LGC_CLIENTE_PROVEEDORES" Type="Self.LGC_CLIENTE_PROVEEDORES" Multiplicity="1" />
           <End Role="LGC_RECOLECCION" Type="Self.LGC_RECOLECCION" Multiplicity="*" />
@@ -261,7 +364,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LgcWMSDataModelStoreContainer">
+          <EntitySet Name="ASFW_ACTIVESESSION" EntityType="Self.ASFW_ACTIVESESSION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASFW_CATTYPE" EntityType="Self.ASFW_CATTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASFW_COMPANY" EntityType="Self.ASFW_COMPANY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASFW_USER" EntityType="Self.ASFW_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LCG_CLIENTE_CLIENTE" EntityType="Self.LCG_CLIENTE_CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LGC_CLIENTE" EntityType="Self.LGC_CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LGC_CLIENTE_PROVEEDORES" EntityType="Self.LGC_CLIENTE_PROVEEDORES" Schema="dbo" store:Type="Tables" />
@@ -269,6 +375,22 @@
           <EntitySet Name="LGC_GUIAS" EntityType="Self.LGC_GUIAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LGC_RECOLECCION" EntityType="Self.LGC_RECOLECCION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LGC_RECOLECCION_ITEM" EntityType="Self.LGC_RECOLECCION_ITEM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ASFW_ACTI__COMPA__5224328E" Association="Self.FK__ASFW_ACTI__COMPA__5224328E">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="ASFW_ACTIVESESSION" EntitySet="ASFW_ACTIVESESSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_ACTI__USERI__114A936A" Association="Self.FK__ASFW_ACTI__USERI__114A936A">
+            <End Role="ASFW_USER" EntitySet="ASFW_USER" />
+            <End Role="ASFW_ACTIVESESSION" EntitySet="ASFW_ACTIVESESSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_COMP__CLIEN__7E02B4CC" Association="Self.FK__ASFW_COMP__CLIEN__7E02B4CC">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_USER__COMPA__5812160E" Association="Self.FK__ASFW_USER__COMPA__5812160E">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="ASFW_USER" EntitySet="ASFW_USER" />
+          </AssociationSet>
           <AssociationSet Name="FK__LCG_CLIEN__Clien__10216507" Association="Self.FK__LCG_CLIEN__Clien__10216507">
             <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
             <End Role="LCG_CLIENTE_CLIENTE" EntitySet="LCG_CLIENTE_CLIENTE" />
@@ -289,6 +411,10 @@
             <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
             <End Role="LGC_GUIAS" EntitySet="LGC_GUIAS" />
           </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__CLIEN__7849DB76" Association="Self.FK__LGC_WMS_R__CLIEN__7849DB76">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+          </AssociationSet>
           <AssociationSet Name="FK__LGC_WMS_R__PROVE__7755B73D" Association="Self.FK__LGC_WMS_R__PROVE__7755B73D">
             <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
             <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
@@ -298,8 +424,7 @@
             <End Role="LGC_RECOLECCION_ITEM" EntitySet="LGC_RECOLECCION_ITEM" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LgcWMS.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -374,6 +499,7 @@
           <Property Name="UltimaReformaEscrituraDepDe" Type="Int32" />
           <NavigationProperty Name="LCG_CLIENTE_CLIENTE" Relationship="Self.FK__LCG_CLIEN__Clien__10216507" FromRole="LGC_CLIENTE" ToRole="LCG_CLIENTE_CLIENTE" />
           <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="Self.FK__LGC_CLIEN__Clien__0A688BB1" FromRole="LGC_CLIENTE" ToRole="LGC_CLIENTE_PROVEEDORES" />
+          <NavigationProperty Name="ASFW_COMPANY" Relationship="LgcWMS.Data.Model.FK__ASFW_COMP__CLIEN__7E02B4CC" FromRole="LGC_CLIENTE" ToRole="ASFW_COMPANY" />
         </EntityType>
         <EntityType Name="LGC_CLIENTE_PROVEEDORES">
           <Key>
@@ -392,6 +518,7 @@
           <NavigationProperty Name="LGC_CLIENTE" Relationship="Self.FK__LGC_CLIEN__Clien__0A688BB1" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_CLIENTE" />
           <NavigationProperty Name="LGC_DESPACHO" Relationship="Self.FK__LGC_WMS_E__PROVE__74794A92" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_DESPACHO" />
           <NavigationProperty Name="LGC_RECOLECCION" Relationship="Self.FK__LGC_WMS_R__PROVE__7755B73D" FromRole="LGC_CLIENTE_PROVEEDORES" ToRole="LGC_RECOLECCION" />
+          <Property Name="EXT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LGC_DESPACHO">
           <Key>
@@ -475,6 +602,7 @@
           <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="Self.FK__LGC_WMS_R__PROVE__7755B73D" FromRole="LGC_RECOLECCION" ToRole="LGC_CLIENTE_PROVEEDORES" />
           <NavigationProperty Name="LGC_GUIAS" Relationship="Self.FK__LGC_WMS_G__RECOL__0697FACD" FromRole="LGC_RECOLECCION" ToRole="LGC_GUIAS" />
           <NavigationProperty Name="LGC_RECOLECCION_ITEM" Relationship="Self.FK__LGC_WMS_R__RECOL__7EF6D905" FromRole="LGC_RECOLECCION" ToRole="LGC_RECOLECCION_ITEM" />
+          <NavigationProperty Name="ASFW_COMPANY" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_R__CLIEN__7849DB76" FromRole="LGC_RECOLECCION" ToRole="ASFW_COMPANY" />
         </EntityType>
         <EntityType Name="LGC_RECOLECCION_ITEM">
           <Key>
@@ -609,7 +737,140 @@
             <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
             <End Role="LGC_RECOLECCION_ITEM" EntitySet="LGC_RECOLECCION_ITEM" />
           </AssociationSet>
+          <EntitySet Name="ASFW_USER" EntityType="LgcWMS.Data.Model.ASFW_USER" />
+          <EntitySet Name="ASFW_ACTIVESESSION" EntityType="LgcWMS.Data.Model.ASFW_ACTIVESESSION" />
+          <EntitySet Name="ASFW_COMPANY" EntityType="LgcWMS.Data.Model.ASFW_COMPANY" />
+          <AssociationSet Name="FK__ASFW_ACTI__COMPA__5224328E" Association="LgcWMS.Data.Model.FK__ASFW_ACTI__COMPA__5224328E">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="ASFW_ACTIVESESSION" EntitySet="ASFW_ACTIVESESSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_ACTI__USERI__114A936A" Association="LgcWMS.Data.Model.FK__ASFW_ACTI__USERI__114A936A">
+            <End Role="ASFW_USER" EntitySet="ASFW_USER" />
+            <End Role="ASFW_ACTIVESESSION" EntitySet="ASFW_ACTIVESESSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_COMP__CLIEN__7E02B4CC" Association="LgcWMS.Data.Model.FK__ASFW_COMP__CLIEN__7E02B4CC">
+            <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ASFW_USER__COMPA__5812160E" Association="LgcWMS.Data.Model.FK__ASFW_USER__COMPA__5812160E">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="ASFW_USER" EntitySet="ASFW_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_WMS_R__CLIEN__7849DB76" Association="LgcWMS.Data.Model.FK__LGC_WMS_R__CLIEN__7849DB76">
+            <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
+            <End Role="LGC_RECOLECCION" EntitySet="LGC_RECOLECCION" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ASFW_USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOC_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SECOND_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_LASTNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SECOND_LASTNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTHDATE" Type="DateTime" Precision="0" />
+          <Property Name="PROFILEID" Type="Int64" />
+          <Property Name="USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PASS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="COMPANYID" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="INTENTS" Type="Int32" />
+          <Property Name="LAST_INTENT" Type="DateTime" Precision="3" />
+          <Property Name="CONFIG_PARMS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ASFW_ACTIVESESSION" Relationship="LgcWMS.Data.Model.FK__ASFW_ACTI__USERI__114A936A" FromRole="ASFW_USER" ToRole="ASFW_ACTIVESESSION" />
+          <NavigationProperty Name="ASFW_COMPANY" Relationship="LgcWMS.Data.Model.FK__ASFW_USER__COMPA__5812160E" FromRole="ASFW_USER" ToRole="ASFW_COMPANY" />
+        </EntityType>
+        <EntityType Name="ASFW_ACTIVESESSION">
+          <Key>
+            <PropertyRef Name="ACTIVESESSIONID" />
+          </Key>
+          <Property Name="ACTIVESESSIONID" Type="Guid" Nullable="false" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="LASTACTIVITY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="COMPANYID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ASFW_COMPANY" Relationship="LgcWMS.Data.Model.FK__ASFW_ACTI__COMPA__5224328E" FromRole="ASFW_ACTIVESESSION" ToRole="ASFW_COMPANY" />
+          <NavigationProperty Name="ASFW_USER" Relationship="LgcWMS.Data.Model.FK__ASFW_ACTI__USERI__114A936A" FromRole="ASFW_ACTIVESESSION" ToRole="ASFW_USER" />
+        </EntityType>
+        <EntityType Name="ASFW_COMPANY">
+          <Key>
+            <PropertyRef Name="COMPANYID" />
+          </Key>
+          <Property Name="COMPANYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DOCNUMBER" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CELLPHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ADRESS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_ID" Type="Guid" />
+          <NavigationProperty Name="ASFW_ACTIVESESSION" Relationship="LgcWMS.Data.Model.FK__ASFW_ACTI__COMPA__5224328E" FromRole="ASFW_COMPANY" ToRole="ASFW_ACTIVESESSION" />
+          <NavigationProperty Name="LGC_CLIENTE" Relationship="LgcWMS.Data.Model.FK__ASFW_COMP__CLIEN__7E02B4CC" FromRole="ASFW_COMPANY" ToRole="LGC_CLIENTE" />
+          <NavigationProperty Name="ASFW_USER" Relationship="LgcWMS.Data.Model.FK__ASFW_USER__COMPA__5812160E" FromRole="ASFW_COMPANY" ToRole="ASFW_USER" />
+          <NavigationProperty Name="LGC_RECOLECCION" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_R__CLIEN__7849DB76" FromRole="ASFW_COMPANY" ToRole="LGC_RECOLECCION" />
+        </EntityType>
+        <Association Name="FK__ASFW_ACTI__COMPA__5224328E">
+          <End Type="LgcWMS.Data.Model.ASFW_COMPANY" Role="ASFW_COMPANY" Multiplicity="1" />
+          <End Type="LgcWMS.Data.Model.ASFW_ACTIVESESSION" Role="ASFW_ACTIVESESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="ASFW_ACTIVESESSION">
+              <PropertyRef Name="COMPANYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_ACTI__USERI__114A936A">
+          <End Type="LgcWMS.Data.Model.ASFW_USER" Role="ASFW_USER" Multiplicity="1" />
+          <End Type="LgcWMS.Data.Model.ASFW_ACTIVESESSION" Role="ASFW_ACTIVESESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ASFW_ACTIVESESSION">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_COMP__CLIEN__7E02B4CC">
+          <End Type="LgcWMS.Data.Model.LGC_CLIENTE" Role="LGC_CLIENTE" Multiplicity="0..1" />
+          <End Type="LgcWMS.Data.Model.ASFW_COMPANY" Role="ASFW_COMPANY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_CLIENTE">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="ASFW_COMPANY">
+              <PropertyRef Name="CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ASFW_USER__COMPA__5812160E">
+          <End Type="LgcWMS.Data.Model.ASFW_COMPANY" Role="ASFW_COMPANY" Multiplicity="1" />
+          <End Type="LgcWMS.Data.Model.ASFW_USER" Role="ASFW_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="ASFW_USER">
+              <PropertyRef Name="COMPANYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_WMS_R__CLIEN__7849DB76">
+          <End Type="LgcWMS.Data.Model.ASFW_COMPANY" Role="ASFW_COMPANY" Multiplicity="1" />
+          <End Type="LgcWMS.Data.Model.LGC_RECOLECCION" Role="LGC_RECOLECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASFW_COMPANY">
+              <PropertyRef Name="COMPANYID" />
+            </Principal>
+            <Dependent Role="LGC_RECOLECCION">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -691,6 +952,7 @@
           <EntitySetMapping Name="LGC_CLIENTE_PROVEEDORES">
             <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_CLIENTE_PROVEEDORES">
               <MappingFragment StoreEntitySet="LGC_CLIENTE_PROVEEDORES">
+                <ScalarProperty Name="EXT" ColumnName="EXT" />
                 <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
@@ -792,6 +1054,51 @@
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
                 <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASFW_USER">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.ASFW_USER">
+              <MappingFragment StoreEntitySet="ASFW_USER">
+                <ScalarProperty Name="CONFIG_PARMS" ColumnName="CONFIG_PARMS" />
+                <ScalarProperty Name="LAST_INTENT" ColumnName="LAST_INTENT" />
+                <ScalarProperty Name="INTENTS" ColumnName="INTENTS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USER" ColumnName="USER" />
+                <ScalarProperty Name="PROFILEID" ColumnName="PROFILEID" />
+                <ScalarProperty Name="BIRTHDATE" ColumnName="BIRTHDATE" />
+                <ScalarProperty Name="SECOND_LASTNAME" ColumnName="SECOND_LASTNAME" />
+                <ScalarProperty Name="FIRST_LASTNAME" ColumnName="FIRST_LASTNAME" />
+                <ScalarProperty Name="SECOND_NAME" ColumnName="SECOND_NAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="DOC_NUMBER" ColumnName="DOC_NUMBER" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASFW_ACTIVESESSION">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.ASFW_ACTIVESESSION">
+              <MappingFragment StoreEntitySet="ASFW_ACTIVESESSION">
+                <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
+                <ScalarProperty Name="LASTACTIVITY" ColumnName="LASTACTIVITY" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ACTIVESESSIONID" ColumnName="ACTIVESESSIONID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASFW_COMPANY">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.ASFW_COMPANY">
+              <MappingFragment StoreEntitySet="ASFW_COMPANY">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="ADRESS" ColumnName="ADRESS" />
+                <ScalarProperty Name="CELLPHONE" ColumnName="CELLPHONE" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="DOCNUMBER" ColumnName="DOCNUMBER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

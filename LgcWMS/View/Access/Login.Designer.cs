@@ -75,6 +75,7 @@
             this.Cancel.Size = new System.Drawing.Size(94, 23);
             this.Cancel.TabIndex = 28;
             this.Cancel.Text = "&Cancelar";
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // OK
             // 
@@ -136,8 +137,10 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(402, 197);
             this.ControlBox = false;
             this.Controls.Add(this.usuarioActualLabel);

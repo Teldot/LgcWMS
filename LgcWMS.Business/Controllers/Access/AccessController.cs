@@ -1,6 +1,8 @@
 ﻿using AS.FW.Controller;
 using AS.FW.Model;
 using AS.FW.Services;
+using LgcWMS.Data.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,20 @@ using System.Threading.Tasks;
 
 namespace LgcWMS.Business.Controllers.Access
 {
-    public class AcccessController : GeneralController
+    public class AccessController : GeneralController
     {
         #region Attributes
         public static Dictionary<string, DateTime> LastIntents;
+        LgcWebEntities Entities;
         #endregion
         #region Properties
 
+        #endregion
+        #region Constructor
+        public AccessController()
+        {
+            Entities = new LgcWebEntities();
+        }
         #endregion
         #region Override Methods
         public override object GetData(int actionType)
@@ -29,14 +38,14 @@ namespace LgcWMS.Business.Controllers.Access
                 {
                     case ActionType.LogIn:
                         #region LogIn
-                        string us = RequestObj.TransParms.Where(p => p.Key == "user").FirstOrDefault().Value;
-                        string pass = RequestObj.TransParms.Where(p => p.Key == "password").FirstOrDefault().Value;
+                        string us = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "user").FirstOrDefault().Value);
+                        string pass = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "password").FirstOrDefault().Value);
                         //int compId = int.Parse(Codec.DecryptStringAES(RequestObj.TransParms.Where(p => p.Key == "company").FirstOrDefault().Value));
                         us = Codec.DecryptStringAES(us);
 
                         ValIntents(us);
 
-                        ASFW_USER usr = FW_Entities.ASFW_USER.Where(u => u.USER == us && u.ACTIVE.Value).FirstOrDefault();
+                        Data.Model.ASFW_USER usr = Entities.ASFW_USER.Where(u => u.USER == us && u.ACTIVE.Value).FirstOrDefault();
                         if (usr == null)
                             throw new AuthenticationException("Usuario/Contraseña incorrectos");
                         if (usr.PASS != pass)
@@ -52,7 +61,7 @@ namespace LgcWMS.Business.Controllers.Access
                                             LastIntents.Add(us, DateTime.Now);
                                         usr.INTENTS = intent++;
                                         usr.LAST_INTENT = DateTime.Now;
-                                        FW_Entities.SaveChanges();
+                                        Entities.SaveChanges();
                                         throw new AuthenticationException("Ha Excedido el numero máximo de intentos. Comuniquese con el Administrador del sistema.");
                                     }
                                 }
@@ -60,7 +69,7 @@ namespace LgcWMS.Business.Controllers.Access
                             }
                             usr.INTENTS = intent++;
                             usr.LAST_INTENT = DateTime.Now;
-                            FW_Entities.SaveChanges();
+                            Entities.SaveChanges();
                             throw new AuthenticationException("Usuario/Contraseña incorrectos");
                         }
 
@@ -69,17 +78,17 @@ namespace LgcWMS.Business.Controllers.Access
 
                         Guid usrTokenId = Guid.NewGuid();
 
-                        FW_Entities.ASFW_ACTIVESESSION.RemoveRange(FW_Entities.ASFW_ACTIVESESSION.Where(p => p.USERID == usr.USERID));
-                        FW_Entities.ASFW_ACTIVESESSION.Add(new ASFW_ACTIVESESSION()
+                        Entities.ASFW_ACTIVESESSION.RemoveRange(Entities.ASFW_ACTIVESESSION.Where(p => p.USERID == usr.USERID));
+                        Entities.ASFW_ACTIVESESSION.Add(new Data.Model.ASFW_ACTIVESESSION()
                         {
                             ACTIVESESSIONID = usrTokenId,
                             USERID = usr.USERID,
                             LASTACTIVITY = DateTime.Now,
                             COMPANYID = usr.COMPANYID
                         });
-                        FW_Entities.SaveChanges();
+                        Entities.SaveChanges();
 
-                        var compny = FW_Entities.ASFW_COMPANY.Select(c => new { c.NAME, c.COMPANYID }).Where(c => c.COMPANYID == usr.COMPANYID).FirstOrDefault();
+                        var compny = Entities.ASFW_COMPANY.Select(c => new { c.NAME, c.COMPANYID }).Where(c => c.COMPANYID == usr.COMPANYID).FirstOrDefault();
 
                         ResponseObj.UsrObj.UsrId = usr.USERID;
                         ResponseObj.UsrObj.UsrName = usr.FIRST_NAME +

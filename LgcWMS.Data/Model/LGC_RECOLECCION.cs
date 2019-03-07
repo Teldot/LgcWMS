@@ -41,5 +41,6 @@ namespace LgcWMS.Data.Model
         public virtual ICollection<LGC_GUIAS> LGC_GUIAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_RECOLECCION_ITEM> LGC_RECOLECCION_ITEM { get; set; }
+        public virtual ASFW_COMPANY ASFW_COMPANY { get; set; }
     }
 }

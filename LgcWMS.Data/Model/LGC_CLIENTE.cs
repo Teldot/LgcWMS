@@ -19,6 +19,7 @@ namespace LgcWMS.Data.Model
         {
             this.LCG_CLIENTE_CLIENTE = new HashSet<LCG_CLIENTE_CLIENTE>();
             this.LGC_CLIENTE_PROVEEDORES = new HashSet<LGC_CLIENTE_PROVEEDORES>();
+            this.ASFW_COMPANY = new HashSet<ASFW_COMPANY>();
         }
     
         public System.Guid ClienteID { get; set; }
@@ -72,5 +73,7 @@ namespace LgcWMS.Data.Model
         public virtual ICollection<LCG_CLIENTE_CLIENTE> LCG_CLIENTE_CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_CLIENTE_PROVEEDORES> LGC_CLIENTE_PROVEEDORES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ASFW_COMPANY> ASFW_COMPANY { get; set; }
     }
 }

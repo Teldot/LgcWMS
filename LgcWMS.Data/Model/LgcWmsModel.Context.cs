@@ -33,5 +33,8 @@ namespace LgcWMS.Data.Model
         public virtual DbSet<LGC_GUIAS> LGC_GUIAS { get; set; }
         public virtual DbSet<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
         public virtual DbSet<LGC_RECOLECCION_ITEM> LGC_RECOLECCION_ITEM { get; set; }
+        public virtual DbSet<ASFW_USER> ASFW_USER { get; set; }
+        public virtual DbSet<ASFW_ACTIVESESSION> ASFW_ACTIVESESSION { get; set; }
+        public virtual DbSet<ASFW_COMPANY> ASFW_COMPANY { get; set; }
     }
 }

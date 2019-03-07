@@ -51,7 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ASFW_ACTIVESESSION.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ASFW_CATTYPE.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ASFW_COMPANY.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ASFW_USER.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LCG_CLIENTE_CLIENTE.cs">

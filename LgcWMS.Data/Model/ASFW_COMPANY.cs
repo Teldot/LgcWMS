@@ -12,30 +12,29 @@ namespace LgcWMS.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LGC_CLIENTE_PROVEEDORES
+    public partial class ASFW_COMPANY
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LGC_CLIENTE_PROVEEDORES()
+        public ASFW_COMPANY()
         {
-            this.LGC_DESPACHO = new HashSet<LGC_DESPACHO>();
+            this.ASFW_ACTIVESESSION = new HashSet<ASFW_ACTIVESESSION>();
+            this.ASFW_USER = new HashSet<ASFW_USER>();
             this.LGC_RECOLECCION = new HashSet<LGC_RECOLECCION>();
         }
     
-        public int PROVEEDOR_ID { get; set; }
-        public string NOMBRE { get; set; }
-        public string CODIGO { get; set; }
-        public string EJECUTIVO { get; set; }
-        public string EJECUTIVO_MAIL { get; set; }
-        public string TELEFONO { get; set; }
-        public string CELULAR { get; set; }
-        public string DIRECCION { get; set; }
-        public int CIUDAD { get; set; }
-        public System.Guid ClienteID { get; set; }
-        public string EXT { get; set; }
+        public int COMPANYID { get; set; }
+        public string NAME { get; set; }
+        public string DOCNUMBER { get; set; }
+        public string TELEPHONE { get; set; }
+        public string CELLPHONE { get; set; }
+        public string ADRESS { get; set; }
+        public Nullable<System.Guid> CLIENT_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ASFW_ACTIVESESSION> ASFW_ACTIVESESSION { get; set; }
         public virtual LGC_CLIENTE LGC_CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LGC_DESPACHO> LGC_DESPACHO { get; set; }
+        public virtual ICollection<ASFW_USER> ASFW_USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
     }
