@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AS.FW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+    </Reference>
     <Reference Include="BarcodeLib">
       <HintPath>..\..\..\..\..\Downloads\BarcodeLib.dll</HintPath>
     </Reference>
@@ -58,7 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Access\AccessController.cs" />
-    <Compile Include="Controllers\DespachosController.cs" />
+    <Compile Include="Controllers\Catalog\CatalogsController.cs" />
+    <Compile Include="Controllers\Operation\DespachosController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LgcWeb\AS.FW\AS.FW.csproj">
-      <Project>{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}</Project>
-      <Name>AS.FW</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LgcWMS.Data\LgcWMS.Data.csproj">
       <Project>{0C3DE4CD-5821-4153-AEEA-5BEC29772B04}</Project>
       <Name>LgcWMS.Data</Name>
