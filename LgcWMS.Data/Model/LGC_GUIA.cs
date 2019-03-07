@@ -12,12 +12,12 @@ namespace LgcWMS.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LGC_GUIAS
+    public partial class LGC_GUIA
     {
         public long GUIA_ID { get; set; }
         public string GUIA_PREFIJO { get; set; }
         public int TIPO_ID { get; set; }
-        public long RECOLECCION_ID { get; set; }
+        public Nullable<long> RECOLECCION_ID { get; set; }
         public Nullable<long> DESPACHO_ID { get; set; }
         public int ORIGEN { get; set; }
         public string REMITENTE_NOMBRE { get; set; }
@@ -36,8 +36,10 @@ namespace LgcWMS.Data.Model
         public Nullable<decimal> VALOR_DECLARADO { get; set; }
         public string DICE_CONTENER { get; set; }
         public int ELABORADO_POR { get; set; }
-        public int ENCARGADO_A { get; set; }
+        public Nullable<int> ENCARGADO_A { get; set; }
     
+        public virtual ASFW_USER ASFW_USER { get; set; }
+        public virtual ASFW_USER ASFW_USER1 { get; set; }
         public virtual LGC_DESPACHO LGC_DESPACHO { get; set; }
         public virtual LGC_RECOLECCION LGC_RECOLECCION { get; set; }
     }

@@ -18,6 +18,8 @@ namespace LgcWMS.Data.Model
         public ASFW_USER()
         {
             this.ASFW_ACTIVESESSION = new HashSet<ASFW_ACTIVESESSION>();
+            this.LGC_GUIA = new HashSet<LGC_GUIA>();
+            this.LGC_GUIA1 = new HashSet<LGC_GUIA>();
         }
     
         public int USERID { get; set; }
@@ -40,5 +42,9 @@ namespace LgcWMS.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ASFW_ACTIVESESSION> ASFW_ACTIVESESSION { get; set; }
         public virtual ASFW_COMPANY ASFW_COMPANY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LGC_GUIA> LGC_GUIA1 { get; set; }
     }
 }

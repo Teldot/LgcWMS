@@ -426,7 +426,7 @@
           </Textbox>
           <Image Name="imgBarCode">
             <Source>Database</Source>
-            <Value>BARCODE</Value>
+            <Value>=First(Fields!BARCODE.Value, "DataSetGuia")</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -877,7 +877,7 @@
           </Textbox>
           <Image Name="imgBarCode2">
             <Source>Database</Source>
-            <Value>BARCODE</Value>
+            <Value>=First(Fields!BARCODE.Value, "DataSetGuia")</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -926,6 +926,146 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="LgcWMSDataModel">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>913f1651-c551-43f4-9eb2-8794c85f9a87</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetGuia">
+      <Query>
+        <DataSourceName>LgcWMSDataModel</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="BARCODE">
+          <DataField>BARCODE</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="DESPACHO_ID">
+          <DataField>DESPACHO_ID</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_DIRECCION">
+          <DataField>DESTINATARIO_DIRECCION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_NOMBRE">
+          <DataField>DESTINATARIO_NOMBRE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_TELEFONO">
+          <DataField>DESTINATARIO_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINO">
+          <DataField>DESTINO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESTINO_VAL">
+          <DataField>DESTINO_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DICE_CONTENER">
+          <DataField>DICE_CONTENER</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ELABORADO_POR">
+          <DataField>ELABORADO_POR</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ELABORADO_POR_VAL">
+          <DataField>ELABORADO_POR_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENCARGADO_A">
+          <DataField>ENCARGADO_A</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ENCARGADO_A_VAL">
+          <DataField>ENCARGADO_A_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FECHA_ENTREGA">
+          <DataField>FECHA_ENTREGA</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="FECHA_ENVIO">
+          <DataField>FECHA_ENVIO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_ID">
+          <DataField>GUIA_ID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_PREFIJO">
+          <DataField>GUIA_PREFIJO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORIGEN">
+          <DataField>ORIGEN</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ORIGEN_VAL">
+          <DataField>ORIGEN_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PESO">
+          <DataField>PESO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PESO_LIQ">
+          <DataField>PESO_LIQ</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PESO_VOL">
+          <DataField>PESO_VOL</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RECOLECCION_ID">
+          <DataField>RECOLECCION_ID</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_DIRECCION">
+          <DataField>REMITENTE_DIRECCION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_NOMBRE">
+          <DataField>REMITENTE_NOMBRE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_TELEFONO">
+          <DataField>REMITENTE_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TIPO">
+          <DataField>TIPO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TIPO_ID">
+          <DataField>TIPO_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="UNIDADES">
+          <DataField>UNIDADES</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_DECLARADO">
+          <DataField>VALOR_DECLARADO</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>LgcWMS.Data.Model</rd:DataSetName>
+        <rd:TableName>V_GUIA</rd:TableName>
+        <rd:ObjectDataSourceType>LgcWMS.Data.Model.V_GUIA, LgcWMS.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <EmbeddedImages>
     <EmbeddedImage Name="logoblanconegro">
       <MIMEType>image/png</MIMEType>
@@ -933,6 +1073,16 @@
 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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="barcode">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>

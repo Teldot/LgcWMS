@@ -72,6 +72,7 @@
             this.btnImpEnvios.TabIndex = 3;
             this.btnImpEnvios.Text = "3. Importar Orden de Envios";
             this.btnImpEnvios.UseVisualStyleBackColor = true;
+            this.btnImpEnvios.Click += new System.EventHandler(this.btnImpEnvios_Click);
             // 
             // btnAsignRepartos
             // 
@@ -119,6 +120,7 @@
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIL WMS - MainMenu";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
 
         }

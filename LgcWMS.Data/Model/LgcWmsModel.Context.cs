@@ -29,12 +29,17 @@ namespace LgcWMS.Data.Model
         public virtual DbSet<LCG_CLIENTE_CLIENTE> LCG_CLIENTE_CLIENTE { get; set; }
         public virtual DbSet<LGC_CLIENTE> LGC_CLIENTE { get; set; }
         public virtual DbSet<LGC_CLIENTE_PROVEEDORES> LGC_CLIENTE_PROVEEDORES { get; set; }
-        public virtual DbSet<LGC_DESPACHO> LGC_DESPACHO { get; set; }
-        public virtual DbSet<LGC_GUIAS> LGC_GUIAS { get; set; }
-        public virtual DbSet<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
         public virtual DbSet<LGC_RECOLECCION_ITEM> LGC_RECOLECCION_ITEM { get; set; }
         public virtual DbSet<ASFW_USER> ASFW_USER { get; set; }
         public virtual DbSet<ASFW_ACTIVESESSION> ASFW_ACTIVESESSION { get; set; }
         public virtual DbSet<ASFW_COMPANY> ASFW_COMPANY { get; set; }
+        public virtual DbSet<V_ASFW_CITY_CODE_MUN> V_ASFW_CITY_CODE_MUN { get; set; }
+        public virtual DbSet<V_ASFW_CATTYPE> V_ASFW_CATTYPE { get; set; }
+        public virtual DbSet<V_ASFW_CATVAL> V_ASFW_CATVAL { get; set; }
+        public virtual DbSet<V_ASFW_CITY_CODE_DEP> V_ASFW_CITY_CODE_DEP { get; set; }
+        public virtual DbSet<LGC_GUIA> LGC_GUIA { get; set; }
+        public virtual DbSet<LGC_DESPACHO> LGC_DESPACHO { get; set; }
+        public virtual DbSet<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
+        public virtual DbSet<V_GUIA> V_GUIA { get; set; }
     }
 }

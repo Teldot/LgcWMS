@@ -1,5 +1,6 @@
 ﻿using AS.FW.Controller;
 using AS.FW.Model;
+using LgcWMS.Data.Entities;
 using LgcWMS.Data.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -70,10 +71,10 @@ namespace LgcWMS.Business.Controllers.Catalogs
                         var catgs = (from c in Entities.V_ASFW_CATVAL
                                      where c.CATTYPEID == cat && c.SHOWABLE.Value &&
                                      (catParent == -1 || c.CATPARENT0 == catParent)
-                                     select new { catId = c.CATVALID, catVal = c.VAL }).OrderBy(c => c.catVal).ToList();
+                                     select new GeneralCat { catId = c.CATVALID, catVal = c.VAL }).OrderBy(c => c.catVal).ToList();
 
                         if (itemZero)
-                            catgs.Insert(0, new { catId = -1, catVal = "Seleccione..." });
+                            catgs.Insert(0, new GeneralCat { catId = -1, catVal = "Seleccione..." });
 
                         ResponseObj.TransParms.Add(new TransParm("cat", JsonConvert.SerializeObject(catgs)));
                         ResponseObj.MessCode = TransObj.MessCodes.Ok;
@@ -145,43 +146,43 @@ namespace LgcWMS.Business.Controllers.Catalogs
                         break;
                     case ActionType.SaveCatalog:
                         #region SaveCatalog
-                        JObject catInfo = JObject.Parse(RequestObj.TransParms.Where(c => c.Key == "catInfo").FirstOrDefault().Value);
-                        if (!string.IsNullOrEmpty(catInfo["catId"].ToString()))
-                            id = int.Parse(catInfo["catId"].ToString());
+                        //JObject catInfo = JObject.Parse(RequestObj.TransParms.Where(c => c.Key == "catInfo").FirstOrDefault().Value);
+                        //if (!string.IsNullOrEmpty(catInfo["catId"].ToString()))
+                        //    id = int.Parse(catInfo["catId"].ToString());
 
-                        Data.Model.ASFW_CATVAL cat2Save = Entities.ASFW_CATVAL.Where(c => c.CATVALID == id).FirstOrDefault();
-                        _new = cat2Save == null;
+                        //Data.Model.ASFW_CATVAL cat2Save = Entities.ASFW_CATVAL.Where(c => c.CATVALID == id).FirstOrDefault();
+                        //_new = cat2Save == null;
 
-                        if (_new)
-                            cat2Save = new Data.Model.ASFW_CATVAL();
+                        //if (_new)
+                        //    cat2Save = new Data.Model.ASFW_CATVAL();
 
-                        cat2Save.ACTIVE = Boolean.Parse(catInfo["ACTIVE"].ToString());
-                        if (!string.IsNullOrEmpty(catInfo["CUSTOMFIELD0"].ToString()) && catInfo["CUSTOMFIELD0"].ToString() != "0")
-                            cat2Save.CUSTOMFIELD0 = decimal.Parse(catInfo["CUSTOMFIELD0"].ToString());
-                        cat2Save.CATTYPEID = int.Parse(catInfo["catType"].ToString());
-                        cat2Save.VAL = catInfo["catVal"].ToString();
-                        cat2Save.SHOWABLE = true;
+                        //cat2Save.ACTIVE = Boolean.Parse(catInfo["ACTIVE"].ToString());
+                        //if (!string.IsNullOrEmpty(catInfo["CUSTOMFIELD0"].ToString()) && catInfo["CUSTOMFIELD0"].ToString() != "0")
+                        //    cat2Save.CUSTOMFIELD0 = decimal.Parse(catInfo["CUSTOMFIELD0"].ToString());
+                        //cat2Save.CATTYPEID = int.Parse(catInfo["catType"].ToString());
+                        //cat2Save.VAL = catInfo["catVal"].ToString();
+                        //cat2Save.SHOWABLE = true;
 
-                        if (_new)
-                            Entities.ASFW_CATVAL.Add(cat2Save);
+                        //if (_new)
+                        //    Entities.ASFW_CATVAL.Add(cat2Save);
 
-                        Entities.SaveChanges();
+                        //Entities.SaveChanges();
 
-                        return GetData((int)ActionType.GetCats2Edit);
+                        //return GetData((int)ActionType.GetCats2Edit);
                     #endregion
                     case ActionType.DeleteCatalog:
                         #region DeleteCatalog
-                        id = int.Parse(RequestObj.TransParms.Where(p => p.Key == "catId").FirstOrDefault().Value);
+                        //id = int.Parse(RequestObj.TransParms.Where(p => p.Key == "catId").FirstOrDefault().Value);
 
-                        Data.Model.ASFW_CATVAL cat2Del = Entities.ASFW_CATVAL.Where(c => c.CATVALID == id).FirstOrDefault();
-                        if (cat2Del == null)
-                            throw new Exception("Catálogo no encontrado");
+                        //Data.Model.ASFW_CATVAL cat2Del = Entities.ASFW_CATVAL.Where(c => c.CATVALID == id).FirstOrDefault();
+                        //if (cat2Del == null)
+                        //    throw new Exception("Catálogo no encontrado");
 
-                        cat2Del.SHOWABLE = false;
+                        //cat2Del.SHOWABLE = false;
 
-                        Entities.SaveChanges();
+                        //Entities.SaveChanges();
 
-                        return GetData((int)ActionType.GetCats2Edit);
+                        //return GetData((int)ActionType.GetCats2Edit);
                     #endregion
                     default:
                         break;

@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RutaArchivo = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbRutaArchivo = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo = new System.Windows.Forms.Button();
+            this.dgEnvios = new System.Windows.Forms.DataGridView();
             this.Consecutivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Consecutivo_AVMK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Consecutivo_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,37 +54,44 @@
             this.Codigo_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbCliente = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnValidate = new System.Windows.Forms.Button();
+            this.tbError = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tbWorkSheet = new System.Windows.Forms.TextBox();
+            this.btnBuscarArchivo = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEnvios)).BeginInit();
             this.SuspendLayout();
             // 
-            // RutaArchivo
+            // tbRutaArchivo
             // 
-            this.RutaArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbRutaArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RutaArchivo.Location = new System.Drawing.Point(89, 61);
-            this.RutaArchivo.Name = "RutaArchivo";
-            this.RutaArchivo.Size = new System.Drawing.Size(986, 20);
-            this.RutaArchivo.TabIndex = 0;
+            this.tbRutaArchivo.Location = new System.Drawing.Point(89, 61);
+            this.tbRutaArchivo.Name = "tbRutaArchivo";
+            this.tbRutaArchivo.ReadOnly = true;
+            this.tbRutaArchivo.Size = new System.Drawing.Size(736, 20);
+            this.tbRutaArchivo.TabIndex = 0;
             // 
-            // button1
+            // btnCargarArchivo
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1111, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Cargar Archivo";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCargarArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCargarArchivo.Location = new System.Drawing.Point(1081, 87);
+            this.btnCargarArchivo.Name = "btnCargarArchivo";
+            this.btnCargarArchivo.Size = new System.Drawing.Size(97, 23);
+            this.btnCargarArchivo.TabIndex = 1;
+            this.btnCargarArchivo.Text = "Cargar Archivo";
+            this.btnCargarArchivo.UseVisualStyleBackColor = true;
+            this.btnCargarArchivo.Click += new System.EventHandler(this.btnCargarArchivo_Click);
             // 
-            // dataGridView1
+            // dgEnvios
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgEnvios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgEnvios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgEnvios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Consecutivo,
             this.Consecutivo_AVMK,
             this.Consecutivo_Cliente,
@@ -110,84 +115,75 @@
             this.Codigo_Proveedor,
             this.Cantidad,
             this.Valor});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 197);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1196, 281);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Cliente";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(131, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(116, 21);
-            this.comboBox1.TabIndex = 4;
+            this.dgEnvios.Location = new System.Drawing.Point(12, 197);
+            this.dgEnvios.Name = "dgEnvios";
+            this.dgEnvios.Size = new System.Drawing.Size(1196, 281);
+            this.dgEnvios.TabIndex = 2;
+            this.dgEnvios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Consecutivo
             // 
+            this.Consecutivo.DataPropertyName = "Consecutivo";
             this.Consecutivo.HeaderText = "Consecutivo";
             this.Consecutivo.Name = "Consecutivo";
             // 
             // Consecutivo_AVMK
             // 
+            this.Consecutivo_AVMK.DataPropertyName = "Consecutvo AVMK";
             this.Consecutivo_AVMK.HeaderText = "Consecutvo AVMK";
             this.Consecutivo_AVMK.Name = "Consecutivo_AVMK";
             // 
             // Consecutivo_Cliente
             // 
+            this.Consecutivo_Cliente.DataPropertyName = "Consecutivo Cliente";
             this.Consecutivo_Cliente.HeaderText = "Consecutivo Cliente";
             this.Consecutivo_Cliente.Name = "Consecutivo_Cliente";
             // 
             // Fecha_Envio_Archivo
             // 
+            this.Fecha_Envio_Archivo.DataPropertyName = "Fecha Envio Archivo";
             this.Fecha_Envio_Archivo.HeaderText = "Fecha Envio Archivo";
             this.Fecha_Envio_Archivo.Name = "Fecha_Envio_Archivo";
             // 
             // Mes
             // 
+            this.Mes.DataPropertyName = "Mes";
             this.Mes.HeaderText = "Mes";
             this.Mes.Name = "Mes";
             // 
             // Ano
             // 
+            this.Ano.DataPropertyName = "Año";
             this.Ano.HeaderText = "Ano";
             this.Ano.Name = "Ano";
             // 
             // Fecha_Redencion
             // 
+            this.Fecha_Redencion.DataPropertyName = "Fecha de Redencion";
             this.Fecha_Redencion.HeaderText = "Fecha de Redencion";
             this.Fecha_Redencion.Name = "Fecha_Redencion";
             // 
             // Cedula
             // 
+            this.Cedula.DataPropertyName = "Cedula";
             this.Cedula.HeaderText = "Cedula";
             this.Cedula.Name = "Cedula";
             // 
             // Cliente
             // 
+            this.Cliente.DataPropertyName = "Cliente";
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.Name = "Cliente";
             // 
             // Entregar_a
             // 
+            this.Entregar_a.DataPropertyName = "Entregar a";
             this.Entregar_a.HeaderText = "Entregar a";
             this.Entregar_a.Name = "Entregar_a";
             // 
             // Direccion
             // 
+            this.Direccion.DataPropertyName = "Direccion";
             this.Direccion.HeaderText = "Direccion";
             this.Direccion.Name = "Direccion";
             // 
@@ -203,31 +199,37 @@
             // 
             // Teléfono
             // 
+            this.Teléfono.DataPropertyName = "Teléfono";
             this.Teléfono.HeaderText = "Teléfono";
             this.Teléfono.Name = "Teléfono";
             // 
             // Celular
             // 
+            this.Celular.DataPropertyName = "Celular";
             this.Celular.HeaderText = "Celular";
             this.Celular.Name = "Celular";
             // 
             // Correo_Electronico
             // 
+            this.Correo_Electronico.DataPropertyName = "Correo Electronico";
             this.Correo_Electronico.HeaderText = "Correo Electronico";
             this.Correo_Electronico.Name = "Correo_Electronico";
             // 
             // Codigo_Premio
             // 
+            this.Codigo_Premio.DataPropertyName = "Codigo Premio";
             this.Codigo_Premio.HeaderText = "Codigo Premio";
             this.Codigo_Premio.Name = "Codigo_Premio";
             // 
             // Premio
             // 
+            this.Premio.DataPropertyName = "Premio";
             this.Premio.HeaderText = "Premio";
             this.Premio.Name = "Premio";
             // 
             // Especificaciones
             // 
+            this.Especificaciones.DataPropertyName = "Especificaciones";
             this.Especificaciones.HeaderText = "Especificaciones";
             this.Especificaciones.Name = "Especificaciones";
             // 
@@ -238,67 +240,119 @@
             // 
             // Codigo_Proveedor
             // 
+            this.Codigo_Proveedor.DataPropertyName = "Codigo Proveedor";
             this.Codigo_Proveedor.HeaderText = "Codigo Proveedor";
             this.Codigo_Proveedor.Name = "Codigo_Proveedor";
             // 
             // Cantidad
             // 
+            this.Cantidad.DataPropertyName = "Cantidad";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
             // Valor
             // 
+            this.Valor.DataPropertyName = "Valor";
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             // 
-            // button2
+            // label1
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(1122, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Subir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1026, 159);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Validar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(89, 87);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(986, 66);
-            this.textBox1.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(86, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Cliente";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cbCliente
+            // 
+            this.cbCliente.FormattingEnabled = true;
+            this.cbCliente.Location = new System.Drawing.Point(131, 30);
+            this.cbCliente.Name = "cbCliente";
+            this.cbCliente.Size = new System.Drawing.Size(352, 21);
+            this.cbCliente.TabIndex = 4;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(1122, 159);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(78, 23);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Subir";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnValidate
+            // 
+            this.btnValidate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnValidate.Location = new System.Drawing.Point(1026, 159);
+            this.btnValidate.Name = "btnValidate";
+            this.btnValidate.Size = new System.Drawing.Size(82, 23);
+            this.btnValidate.TabIndex = 6;
+            this.btnValidate.Text = "Validar";
+            this.btnValidate.UseVisualStyleBackColor = true;
+            this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
+            // 
+            // tbError
+            // 
+            this.tbError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbError.Location = new System.Drawing.Point(89, 87);
+            this.tbError.Multiline = true;
+            this.tbError.Name = "tbError";
+            this.tbError.ReadOnly = true;
+            this.tbError.Size = new System.Drawing.Size(986, 66);
+            this.tbError.TabIndex = 7;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // tbWorkSheet
+            // 
+            this.tbWorkSheet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWorkSheet.Location = new System.Drawing.Point(832, 60);
+            this.tbWorkSheet.Name = "tbWorkSheet";
+            this.tbWorkSheet.Size = new System.Drawing.Size(243, 20);
+            this.tbWorkSheet.TabIndex = 8;
+            this.tbWorkSheet.Text = "Nombre de la hoja";
+            // 
+            // btnBuscarArchivo
+            // 
+            this.btnBuscarArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarArchivo.Location = new System.Drawing.Point(1081, 57);
+            this.btnBuscarArchivo.Name = "btnBuscarArchivo";
+            this.btnBuscarArchivo.Size = new System.Drawing.Size(97, 23);
+            this.btnBuscarArchivo.TabIndex = 9;
+            this.btnBuscarArchivo.Text = "Buscar Archivo";
+            this.btnBuscarArchivo.UseVisualStyleBackColor = true;
+            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
             // ImportOrdEnvios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 490);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnBuscarArchivo);
+            this.Controls.Add(this.tbWorkSheet);
+            this.Controls.Add(this.tbError);
+            this.Controls.Add(this.btnValidate);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.cbCliente);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.RutaArchivo);
+            this.Controls.Add(this.dgEnvios);
+            this.Controls.Add(this.btnCargarArchivo);
+            this.Controls.Add(this.tbRutaArchivo);
             this.Name = "ImportOrdEnvios";
             this.Text = "ImportOrdEnvios";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ImportOrdEnvios_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgEnvios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,10 +360,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox RutaArchivo;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbRutaArchivo;
+        private System.Windows.Forms.Button btnCargarArchivo;
+        private System.Windows.Forms.DataGridView dgEnvios;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbCliente;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnValidate;
+        private System.Windows.Forms.TextBox tbError;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox tbWorkSheet;
+        private System.Windows.Forms.Button btnBuscarArchivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consecutivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consecutivo_AVMK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consecutivo_Cliente;
@@ -333,9 +394,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo_Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LgcWMS.Business.Controllers;
+using LgcWMS.Business.Controllers.Operation;
 
 namespace LgcWMS.Test
 {

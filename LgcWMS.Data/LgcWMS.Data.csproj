@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Catalog.cs" />
     <Compile Include="Model\ASFW_ACTIVESESSION.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
@@ -90,13 +91,28 @@
     <Compile Include="Model\LGC_DESPACHO.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\LGC_GUIAS.cs">
+    <Compile Include="Model\LGC_GUIA.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LGC_RECOLECCION.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LGC_RECOLECCION_ITEM.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_ASFW_CATTYPE.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_ASFW_CATVAL.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_ASFW_CITY_CODE_DEP.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_ASFW_CITY_CODE_MUN.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_GUIA.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

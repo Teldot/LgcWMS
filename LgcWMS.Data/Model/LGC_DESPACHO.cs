@@ -17,7 +17,7 @@ namespace LgcWMS.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LGC_DESPACHO()
         {
-            this.LGC_GUIAS = new HashSet<LGC_GUIAS>();
+            this.LGC_GUIA = new HashSet<LGC_GUIA>();
         }
     
         public long DESPACHO_ID { get; set; }
@@ -27,7 +27,7 @@ namespace LgcWMS.Data.Model
         public string CONSECUTIVO_CLIENTE { get; set; }
         public Nullable<System.DateTime> FECHA_ENVIO_ARCHIVO { get; set; }
         public string MES { get; set; }
-        public Nullable<int> AÑO { get; set; }
+        public Nullable<int> ANO { get; set; }
         public Nullable<System.DateTime> FECHA_REDENCION { get; set; }
         public long CEDULA { get; set; }
         public string DESTINATARIO { get; set; }
@@ -47,6 +47,6 @@ namespace LgcWMS.Data.Model
     
         public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LGC_GUIAS> LGC_GUIAS { get; set; }
+        public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
     }
 }
