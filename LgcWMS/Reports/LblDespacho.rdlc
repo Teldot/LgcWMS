@@ -1,10 +1,940 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-  <Width>6.5in</Width>
   <Body>
-    <Height>2in</Height>
+    <ReportItems>
+      <Rectangle Name="Rectangle1">
+        <ReportItems>
+          <Image Name="Image1">
+            <Source>Embedded</Source>
+            <Value>logoblanconegro</Value>
+            <Sizing>FitProportional</Sizing>
+            <Left>0.27428cm</Left>
+            <Height>0.93089cm</Height>
+            <Width>2.75236cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nombre:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.05409cm</Top>
+            <Left>2.51984cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>1.51222cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="tbNOMBRE">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>hjvgfjsfhfisdhfius</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.05409cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>2</ZIndex>
+            <DataElementName>DESTINATARIO_NOMBRE</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Direccion:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.54826cm</Top>
+            <Left>2.34345cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>jxhcbvdilod</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>1.5659cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>4</ZIndex>
+            <DataElementName>DESTINATARIO_DIRECCION</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Telefono:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.04243cm</Top>
+            <Left>2.34345cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>dfghjklñ´ñlkjhgf</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>2.06007cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>6</ZIndex>
+            <DataElementName>DESTINATARIO_TELEFONO</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ciudad:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>2.51896cm</Top>
+            <Left>2.62026cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>1.44708cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>dfgiopojhg</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>2.5366cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>8</ZIndex>
+            <DataElementName>DESTINO</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Referencia:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>3.01313cm</Top>
+            <Left>2.25526cm</Left>
+            <Height>0.52943cm</Height>
+            <Width>1.81208cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>xcjopolkjv</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>3.03077cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>10</ZIndex>
+            <DataElementName>DICE_CONTENER</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Consecutivo Cliente:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>3.61313cm</Top>
+            <Left>0.87942cm</Left>
+            <Height>0.40598cm</Height>
+            <Width>3.18792cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox12">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>vbplkjhg</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox12</rd:DefaultName>
+            <Top>3.57785cm</Top>
+            <Left>4.10262cm</Left>
+            <Height>0.44125cm</Height>
+            <Width>5.81743cm</Width>
+            <ZIndex>12</ZIndex>
+            <DataElementName>CONSECUTIVO_CLIENTE</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="imgBarCode">
+            <Source>Database</Source>
+            <Value>BARCODE</Value>
+            <MIMEType>image/jpeg</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>4.1955cm</Top>
+            <Left>1.63746cm</Left>
+            <Height>1.11808cm</Height>
+            <Width>7.90292cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.12349cm</Top>
+        <Left>0.16457cm</Left>
+        <Height>5.61343cm</Height>
+        <Width>10.7525cm</Width>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="Rectangle2">
+        <ReportItems>
+          <Image Name="Image2">
+            <Source>Embedded</Source>
+            <Value>logoblanconegro</Value>
+            <Sizing>FitProportional</Sizing>
+            <Left>0.27428cm</Left>
+            <Height>0.93089cm</Height>
+            <Width>2.75236cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nombre:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.05409cm</Top>
+            <Left>2.51984cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>1.51222cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="tbNOMBRE2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>hjvgfjsfhfisdhfius</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.05409cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>2</ZIndex>
+            <DataElementName>DESTINATARIO_NOMBRE</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Direccion:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.54826cm</Top>
+            <Left>2.34345cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>jxhcbvdilod</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>1.5659cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>4</ZIndex>
+            <DataElementName>DESTINATARIO_DIRECCION</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Telefono:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.04243cm</Top>
+            <Left>2.34345cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox16">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>dfghjklñ´ñlkjhgf</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>2.06007cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>6</ZIndex>
+            <DataElementName>DESTINATARIO_TELEFONO</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ciudad:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>2.51896cm</Top>
+            <Left>2.62026cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>1.44708cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>dfgiopojhg</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>2.5366cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>8</ZIndex>
+            <DataElementName>DESTINO</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Referencia:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>3.01313cm</Top>
+            <Left>2.25526cm</Left>
+            <Height>0.52943cm</Height>
+            <Width>1.81208cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>xcjopolkjv</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>3.03077cm</Top>
+            <Left>4.06734cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>6.51757cm</Width>
+            <ZIndex>10</ZIndex>
+            <DataElementName>DICE_CONTENER</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Consecutivo Cliente:</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>3.61313cm</Top>
+            <Left>0.84414cm</Left>
+            <Height>0.47654cm</Height>
+            <Width>3.18792cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox22">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>vbplkjhg</Value>
+                    <Style>
+                      <FontFamily>Swis721 BT</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox12</rd:DefaultName>
+            <Top>3.57785cm</Top>
+            <Left>4.10262cm</Left>
+            <Height>0.44125cm</Height>
+            <Width>5.81743cm</Width>
+            <ZIndex>12</ZIndex>
+            <DataElementName>CONSECUTIVO_CLIENTE</DataElementName>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="imgBarCode2">
+            <Source>Database</Source>
+            <Value>BARCODE</Value>
+            <MIMEType>image/jpeg</MIMEType>
+            <Sizing>FitProportional</Sizing>
+            <Top>4.1955cm</Top>
+            <Left>1.67274cm</Left>
+            <Height>1.171cm</Height>
+            <Width>7.90292cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>6.05443cm</Top>
+        <Left>0.19985cm</Left>
+        <Height>5.70162cm</Height>
+        <Width>10.7525cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>12.00299cm</Height>
+    <Style>
+      <Border>
+        <Style>Solid</Style>
+        <Width>2pt</Width>
+      </Border>
+    </Style>
   </Body>
-  <rd:ReportTemplate>true</rd:ReportTemplate>
+  <Width>11.23457cm</Width>
   <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2cm</LeftMargin>
+    <RightMargin>2cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
   </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logoblanconegro">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>8a3b3827-985c-4143-8b10-c78ca74302bb</rd:ReportID>
 </Report>
