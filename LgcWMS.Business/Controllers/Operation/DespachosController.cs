@@ -96,11 +96,35 @@ VALUES({ 0},'{1}','{2}','{3}',convert(date,'{4}',103),'{5}',{6},convert(date,'{7
                             var e = Entities.LGC_DESPACHO.
                                 Where(d => d.CONSECUTIVO_CLIENTE == r[COL_CONSECUTIVO_CLIENTE].ToString())
                                 .FirstOrDefault();
-                            if (e != null) throw new GeneralControllerException(string.Format("El registro en la fila {0} ya existe.", i));
+                            if (e != null) { sql.Clear(); throw new GeneralControllerException(string.Format("El registro en la fila {0} ya existe.", i)); }
                             s = string.Format(SQL_IN_DESPACHO,
-                                EntUtils.GetIntFromDtRow()
-
+                                EntUtils.GetIntFromDtRow(r, COL_REMITENTE),
+                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO),
+                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO_AVMK),
+                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO_CLIENTE),
+                                EntUtils.GetDTFromDtRow(r, COL_FECHA_ENVIO_ARCHIVO),
+                                EntUtils.GetStrFromDtRow(r, COL_MES),
+                                EntUtils.GetIntFromDtRow(r, COL_AÑO),
+                                EntUtils.GetDTFromDtRow(r, COL_FECHA_REDENCION),
+                                EntUtils.GetIntFromDtRow(r, COL_CEDULA),
+                                EntUtils.GetStrFromDtRow(r, COL_DESTINATARIO),
+                                EntUtils.GetStrFromDtRow(r, COL_ENTREGAR_A),
+                                EntUtils.GetStrFromDtRow(r, COL_DIRECCION),
+                                EntUtils.GetStrFromDtRow(r, COL_CIUDAD),
+                                EntUtils.GetIntFromDtRow(r, COL_DEPARTAMENTO),
+                                EntUtils.GetStrFromDtRow(r, COL_TELEFONO),
+                                EntUtils.GetStrFromDtRow(r, COL_CELULAR),
+                                EntUtils.GetStrFromDtRow(r, COL_CORREO_ELECTRONICO),
+                                EntUtils.GetStrFromDtRow(r, COL_CODIGO_PREMIO),
+                                EntUtils.GetStrFromDtRow(r, COL_PREMIO),
+                                EntUtils.GetStrFromDtRow(r, COL_ESPECIFICACIONES),
+                                EntUtils.GetIntFromDtRow(r, COL_PROVEEDOR_ID),
+                                EntUtils.GetIntFromDtRow(r, COL_CANTIDAD));
+                            sql.Append(s);
                         }
+                        DataBaseUtils dbUtils = new DataBaseUtils();
+                        return dbUtils.RunScriptFromStngBldr(sql, Entities);
+
                         #endregion
                         break;
                     default:
@@ -109,8 +133,7 @@ VALUES({ 0},'{1}','{2}','{3}',convert(date,'{4}',103),'{5}',{6},convert(date,'{7
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
             return ResponseObj;
         }
