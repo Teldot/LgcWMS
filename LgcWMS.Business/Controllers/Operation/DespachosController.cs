@@ -23,11 +23,37 @@ namespace LgcWMS.Business.Controllers.Operation
 
         const string SQL_GET_CLIENTES = "SELECT COMPANYID catId, NOMBRERAZONSOCIAL catVal, CLIENTEID  FROM V_LGC_CLIENTE WHERE ACTIVO = 1 ORDER BY NOMBRERAZONSOCIAL;";
         const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,AÑO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD)
-VALUES({ 0},'{1}','{2}','{3}',convert(date,'{4}',103),'{5}',{6},convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21});";
+VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21});";
         const string SQL_CIUDADES = "SELECT V.ID catId, C.NOMBRES catVal FROM V_ASFW_CITY_CODE V INNER JOIN ASFW_CITY_CODE C ON V.ID = C.ID";
         const string SQL_PROVEEDORES = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM LGC_CLIENTE_PROVEEDORES P INNER JOIN ASFW_COMPANY C ON P.CLIENTEID = C.CLIENT_ID WHERE C.COMPANYID = {0};";
         #region Column Indexes
-        //public const int COL_REMITENTE = 2;
+        public const string GV_COL_CIUDAD = "Ciudad";
+        public const string GV_COL_DEPARTAMENTO = "Departamento";
+        public const string GV_COL_PROVEEDOR = "Nombre_Proveedor";
+
+        public const string GV_COL_CONSECUTIVO = "Consecutivo";
+        public const string GV_COL_CONSECUTVO_AVMK = "Consecutvo_AVMK";
+        public const string GV_COL_CONSECUTIVO_CLIENTE = "Consecutivo_Cliente";
+        public const string GV_COL_FECHA_ENVIO_ARCHIVO = "Fecha_Envio_Archivo";
+        public const string GV_COL_FECHA_DE_REDENCION = "Fecha_de_Redencion";
+        public const string GV_COL_CEDULA = "Cedula";
+
+        public const string GV_COL_CLIENTE = "Cliente";
+        public const string GV_COL_ENTREGAR_A = "Entregar_a";
+        public const string GV_COL_DIRECCION = "Direccion";
+        public const string GV_COL_TELEFONO = "Teléfono";
+        public const string GV_COL_CELULAR = "Celular";
+        public const string GV_COL_CORREO_ELECTRONICO = "Correo_Electronico";
+        public const string GV_COL_CODIGO_PREMIO = "Codigo_Premio";
+        public const string GV_COL_PREMIO = "Premio";
+        public const string GV_COL_ESPECIFICACIONES = "Especificaciones";
+        public const string GV_COL_NOMBRE_PROVEEDOR = "Nombre_Proveedor";
+        public const string GV_COL_CODIGO_PROVEEDOR = "Codigo_Proveedor";
+        public const string GV_COL_CANTIDAD = "Cantidad";
+        public const string GV_COL_VALOR = "Valor";
+        public const string GV_COL_TRANSPORTADOR = "Transportador";
+
+
         public const int COL_CONSECUTIVO = 0;
         public const int COL_CONSECUTIVO_AVMK = 1;
         public const int COL_CONSECUTIVO_CLIENTE = 2;
@@ -56,10 +82,12 @@ VALUES({ 0},'{1}','{2}','{3}',convert(date,'{4}',103),'{5}',{6},convert(date,'{7
         #region Properties
         LgcWebEntities Entities;
         public DataTable DtDespachosIn { get; set; }
+        public DataTable DtDespachosOut { get; set; }
         public List<GeneralCat> Deptos { get; set; }
         public List<GeneralCat> CitiesFullNames { get; set; }
         public List<GeneralCat> CitiesDeptos { get; set; }
         public List<GeneralCat> Proveedores { get; set; }
+        public int ClienteID { get; set; }
         #endregion
         #region Constructor
         public DespachosController()
@@ -107,46 +135,47 @@ VALUES({ 0},'{1}','{2}','{3}',convert(date,'{4}',103),'{5}',{6},convert(date,'{7
                         break;
                     case ActionType.LoadProveedores:
                         #region LoadProveedores
-                        int cId = JsonConvert.DeserializeObject<int>(RequestObj.TransParms.Where(p => p.Key == "cId").FirstOrDefault().Value);
-                        Proveedores = Entities.Database.SqlQuery<GeneralCat>(string.Format(SQL_PROVEEDORES, cId)).ToList();
+                        //int cId = JsonConvert.DeserializeObject<int>(RequestObj.TransParms.Where(p => p.Key == "cId").FirstOrDefault().Value);
+                        Proveedores = Entities.Database.SqlQuery<GeneralCat>(string.Format(SQL_PROVEEDORES, ClienteID)).ToList();
                         #endregion
                         break;
                     case ActionType.InsertDespachos:
                         #region InsertDespachos
-                        int provId = JsonConvert.DeserializeObject<int>(RequestObj.TransParms.Where(p => p.Key == "provId").FirstOrDefault().Value);
+                        //int cId = JsonConvert.DeserializeObject<int>(RequestObj.TransParms.Where(p => p.Key == "cId").FirstOrDefault().Value);
                         DataRow r = null;
                         sql = new StringBuilder();
-                        string s = "";
-                        for (int i = 0; i < DtDespachosIn.Rows.Count; i++)
+                        string s = "", conCliente = "";
+                        for (int i = 0; i < DtDespachosOut.Rows.Count; i++)
                         {
-                            r = DtDespachosIn.Rows[i];
+                            r = DtDespachosOut.Rows[i];
+                            conCliente = r[COL_CONSECUTIVO_CLIENTE].ToString();
                             var e = Entities.LGC_DESPACHO.
-                                Where(d => d.CONSECUTIVO_CLIENTE == r[COL_CONSECUTIVO_CLIENTE].ToString())
+                                Where(d => d.CONSECUTIVO_CLIENTE == conCliente)
                                 .FirstOrDefault();
                             if (e != null) { sql.Clear(); throw new GeneralControllerException(string.Format("El registro en la fila {0} ya existe.", i)); }
                             s = string.Format(SQL_IN_DESPACHO,
-                                provId,
-                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO),
-                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO_AVMK),
-                                EntUtils.GetStrFromDtRow(r, COL_CONSECUTIVO_CLIENTE),
-                                EntUtils.GetDTFromDtRow(r, COL_FECHA_ENVIO_ARCHIVO),
-                                EntUtils.GetStrFromDtRow(r, COL_MES),
-                                EntUtils.GetIntFromDtRow(r, COL_AÑO),
-                                EntUtils.GetDTFromDtRow(r, COL_FECHA_REDENCION),
-                                EntUtils.GetIntFromDtRow(r, COL_CEDULA),
-                                EntUtils.GetStrFromDtRow(r, COL_DESTINATARIO),
-                                EntUtils.GetStrFromDtRow(r, COL_ENTREGAR_A),
-                                EntUtils.GetStrFromDtRow(r, COL_DIRECCION),
-                                EntUtils.GetStrFromDtRow(r, COL_CIUDAD),
-                                EntUtils.GetIntFromDtRow(r, COL_DEPARTAMENTO),
-                                EntUtils.GetStrFromDtRow(r, COL_TELEFONO),
-                                EntUtils.GetStrFromDtRow(r, COL_CELULAR),
-                                EntUtils.GetStrFromDtRow(r, COL_CORREO_ELECTRONICO),
-                                EntUtils.GetStrFromDtRow(r, COL_CODIGO_PREMIO),
-                                EntUtils.GetStrFromDtRow(r, COL_PREMIO),
-                                EntUtils.GetStrFromDtRow(r, COL_ESPECIFICACIONES),
-                                EntUtils.GetIntFromDtRow(r, COL_PROVEEDOR_ID),
-                                EntUtils.GetIntFromDtRow(r, COL_CANTIDAD));
+                                ClienteID,
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTVO_AVMK),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO_CLIENTE),
+                                EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_ENVIO_ARCHIVO, false).Value.ToString("dd/MM/yyyy"),
+                                "",
+                                "",
+                                EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_DE_REDENCION, false).Value.ToString("dd/MM/yyyy"),
+                                EntUtils.GetIntFromDtRow(r, GV_COL_CEDULA),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CLIENTE),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_ENTREGAR_A),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_DIRECCION),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CIUDAD),
+                                EntUtils.GetIntFromDtRow(r, GV_COL_DEPARTAMENTO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_TELEFONO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CELULAR),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CORREO_ELECTRONICO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CODIGO_PREMIO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_PREMIO),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_ESPECIFICACIONES),
+                                EntUtils.GetIntFromDtRow(r, GV_COL_PROVEEDOR),
+                                EntUtils.GetIntFromDtRow(r, GV_COL_CANTIDAD));
                             sql.Append(s);
                         }
                         DataBaseUtils dbUtils = new DataBaseUtils();

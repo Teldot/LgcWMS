@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbConsecutivo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,15 +79,15 @@
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Consecutivo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // comboBox1
+            // cbConsecutivo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(163, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbConsecutivo.FormattingEnabled = true;
+            this.cbConsecutivo.Location = new System.Drawing.Point(163, 26);
+            this.cbConsecutivo.Name = "cbConsecutivo";
+            this.cbConsecutivo.Size = new System.Drawing.Size(168, 21);
+            this.cbConsecutivo.TabIndex = 1;
+            this.cbConsecutivo.SelectedIndexChanged += new System.EventHandler(this.cbConsecutivo_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -97,7 +97,6 @@
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Fecha de envio";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // comboBox2
             // 
@@ -115,7 +114,6 @@
             this.label3.Size = new System.Drawing.Size(96, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nombre Proveedor";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBox3
             // 
@@ -316,7 +314,6 @@
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "No Guia";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // button2
             // 
@@ -436,7 +433,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbConsecutivo);
             this.Controls.Add(this.label1);
             this.Name = "CreacionDespachos";
             this.Text = "CreacionDespachos";
@@ -451,7 +448,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbConsecutivo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
