@@ -30,11 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AS.FW">
-      <HintPath>D:\github\repos\teldot\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+    <Reference Include="AS.FW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\AS.FW.dll</HintPath>
     </Reference>
     <Reference Include="BarcodeLib">
-      <HintPath>..\..\..\..\..\Desktop\BarcodeLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\BarcodeLib.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
