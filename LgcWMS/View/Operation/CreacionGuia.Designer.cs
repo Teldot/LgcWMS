@@ -1,6 +1,6 @@
 ﻿namespace LgcWMS.View.Operation
 {
-    partial class CreacionDespachos
+    partial class CreacionGuia
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.lConsecutivoCliente = new System.Windows.Forms.Label();
+            this.cbConsecutivoCliente = new System.Windows.Forms.ComboBox();
+            this.lNombreProveedor = new System.Windows.Forms.Label();
+            this.cbNombreProveedor = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Origen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REMITENTE_DIRECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REMITENTE_TELEFONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Origen_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre_destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Destino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESTINO_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor_Declarado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dice_Contener = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Elaborado_por = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COD_ELABORADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -67,63 +70,46 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CONSECUTIVO_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lConsecutivoCliente
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Consecutivo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lConsecutivoCliente.AutoSize = true;
+            this.lConsecutivoCliente.Location = new System.Drawing.Point(56, 29);
+            this.lConsecutivoCliente.Name = "lConsecutivoCliente";
+            this.lConsecutivoCliente.Size = new System.Drawing.Size(101, 13);
+            this.lConsecutivoCliente.TabIndex = 0;
+            this.lConsecutivoCliente.Text = "Consecutivo Cliente";
             // 
-            // comboBox1
+            // cbConsecutivoCliente
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(163, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbConsecutivoCliente.FormattingEnabled = true;
+            this.cbConsecutivoCliente.Location = new System.Drawing.Point(163, 26);
+            this.cbConsecutivoCliente.Name = "cbConsecutivoCliente";
+            this.cbConsecutivoCliente.Size = new System.Drawing.Size(151, 21);
+            this.cbConsecutivoCliente.TabIndex = 1;
+            this.cbConsecutivoCliente.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label2
+            // lNombreProveedor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(333, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Fecha de envio";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lNombreProveedor.AutoSize = true;
+            this.lNombreProveedor.Location = new System.Drawing.Point(329, 29);
+            this.lNombreProveedor.Name = "lNombreProveedor";
+            this.lNombreProveedor.Size = new System.Drawing.Size(96, 13);
+            this.lNombreProveedor.TabIndex = 4;
+            this.lNombreProveedor.Text = "Nombre Proveedor";
             // 
-            // comboBox2
+            // cbNombreProveedor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(420, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(168, 21);
-            this.comboBox2.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(600, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Nombre Proveedor";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(702, 26);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(168, 21);
-            this.comboBox3.TabIndex = 5;
+            this.cbNombreProveedor.FormattingEnabled = true;
+            this.cbNombreProveedor.Location = new System.Drawing.Point(431, 26);
+            this.cbNombreProveedor.Name = "cbNombreProveedor";
+            this.cbNombreProveedor.Size = new System.Drawing.Size(168, 21);
+            this.cbNombreProveedor.TabIndex = 5;
+            this.cbNombreProveedor.SelectedIndexChanged += new System.EventHandler(this.cbNombreProveedor_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -132,74 +118,126 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Remitente,
-            this.Origen,
+            this.REMITENTE_DIRECCION,
+            this.REMITENTE_TELEFONO,
+            this.Origen_VAL,
+            this.ORIGEN,
             this.Nombre_destinatario,
             this.Direccion_Destinatario,
             this.Telefono_Destinatario,
             this.Destino,
+            this.DESTINO_VAL,
             this.Unidades,
             this.Valor_Declarado,
             this.Dice_Contener,
-            this.Elaborado_por});
-            this.dataGridView1.Location = new System.Drawing.Point(29, 79);
+            this.Elaborado_por,
+            this.COD_ELABORADO,
+            this.CONSECUTIVO_CLIENTE});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 79);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(770, 420);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Remitente
             // 
+            this.Remitente.DataPropertyName = "REMITENTE_NOMBRE";
             this.Remitente.HeaderText = "Remitente";
             this.Remitente.Name = "Remitente";
             // 
-            // Origen
+            // REMITENTE_DIRECCION
             // 
-            this.Origen.HeaderText = "Origen";
-            this.Origen.Name = "Origen";
+            this.REMITENTE_DIRECCION.DataPropertyName = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.HeaderText = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Name = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Visible = false;
+            // 
+            // REMITENTE_TELEFONO
+            // 
+            this.REMITENTE_TELEFONO.DataPropertyName = "REMITENTE_TELEFONO";
+            this.REMITENTE_TELEFONO.HeaderText = "REMITENTE_TELEFONO";
+            this.REMITENTE_TELEFONO.Name = "REMITENTE_TELEFONO";
+            this.REMITENTE_TELEFONO.Visible = false;
+            // 
+            // Origen_VAL
+            // 
+            this.Origen_VAL.DataPropertyName = "ORIGEN_VAL";
+            this.Origen_VAL.HeaderText = "Origen";
+            this.Origen_VAL.Name = "Origen_VAL";
+            // 
+            // ORIGEN
+            // 
+            this.ORIGEN.DataPropertyName = "ORIGEN";
+            this.ORIGEN.HeaderText = "ORIGEN";
+            this.ORIGEN.Name = "ORIGEN";
+            this.ORIGEN.Visible = false;
             // 
             // Nombre_destinatario
             // 
+            this.Nombre_destinatario.DataPropertyName = "DESTINATARIO_NOMBRE";
             this.Nombre_destinatario.HeaderText = "Nombre";
             this.Nombre_destinatario.Name = "Nombre_destinatario";
             // 
             // Direccion_Destinatario
             // 
+            this.Direccion_Destinatario.DataPropertyName = "DESTINATARIO_DIRECCION";
             this.Direccion_Destinatario.HeaderText = "Direccion";
             this.Direccion_Destinatario.Name = "Direccion_Destinatario";
             // 
             // Telefono_Destinatario
             // 
+            this.Telefono_Destinatario.DataPropertyName = "DESTINATARIO_TELEFONO";
             this.Telefono_Destinatario.HeaderText = "Telefono";
             this.Telefono_Destinatario.Name = "Telefono_Destinatario";
             // 
             // Destino
             // 
+            this.Destino.DataPropertyName = "DESTINO_VAL";
             this.Destino.HeaderText = "Destino";
             this.Destino.Name = "Destino";
             // 
+            // DESTINO_VAL
+            // 
+            this.DESTINO_VAL.DataPropertyName = "DESTINO";
+            this.DESTINO_VAL.HeaderText = "DESTINO_VAL";
+            this.DESTINO_VAL.Name = "DESTINO_VAL";
+            this.DESTINO_VAL.Visible = false;
+            // 
             // Unidades
             // 
+            this.Unidades.DataPropertyName = "UNIDADES";
             this.Unidades.HeaderText = "Unidades";
             this.Unidades.Name = "Unidades";
             // 
             // Valor_Declarado
             // 
+            this.Valor_Declarado.DataPropertyName = "VALOR_DECLARADO";
             this.Valor_Declarado.HeaderText = "Vr. Declarado";
             this.Valor_Declarado.Name = "Valor_Declarado";
             // 
             // Dice_Contener
             // 
+            this.Dice_Contener.DataPropertyName = "DICE_CONTENER";
             this.Dice_Contener.HeaderText = "Dice contener";
             this.Dice_Contener.Name = "Dice_Contener";
             // 
             // Elaborado_por
             // 
+            this.Elaborado_por.DataPropertyName = "ELABORADO_POR_VAL";
             this.Elaborado_por.HeaderText = "Elaborado por";
             this.Elaborado_por.Name = "Elaborado_por";
+            // 
+            // COD_ELABORADO
+            // 
+            this.COD_ELABORADO.DataPropertyName = "ELABORADO_POR";
+            this.COD_ELABORADO.HeaderText = "COD_ELABORADO";
+            this.COD_ELABORADO.Name = "COD_ELABORADO";
+            this.COD_ELABORADO.Visible = false;
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(878, 26);
+            this.button1.Location = new System.Drawing.Point(857, 29);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 7;
@@ -316,14 +354,13 @@
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "No Guia";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(164, 290);
+            this.button2.Location = new System.Drawing.Point(164, 301);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 0);
+            this.button2.Size = new System.Drawing.Size(75, 24);
             this.button2.TabIndex = 20;
             this.button2.Text = "Guardar";
             this.button2.UseVisualStyleBackColor = true;
@@ -424,7 +461,12 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             // 
-            // CreacionDespachos
+            // CONSECUTIVO_CLIENTE
+            // 
+            this.CONSECUTIVO_CLIENTE.HeaderText = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.Name = "CONSECUTIVO_CLIENTE";
+            // 
+            // CreacionGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -432,14 +474,12 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "CreacionDespachos";
-            this.Text = "CreacionDespachos";
+            this.Controls.Add(this.cbNombreProveedor);
+            this.Controls.Add(this.lNombreProveedor);
+            this.Controls.Add(this.cbConsecutivoCliente);
+            this.Controls.Add(this.lConsecutivoCliente);
+            this.Name = "CreacionGuia";
+            this.Text = "CreacionGuia";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -450,23 +490,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label lConsecutivoCliente;
+        private System.Windows.Forms.ComboBox cbConsecutivoCliente;
+        private System.Windows.Forms.Label lNombreProveedor;
+        private System.Windows.Forms.ComboBox cbNombreProveedor;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remitente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Origen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_destinatario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion_Destinatario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono_Destinatario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Destino;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unidades;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Declarado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dice_Contener;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Elaborado_por;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -489,5 +517,21 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remitente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REMITENTE_DIRECCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REMITENTE_TELEFONO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Origen_VAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORIGEN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_destinatario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion_Destinatario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono_Destinatario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Destino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESTINO_VAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Declarado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dice_Contener;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Elaborado_por;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COD_ELABORADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONSECUTIVO_CLIENTE;
     }
 }

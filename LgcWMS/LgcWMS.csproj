@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AS.FW">
+      <HintPath>D:\github\repos\teldot\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -79,11 +82,11 @@
     <Compile Include="View\Operation\Busquedainventariocs.Designer.cs">
       <DependentUpon>Busquedainventariocs.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Operation\CreacionDespachos.cs">
+    <Compile Include="View\Operation\CreacionGuia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Operation\CreacionDespachos.Designer.cs">
-      <DependentUpon>CreacionDespachos.cs</DependentUpon>
+    <Compile Include="View\Operation\CreacionGuia.Designer.cs">
+      <DependentUpon>CreacionGuia.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Operation\CatProducto.cs">
       <SubType>Form</SubType>
@@ -123,8 +126,8 @@
     <EmbeddedResource Include="View\Operation\Busquedainventariocs.resx">
       <DependentUpon>Busquedainventariocs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Operation\CreacionDespachos.resx">
-      <DependentUpon>CreacionDespachos.cs</DependentUpon>
+    <EmbeddedResource Include="View\Operation\CreacionGuia.resx">
+      <DependentUpon>CreacionGuia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Operation\CatProducto.resx">
       <DependentUpon>CatProducto.cs</DependentUpon>
@@ -151,10 +154,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LgcWeb\AS.FW\AS.FW.csproj">
-      <Project>{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}</Project>
-      <Name>AS.FW</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LgcWMS.Business\LgcWMS.Business.csproj">
       <Project>{63bdb940-7684-45e7-bdff-4208326d8f9c}</Project>
       <Name>LgcWMS.Business</Name>

@@ -143,29 +143,35 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(547, 270);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Producto
             // 
+            this.Producto.DataPropertyName = "PRODUCTO";
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             // 
             // Bodega
             // 
+            this.Bodega.DataPropertyName = "BODEGA";
             this.Bodega.HeaderText = "Bodega";
             this.Bodega.Name = "Bodega";
             // 
             // Rack
             // 
+            this.Rack.DataPropertyName = "RACK";
             this.Rack.HeaderText = "Rack";
             this.Rack.Name = "Rack";
             // 
             // Posicion
             // 
+            this.Posicion.DataPropertyName = "POSICION";
             this.Posicion.HeaderText = "Posicion";
             this.Posicion.Name = "Posicion";
             // 
             // Cantidad
             // 
+            this.Cantidad.DataPropertyName = "CANTIDAD";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
@@ -173,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 450);
+            this.ClientSize = new System.Drawing.Size(724, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Busquedainventariocs";

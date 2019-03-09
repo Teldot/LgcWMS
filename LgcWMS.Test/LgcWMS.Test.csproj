@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AS.FW">
-      <HintPath>..\..\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+      <HintPath>D:\github\repos\teldot\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
