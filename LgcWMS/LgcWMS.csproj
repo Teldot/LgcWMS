@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AS.FW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\AS.FW.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -151,10 +155,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LgcWeb\AS.FW\AS.FW.csproj">
-      <Project>{B1BB577F-52D6-4C6B-ABC0-A3C02BD46F81}</Project>
-      <Name>AS.FW</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LgcWMS.Business\LgcWMS.Business.csproj">
       <Project>{63bdb940-7684-45e7-bdff-4208326d8f9c}</Project>
       <Name>LgcWMS.Business</Name>

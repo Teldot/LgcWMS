@@ -108,7 +108,7 @@ namespace LgcWMS.View.Operation
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
-
+            int i = 0;
             try
             {
                 if (cbCliente.SelectedIndex == -1 || cbCliente.SelectedIndex == 0) { throw new Exception("No ha selccionado cliente"); }
@@ -126,12 +126,12 @@ namespace LgcWMS.View.Operation
                 }
 
                 DataRow r;
-                for (int i = 0; i < controller.DtDespachosIn.Rows.Count; i++)
+                for (i = 0; i < controller.DtDespachosIn.Rows.Count; i++)
                 {
                     r = controller.DtDespachosIn.Rows[i];
 
                     if (r[DespachosController.GV_COL_CONSECUTIVO].ToString().Length > 10)
-                        throw new Exception(DespachosController.GV_COL_CONSECUTIVO + ": El valor del campo excede los 10 caracteres de largo.");
+                        throw new Exception(string.Format("Fila: { 0 })", i + 1) + DespachosController.GV_COL_CONSECUTIVO + ": El valor del campo excede los 10 caracteres de largo.");
                     validateDepto(r, i);
                     validateCiudad(r, i);
                     validateProveedor(r, i);
@@ -140,6 +140,7 @@ namespace LgcWMS.View.Operation
             catch (Exception ex)
             {
                 tbError.Text = ex.Message;
+                dgEnvios.Rows[i].Selected = true;
             }
         }
 

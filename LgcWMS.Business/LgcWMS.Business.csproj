@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="AS.FW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+      <HintPath>..\libs\AS.FW.dll</HintPath>
     </Reference>
     <Reference Include="BarcodeLib">
       <HintPath>..\..\..\..\..\Downloads\BarcodeLib.dll</HintPath>

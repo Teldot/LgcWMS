@@ -35,8 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AS.FW">
-      <HintPath>..\..\LgcWeb\AS.FW\bin\Debug\AS.FW.dll</HintPath>
+    <Reference Include="AS.FW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\AS.FW.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
