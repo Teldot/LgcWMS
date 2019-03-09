@@ -63,6 +63,7 @@
     <Compile Include="Controllers\Access\AccessController.cs" />
     <Compile Include="Controllers\Catalog\CatalogsController.cs" />
     <Compile Include="Controllers\Operation\DespachosController.cs" />
+    <Compile Include="Controllers\Operation\GuiasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
