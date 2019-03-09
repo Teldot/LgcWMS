@@ -15,6 +15,8 @@ namespace LgcWMS.View.Operation
         #region Attributes
         const string SQL_GET_CONSECT = "SELECT CONSECUTIVO_CLIENTE catId, CONSECUTIVO_CLIENTE catVal FROM V_LGC_DESPACHO WHERE DATEDIFF(DAY,FECHA_ENVIO_ARCHIVO,GETDATE())<5;";
         const string SQL_GET_PROVE = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM V_LGC_CLIENTE_PROVEEDORES ORDER BY NOMBRE;";
+
+
         #endregion
         #region Properties
 
