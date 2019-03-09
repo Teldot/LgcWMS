@@ -43,9 +43,9 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fecha_inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -195,14 +195,14 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Bodega";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(234, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Pocision";
             // 
             // label8
             // 
@@ -213,14 +213,14 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Rack";
             // 
-            // label9
+            // label7
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(234, 55);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Pocision";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Bodega";
             // 
             // button1
             // 
@@ -247,29 +247,35 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(734, 309);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // fecha_inventario
             // 
+            this.fecha_inventario.DataPropertyName = "FECHA_INVENTARIO";
             this.fecha_inventario.HeaderText = "fecha inventario";
             this.fecha_inventario.Name = "fecha_inventario";
             // 
             // Tipo_Movimiento
             // 
+            this.Tipo_Movimiento.DataPropertyName = "TIPO";
             this.Tipo_Movimiento.HeaderText = "Tipo movimiento";
             this.Tipo_Movimiento.Name = "Tipo_Movimiento";
             // 
             // Orden_recogida
             // 
+            this.Orden_recogida.DataPropertyName = "RECOLECCION_ID";
             this.Orden_recogida.HeaderText = "Orden Recogida";
             this.Orden_recogida.Name = "Orden_recogida";
             // 
             // Producto
             // 
+            this.Producto.DataPropertyName = "PRODUCTO";
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             // 
             // Cantidad
             // 
+            this.Cantidad.DataPropertyName = "CANTIDAD";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
@@ -288,7 +294,7 @@
             this.Posicion.HeaderText = "Posicion";
             this.Posicion.Name = "Posicion";
             // 
-            // Form1
+            // IngMovInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -306,7 +312,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "IngMovInv";
             this.Text = "Ingreso o movimiento Inventario";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

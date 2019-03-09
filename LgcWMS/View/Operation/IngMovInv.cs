@@ -36,5 +36,10 @@ namespace LgcWMS.View.Operation
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

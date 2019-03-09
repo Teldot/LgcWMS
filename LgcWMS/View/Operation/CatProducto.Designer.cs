@@ -135,26 +135,31 @@
             // 
             // Producto_ID
             // 
+            this.Producto_ID.DataPropertyName = "PRODUCTO_ID";
             this.Producto_ID.HeaderText = "Producto ID";
             this.Producto_ID.Name = "Producto_ID";
             // 
             // Detalle
             // 
+            this.Detalle.DataPropertyName = "DETALLE";
             this.Detalle.HeaderText = "Deatalle";
             this.Detalle.Name = "Detalle";
             // 
             // Marca
             // 
+            this.Marca.DataPropertyName = "MARCA";
             this.Marca.HeaderText = "Marca";
             this.Marca.Name = "Marca";
             // 
             // EAN
             // 
+            this.EAN.DataPropertyName = "EAN";
             this.EAN.HeaderText = "EAN";
             this.EAN.Name = "EAN";
             // 
             // UPC
             // 
+            this.UPC.DataPropertyName = "UPC";
             this.UPC.HeaderText = "UPC";
             this.UPC.Name = "UPC";
             // 

@@ -16,5 +16,10 @@ namespace LgcWMS.View.Operation
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
