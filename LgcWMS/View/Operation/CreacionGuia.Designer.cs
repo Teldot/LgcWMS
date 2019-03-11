@@ -33,6 +33,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.GUIA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GUIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONSECUTIVO_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONSECUTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGO_PREMIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PREMIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA_REDENCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REMITENTE_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REMITENTE_DIRECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Origen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORIGEN_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Destino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CIUDAD_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_Declarado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dice_Contener = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Elaborado_por = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -55,22 +76,6 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CONSECUTIVO_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONSECUTIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHA_REDENCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REMITENTE_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REMITENTE_DIRECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Origen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORIGEN_VAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono_Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Destino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor_Declarado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dice_Contener = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Elaborado_por = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,11 +83,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 29);
+            this.label1.Location = new System.Drawing.Point(38, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Consecutivo";
+            this.label1.Text = "Consecutivo Cliente";
             // 
             // cbConsecutivo
             // 
@@ -115,8 +120,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.GUIA_ID,
+            this.GUIA,
             this.CONSECUTIVO_CLIENTE,
             this.CONSECUTIVO,
+            this.CODIGO_PREMIO,
+            this.PREMIO,
             this.FECHA_REDENCION,
             this.Remitente,
             this.REMITENTE_VAL,
@@ -127,14 +136,144 @@
             this.Direccion_Destinatario,
             this.Telefono_Destinatario,
             this.Destino,
+            this.CIUDAD_VAL,
             this.Unidades,
             this.Valor_Declarado,
             this.Dice_Contener,
             this.Elaborado_por});
-            this.dataGridView1.Location = new System.Drawing.Point(29, 79);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 79);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(789, 420);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // GUIA_ID
+            // 
+            this.GUIA_ID.DataPropertyName = "GUIA_ID";
+            this.GUIA_ID.HeaderText = "GUIA_ID";
+            this.GUIA_ID.Name = "GUIA_ID";
+            this.GUIA_ID.Visible = false;
+            // 
+            // GUIA
+            // 
+            this.GUIA.DataPropertyName = "GUIA";
+            this.GUIA.HeaderText = "GUIA";
+            this.GUIA.Name = "GUIA";
+            // 
+            // CONSECUTIVO_CLIENTE
+            // 
+            this.CONSECUTIVO_CLIENTE.DataPropertyName = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.HeaderText = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.Name = "CONSECUTIVO_CLIENTE";
+            // 
+            // CONSECUTIVO
+            // 
+            this.CONSECUTIVO.DataPropertyName = "CONSECUTIVO";
+            this.CONSECUTIVO.HeaderText = "CONSECUTIVO";
+            this.CONSECUTIVO.Name = "CONSECUTIVO";
+            // 
+            // CODIGO_PREMIO
+            // 
+            this.CODIGO_PREMIO.DataPropertyName = "CODIGO_PREMIO";
+            this.CODIGO_PREMIO.HeaderText = "CODIGO PREMIO";
+            this.CODIGO_PREMIO.Name = "CODIGO_PREMIO";
+            this.CODIGO_PREMIO.Visible = false;
+            // 
+            // PREMIO
+            // 
+            this.PREMIO.DataPropertyName = "PREMIO";
+            this.PREMIO.HeaderText = "PREMIO";
+            this.PREMIO.Name = "PREMIO";
+            // 
+            // FECHA_REDENCION
+            // 
+            this.FECHA_REDENCION.DataPropertyName = "FECHA_REDENCION";
+            this.FECHA_REDENCION.HeaderText = "FECHA_REDENCION";
+            this.FECHA_REDENCION.Name = "FECHA_REDENCION";
+            // 
+            // Remitente
+            // 
+            this.Remitente.DataPropertyName = "REMITENTE_NOMBRE";
+            this.Remitente.HeaderText = "REMITENTE";
+            this.Remitente.Name = "Remitente";
+            this.Remitente.Visible = false;
+            // 
+            // REMITENTE_VAL
+            // 
+            this.REMITENTE_VAL.DataPropertyName = "REMITENTE_VAL";
+            this.REMITENTE_VAL.HeaderText = "REMITENTE_VAL";
+            this.REMITENTE_VAL.Name = "REMITENTE_VAL";
+            // 
+            // REMITENTE_DIRECCION
+            // 
+            this.REMITENTE_DIRECCION.HeaderText = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Name = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Visible = false;
+            // 
+            // Origen
+            // 
+            this.Origen.DataPropertyName = "REMITENTE_CIUDAD_ID";
+            this.Origen.HeaderText = "Origen";
+            this.Origen.Name = "Origen";
+            this.Origen.Visible = false;
+            // 
+            // ORIGEN_VAL
+            // 
+            this.ORIGEN_VAL.DataPropertyName = "REMITENTE_CIUDAD";
+            this.ORIGEN_VAL.HeaderText = "ORIGEN";
+            this.ORIGEN_VAL.Name = "ORIGEN_VAL";
+            // 
+            // Nombre_destinatario
+            // 
+            this.Nombre_destinatario.DataPropertyName = "ENTREGAR_A";
+            this.Nombre_destinatario.HeaderText = "NOMBRE";
+            this.Nombre_destinatario.Name = "Nombre_destinatario";
+            // 
+            // Direccion_Destinatario
+            // 
+            this.Direccion_Destinatario.DataPropertyName = "DIRECCION";
+            this.Direccion_Destinatario.HeaderText = "DIRECCION";
+            this.Direccion_Destinatario.Name = "Direccion_Destinatario";
+            // 
+            // Telefono_Destinatario
+            // 
+            this.Telefono_Destinatario.HeaderText = "TELEFONO";
+            this.Telefono_Destinatario.Name = "Telefono_Destinatario";
+            // 
+            // Destino
+            // 
+            this.Destino.DataPropertyName = "CIUDAD";
+            this.Destino.HeaderText = "DESTINO";
+            this.Destino.Name = "Destino";
+            this.Destino.Visible = false;
+            // 
+            // CIUDAD_VAL
+            // 
+            this.CIUDAD_VAL.DataPropertyName = "CIUDAD_VAL";
+            this.CIUDAD_VAL.HeaderText = "DESTINO";
+            this.CIUDAD_VAL.Name = "CIUDAD_VAL";
+            // 
+            // Unidades
+            // 
+            this.Unidades.DataPropertyName = "CANTIDAD";
+            this.Unidades.HeaderText = "UNIDADES";
+            this.Unidades.Name = "Unidades";
+            // 
+            // Valor_Declarado
+            // 
+            this.Valor_Declarado.DataPropertyName = "VALOR";
+            this.Valor_Declarado.HeaderText = "VALOR";
+            this.Valor_Declarado.Name = "Valor_Declarado";
+            // 
+            // Dice_Contener
+            // 
+            this.Dice_Contener.HeaderText = "DICE CONTENER";
+            this.Dice_Contener.Name = "Dice_Contener";
+            // 
+            // Elaborado_por
+            // 
+            this.Elaborado_por.HeaderText = "ELABORADO POR";
+            this.Elaborado_por.Name = "Elaborado_por";
             // 
             // button1
             // 
@@ -364,98 +503,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // CONSECUTIVO_CLIENTE
-            // 
-            this.CONSECUTIVO_CLIENTE.DataPropertyName = "CONSECUTIVO_CLIENTE";
-            this.CONSECUTIVO_CLIENTE.HeaderText = "CONSECUTIVO_CLIENTE";
-            this.CONSECUTIVO_CLIENTE.Name = "CONSECUTIVO_CLIENTE";
-            // 
-            // CONSECUTIVO
-            // 
-            this.CONSECUTIVO.DataPropertyName = "CONSECUTIVO";
-            this.CONSECUTIVO.HeaderText = "CONSECUTIVO";
-            this.CONSECUTIVO.Name = "CONSECUTIVO";
-            // 
-            // FECHA_REDENCION
-            // 
-            this.FECHA_REDENCION.DataPropertyName = "FECHA_REDENCION";
-            this.FECHA_REDENCION.HeaderText = "FECHA_REDENCION";
-            this.FECHA_REDENCION.Name = "FECHA_REDENCION";
-            // 
-            // Remitente
-            // 
-            this.Remitente.DataPropertyName = "REMITENTE_NOMBRE";
-            this.Remitente.HeaderText = "REMITENTE";
-            this.Remitente.Name = "Remitente";
-            this.Remitente.Visible = false;
-            // 
-            // REMITENTE_VAL
-            // 
-            this.REMITENTE_VAL.DataPropertyName = "REMITENTE_VAL";
-            this.REMITENTE_VAL.HeaderText = "REMITENTE_VAL";
-            this.REMITENTE_VAL.Name = "REMITENTE_VAL";
-            // 
-            // REMITENTE_DIRECCION
-            // 
-            this.REMITENTE_DIRECCION.HeaderText = "REMITENTE_DIRECCION";
-            this.REMITENTE_DIRECCION.Name = "REMITENTE_DIRECCION";
-            this.REMITENTE_DIRECCION.Visible = false;
-            // 
-            // Origen
-            // 
-            this.Origen.DataPropertyName = "REMITENTE_CIUDAD_ID";
-            this.Origen.HeaderText = "Origen";
-            this.Origen.Name = "Origen";
-            this.Origen.Visible = false;
-            // 
-            // ORIGEN_VAL
-            // 
-            this.ORIGEN_VAL.DataPropertyName = "REMITENTE_CIUDAD";
-            this.ORIGEN_VAL.HeaderText = "ORIGEN";
-            this.ORIGEN_VAL.Name = "ORIGEN_VAL";
-            // 
-            // Nombre_destinatario
-            // 
-            this.Nombre_destinatario.DataPropertyName = "ENTREGAR_A";
-            this.Nombre_destinatario.HeaderText = "NOMBRE";
-            this.Nombre_destinatario.Name = "Nombre_destinatario";
-            // 
-            // Direccion_Destinatario
-            // 
-            this.Direccion_Destinatario.DataPropertyName = "DIRECCION";
-            this.Direccion_Destinatario.HeaderText = "DIRECCION";
-            this.Direccion_Destinatario.Name = "Direccion_Destinatario";
-            // 
-            // Telefono_Destinatario
-            // 
-            this.Telefono_Destinatario.HeaderText = "TELEFONO";
-            this.Telefono_Destinatario.Name = "Telefono_Destinatario";
-            // 
-            // Destino
-            // 
-            this.Destino.HeaderText = "Destino";
-            this.Destino.Name = "Destino";
-            // 
-            // Unidades
-            // 
-            this.Unidades.HeaderText = "Unidades";
-            this.Unidades.Name = "Unidades";
-            // 
-            // Valor_Declarado
-            // 
-            this.Valor_Declarado.HeaderText = "Vr. Declarado";
-            this.Valor_Declarado.Name = "Valor_Declarado";
-            // 
-            // Dice_Contener
-            // 
-            this.Dice_Contener.HeaderText = "Dice contener";
-            this.Dice_Contener.Name = "Dice_Contener";
-            // 
-            // Elaborado_por
-            // 
-            this.Elaborado_por.HeaderText = "Elaborado por";
-            this.Elaborado_por.Name = "Elaborado_por";
-            // 
             // CreacionGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,8 +554,12 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CONSECUTIVO_CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CONSECUTIVO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO_PREMIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PREMIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA_REDENCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remitente;
         private System.Windows.Forms.DataGridViewTextBoxColumn REMITENTE_VAL;
@@ -519,6 +570,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion_Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono_Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Destino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIUDAD_VAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Declarado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dice_Contener;

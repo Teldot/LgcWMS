@@ -15,7 +15,7 @@ namespace LgcWMS.View.Operation
         #region Attributes
         const string SQL_GET_CONSECT = "SELECT CONSECUTIVO_CLIENTE catId, CONSECUTIVO_CLIENTE catVal FROM V_LGC_DESPACHO WHERE DATEDIFF(DAY,FECHA_ENVIO_ARCHIVO,GETDATE())<5;";
         const string SQL_GET_PROVE = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM V_LGC_CLIENTE_PROVEEDORES ORDER BY NOMBRE;";
-
+        const string SQL_GET_GRIDGUIA = "SELECT	GUIA_ID, GUIA, CONSECUTIVO_CLIENTE, CONSECUTIVO, CODIGO_PREMIO, PREMIO, FECHA_REDENCION, REMITENTE_NOMBRE, REMITENTE_VAL, REMITENTE_DIRECCION, ORIGEN_ID, ORIGEN, DESTINATARIO_NOMBRE, DESTINATARIO_DIRECCION, DESTINATARIO_TELEFONO, DESTINO_ID, DESTINO, UNIDADES, VALOR FROM V_LGC_DESPACHO_GRID"
 
         #endregion
         #region Properties
@@ -61,6 +61,11 @@ namespace LgcWMS.View.Operation
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
