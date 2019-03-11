@@ -69,5 +69,10 @@ namespace LgcWMS.View.Operation
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

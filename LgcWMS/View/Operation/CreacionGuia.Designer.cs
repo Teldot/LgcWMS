@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbConsecutivo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbnomproveedor = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.GUIA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GUIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,27 +54,27 @@
             this.Valor_Declarado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dice_Contener = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Elaborado_por = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bbuscar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaEnvio = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbPeso = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPesoVol = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbPesoLiq = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbObservaciones = new System.Windows.Forms.TextBox();
+            this.tbNoGuia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bGuardar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.bGuia = new System.Windows.Forms.Button();
+            this.cbImpLabel = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.cbImpGuia = new System.Windows.Forms.ComboBox();
+            this.bLabel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -106,13 +106,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Nombre Proveedor";
             // 
-            // comboBox3
+            // cbnomproveedor
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(528, 26);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(168, 21);
-            this.comboBox3.TabIndex = 5;
+            this.cbnomproveedor.FormattingEnabled = true;
+            this.cbnomproveedor.Location = new System.Drawing.Point(528, 26);
+            this.cbnomproveedor.Name = "cbnomproveedor";
+            this.cbnomproveedor.Size = new System.Drawing.Size(168, 21);
+            this.cbnomproveedor.TabIndex = 5;
             // 
             // dataGridView1
             // 
@@ -275,15 +275,15 @@
             this.Elaborado_por.HeaderText = "ELABORADO POR";
             this.Elaborado_por.Name = "Elaborado_por";
             // 
-            // button1
+            // bbuscar
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(758, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bbuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bbuscar.Location = new System.Drawing.Point(758, 24);
+            this.bbuscar.Name = "bbuscar";
+            this.bbuscar.Size = new System.Drawing.Size(122, 23);
+            this.bbuscar.TabIndex = 7;
+            this.bbuscar.Text = "Buscar";
+            this.bbuscar.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -295,14 +295,14 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Fecha de envio";
             // 
-            // dateTimePicker1
+            // dtpFechaEnvio
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 58);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpFechaEnvio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFechaEnvio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaEnvio.Location = new System.Drawing.Point(118, 58);
+            this.dtpFechaEnvio.Name = "dtpFechaEnvio";
+            this.dtpFechaEnvio.Size = new System.Drawing.Size(121, 20);
+            this.dtpFechaEnvio.TabIndex = 9;
             // 
             // label5
             // 
@@ -314,13 +314,14 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Peso (KG)";
             // 
-            // textBox1
+            // tbPeso
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(118, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 11;
+            this.tbPeso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPeso.Location = new System.Drawing.Point(118, 97);
+            this.tbPeso.Name = "tbPeso";
+            this.tbPeso.Size = new System.Drawing.Size(121, 20);
+            this.tbPeso.TabIndex = 11;
+            this.tbPeso.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -332,13 +333,13 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Peso Vol.  real (KG)";
             // 
-            // textBox2
+            // tbPesoVol
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(139, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 13;
+            this.tbPesoVol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPesoVol.Location = new System.Drawing.Point(139, 131);
+            this.tbPesoVol.Name = "tbPesoVol";
+            this.tbPesoVol.Size = new System.Drawing.Size(100, 20);
+            this.tbPesoVol.TabIndex = 13;
             // 
             // label7
             // 
@@ -350,13 +351,13 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Peso liq (kG)";
             // 
-            // textBox3
+            // tbPesoLiq
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(118, 163);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 15;
+            this.tbPesoLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPesoLiq.Location = new System.Drawing.Point(118, 163);
+            this.tbPesoLiq.Name = "tbPesoLiq";
+            this.tbPesoLiq.Size = new System.Drawing.Size(121, 20);
+            this.tbPesoLiq.TabIndex = 15;
             // 
             // label8
             // 
@@ -368,23 +369,23 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Observaciones";
             // 
-            // textBox4
+            // tbObservaciones
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(118, 189);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox4.Size = new System.Drawing.Size(121, 102);
-            this.textBox4.TabIndex = 17;
+            this.tbObservaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbObservaciones.Location = new System.Drawing.Point(118, 189);
+            this.tbObservaciones.Multiline = true;
+            this.tbObservaciones.Name = "tbObservaciones";
+            this.tbObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbObservaciones.Size = new System.Drawing.Size(121, 102);
+            this.tbObservaciones.TabIndex = 17;
             // 
-            // textBox5
+            // tbNoGuia
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(118, 26);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 20);
-            this.textBox5.TabIndex = 19;
+            this.tbNoGuia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNoGuia.Location = new System.Drawing.Point(118, 26);
+            this.tbNoGuia.Name = "tbNoGuia";
+            this.tbNoGuia.Size = new System.Drawing.Size(121, 20);
+            this.tbNoGuia.TabIndex = 19;
             // 
             // label9
             // 
@@ -396,15 +397,15 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "No Guia";
             // 
-            // button2
+            // bGuardar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(164, 297);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 31);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bGuardar.Location = new System.Drawing.Point(164, 297);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(75, 31);
+            this.bGuardar.TabIndex = 20;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -416,24 +417,24 @@
             this.button3.Text = "Imprimir label";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // bGuia
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(182, 408);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "Imprimir guia";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bGuia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bGuia.Location = new System.Drawing.Point(182, 408);
+            this.bGuia.Name = "bGuia";
+            this.bGuia.Size = new System.Drawing.Size(75, 23);
+            this.bGuia.TabIndex = 24;
+            this.bGuia.Text = "Imprimir guia";
+            this.bGuia.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // cbImpLabel
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(9, 381);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 25;
+            this.cbImpLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbImpLabel.FormattingEnabled = true;
+            this.cbImpLabel.Location = new System.Drawing.Point(9, 381);
+            this.cbImpLabel.Name = "cbImpLabel";
+            this.cbImpLabel.Size = new System.Drawing.Size(121, 21);
+            this.cbImpLabel.TabIndex = 25;
             // 
             // label10
             // 
@@ -455,47 +456,47 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "Impresora Guia";
             // 
-            // comboBox5
+            // cbImpGuia
             // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(136, 381);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 27;
+            this.cbImpGuia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbImpGuia.FormattingEnabled = true;
+            this.cbImpGuia.Location = new System.Drawing.Point(136, 381);
+            this.cbImpGuia.Name = "cbImpGuia";
+            this.cbImpGuia.Size = new System.Drawing.Size(121, 21);
+            this.cbImpGuia.TabIndex = 27;
             // 
-            // button5
+            // bLabel
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(37, 408);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 23);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "Imprimir Label";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bLabel.Location = new System.Drawing.Point(37, 408);
+            this.bLabel.Name = "bLabel";
+            this.bLabel.Size = new System.Drawing.Size(93, 23);
+            this.bLabel.TabIndex = 29;
+            this.bLabel.Text = "Imprimir Label";
+            this.bLabel.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.tbNoGuia);
+            this.groupBox1.Controls.Add(this.bLabel);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.comboBox5);
+            this.groupBox1.Controls.Add(this.dtpFechaEnvio);
+            this.groupBox1.Controls.Add(this.cbImpGuia);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox4);
+            this.groupBox1.Controls.Add(this.tbPeso);
+            this.groupBox1.Controls.Add(this.cbImpLabel);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.bGuia);
+            this.groupBox1.Controls.Add(this.tbPesoVol);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.bGuardar);
+            this.groupBox1.Controls.Add(this.tbPesoLiq);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.tbObservaciones);
             this.groupBox1.Location = new System.Drawing.Point(823, 79);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(274, 447);
@@ -509,9 +510,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 564);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bbuscar);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cbnomproveedor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbConsecutivo);
             this.Controls.Add(this.label1);
@@ -530,29 +531,29 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbConsecutivo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbnomproveedor;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bbuscar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaEnvio;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbPeso;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPesoVol;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbPesoLiq;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbObservaciones;
+        private System.Windows.Forms.TextBox tbNoGuia;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bGuardar;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button bGuia;
+        private System.Windows.Forms.ComboBox cbImpLabel;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox cbImpGuia;
+        private System.Windows.Forms.Button bLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
