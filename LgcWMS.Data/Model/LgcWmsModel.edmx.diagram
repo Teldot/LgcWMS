@@ -35,6 +35,8 @@
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__RECOL__0697FACD" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__RECOL__7EF6D905" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" Width="1.5" PointX="12.375" PointY="13.75" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -36,5 +36,11 @@ namespace LgcWMS.View.Access
             ImportOrdEnvios ioe = new ImportOrdEnvios();
             ioe.Show();
         }
+
+        private void btnDespachos_Click(object sender, EventArgs e)
+        {
+            CreacionGuia cG = new CreacionGuia();
+            cG.Show();
+        }
     }
 }

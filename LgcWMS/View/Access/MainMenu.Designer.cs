@@ -63,6 +63,7 @@
             this.btnDespachos.TabIndex = 2;
             this.btnDespachos.Text = "4. Despachos";
             this.btnDespachos.UseVisualStyleBackColor = true;
+            this.btnDespachos.Click += new System.EventHandler(this.btnDespachos_Click);
             // 
             // btnImpEnvios
             // 
