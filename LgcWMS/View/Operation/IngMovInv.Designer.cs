@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbOrdenRecogida = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbTipoMovimiento = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +41,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bExportar = new System.Windows.Forms.Button();
+            this.bMovimiento = new System.Windows.Forms.Button();
             this.fecha_inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo_Movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Orden_recogida = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,46 +54,10 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Fecha inventario";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Location = new System.Drawing.Point(112, 44);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecha.TabIndex = 1;
-            this.dtpFecha.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Orden Recogida";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // cbOrdenRecogida
-            // 
-            this.cbOrdenRecogida.FormattingEnabled = true;
-            this.cbOrdenRecogida.Location = new System.Drawing.Point(112, 105);
-            this.cbOrdenRecogida.Name = "cbOrdenRecogida";
-            this.cbOrdenRecogida.Size = new System.Drawing.Size(121, 21);
-            this.cbOrdenRecogida.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 77);
+            this.label3.Location = new System.Drawing.Point(20, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 4;
@@ -104,15 +66,15 @@
             // cbTipoMovimiento
             // 
             this.cbTipoMovimiento.FormattingEnabled = true;
-            this.cbTipoMovimiento.Location = new System.Drawing.Point(112, 77);
+            this.cbTipoMovimiento.Location = new System.Drawing.Point(112, 19);
             this.cbTipoMovimiento.Name = "cbTipoMovimiento";
-            this.cbTipoMovimiento.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoMovimiento.Size = new System.Drawing.Size(200, 21);
             this.cbTipoMovimiento.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 139);
+            this.label4.Location = new System.Drawing.Point(20, 46);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 6;
@@ -121,15 +83,15 @@
             // cbProducto
             // 
             this.cbProducto.FormattingEnabled = true;
-            this.cbProducto.Location = new System.Drawing.Point(112, 139);
+            this.cbProducto.Location = new System.Drawing.Point(112, 46);
             this.cbProducto.Name = "cbProducto";
-            this.cbProducto.Size = new System.Drawing.Size(228, 21);
+            this.cbProducto.Size = new System.Drawing.Size(200, 21);
             this.cbProducto.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 169);
+            this.label5.Location = new System.Drawing.Point(20, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 8;
@@ -138,14 +100,14 @@
             // 
             // tbCantidad
             // 
-            this.tbCantidad.Location = new System.Drawing.Point(112, 169);
+            this.tbCantidad.Location = new System.Drawing.Point(112, 76);
             this.tbCantidad.Name = "tbCantidad";
-            this.tbCantidad.Size = new System.Drawing.Size(100, 20);
+            this.tbCantidad.Size = new System.Drawing.Size(200, 20);
             this.tbCantidad.TabIndex = 9;
             // 
             // bGuardar
             // 
-            this.bGuardar.Location = new System.Drawing.Point(280, 403);
+            this.bGuardar.Location = new System.Drawing.Point(291, 274);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(75, 23);
             this.bGuardar.TabIndex = 15;
@@ -162,18 +124,14 @@
             this.Producto,
             this.Cantidad,
             this.POSICION});
-            this.dataGridView1.Location = new System.Drawing.Point(473, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(407, 36);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(643, 402);
+            this.dataGridView1.Size = new System.Drawing.Size(445, 268);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbOrdenRecogida);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dtpFecha);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbCantidad);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label5);
@@ -182,14 +140,14 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(30, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(374, 224);
+            this.groupBox2.Size = new System.Drawing.Size(336, 111);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             // 
             // cbPocision
             // 
             this.cbPocision.FormattingEnabled = true;
-            this.cbPocision.Location = new System.Drawing.Point(79, 54);
+            this.cbPocision.Location = new System.Drawing.Point(136, 49);
             this.cbPocision.Name = "cbPocision";
             this.cbPocision.Size = new System.Drawing.Size(163, 21);
             this.cbPocision.TabIndex = 12;
@@ -217,18 +175,37 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbPocision);
-            this.groupBox1.Location = new System.Drawing.Point(43, 270);
+            this.groupBox1.Location = new System.Drawing.Point(31, 153);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(335, 100);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // bExportar
+            // 
+            this.bExportar.Location = new System.Drawing.Point(858, 36);
+            this.bExportar.Name = "bExportar";
+            this.bExportar.Size = new System.Drawing.Size(75, 23);
+            this.bExportar.TabIndex = 18;
+            this.bExportar.Text = "Exportar";
+            this.bExportar.UseVisualStyleBackColor = true;
+            // 
+            // bMovimiento
+            // 
+            this.bMovimiento.Location = new System.Drawing.Point(858, 65);
+            this.bMovimiento.Name = "bMovimiento";
+            this.bMovimiento.Size = new System.Drawing.Size(107, 23);
+            this.bMovimiento.TabIndex = 19;
+            this.bMovimiento.Text = "Movimiento Prod";
+            this.bMovimiento.UseVisualStyleBackColor = true;
+            // 
             // fecha_inventario
             // 
             this.fecha_inventario.DataPropertyName = "FECHA_INVENTARIO";
             this.fecha_inventario.HeaderText = "FECHA INVENTARIO";
             this.fecha_inventario.Name = "fecha_inventario";
+            this.fecha_inventario.Visible = false;
             // 
             // Tipo_Movimiento
             // 
@@ -241,6 +218,7 @@
             this.Orden_recogida.DataPropertyName = "RECOLECCION_ID";
             this.Orden_recogida.HeaderText = "ORDEN RECOGIDA";
             this.Orden_recogida.Name = "Orden_recogida";
+            this.Orden_recogida.Visible = false;
             // 
             // Producto
             // 
@@ -263,7 +241,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 481);
+            this.ClientSize = new System.Drawing.Size(976, 324);
+            this.Controls.Add(this.bMovimiento);
+            this.Controls.Add(this.bExportar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bGuardar);
@@ -280,11 +260,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbOrdenRecogida;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbTipoMovimiento;
         private System.Windows.Forms.Label label4;
@@ -294,15 +269,17 @@
         private System.Windows.Forms.Button bGuardar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cbPocision;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button bExportar;
+        private System.Windows.Forms.Button bMovimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_inventario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_Movimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Orden_recogida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn POSICION;
-        private System.Windows.Forms.ComboBox cbPocision;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
