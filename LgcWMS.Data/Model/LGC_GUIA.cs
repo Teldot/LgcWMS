@@ -14,6 +14,12 @@ namespace LgcWMS.Data.Model
     
     public partial class LGC_GUIA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LGC_GUIA()
+        {
+            this.LGC_DESPACHO1 = new HashSet<LGC_DESPACHO>();
+        }
+    
         public long GUIA_ID { get; set; }
         public string GUIA_PREFIJO { get; set; }
         public int TIPO_ID { get; set; }
@@ -37,10 +43,13 @@ namespace LgcWMS.Data.Model
         public string DICE_CONTENER { get; set; }
         public int ELABORADO_POR { get; set; }
         public Nullable<int> ENCARGADO_A { get; set; }
+        public string OBSERVACIONES { get; set; }
     
         public virtual ASFW_USER ASFW_USER { get; set; }
         public virtual ASFW_USER ASFW_USER1 { get; set; }
         public virtual LGC_DESPACHO LGC_DESPACHO { get; set; }
         public virtual LGC_RECOLECCION LGC_RECOLECCION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LGC_DESPACHO> LGC_DESPACHO1 { get; set; }
     }
 }

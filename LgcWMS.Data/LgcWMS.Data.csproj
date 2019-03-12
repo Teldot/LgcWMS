@@ -115,6 +115,9 @@
     <Compile Include="Model\V_GUIA.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\V_LGC_DESPACHO_GRID.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

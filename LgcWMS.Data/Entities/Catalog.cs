@@ -103,4 +103,10 @@ namespace LgcWMS.Data.Entities
         CARGA_AEREA = 1465
     }
 
+    public enum CatTipoGuia
+    {
+        Recogida = 1512,
+        Despacho = 1513
+    }
+
 }

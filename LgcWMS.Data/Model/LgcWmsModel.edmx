@@ -159,6 +159,7 @@
           <Property Name="ESPECIFICACIONES" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PROVEEDOR_ID" Type="int" Nullable="false" />
           <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="decimal" Precision="10" Scale="0" />
           <Property Name="GUIA_ID" Type="bigint" />
         </EntityType>
         <EntityType Name="LGC_GUIA">
@@ -188,6 +189,7 @@
           <Property Name="DICE_CONTENER" Type="text" />
           <Property Name="ELABORADO_POR" Type="int" Nullable="false" />
           <Property Name="ENCARGADO_A" Type="int" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="LGC_RECOLECCION">
           <Key>
@@ -331,6 +333,42 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <Property Name="ENCARGADO_A" Type="int" />
           <Property Name="ENCARGADO_A_VAL" Type="varchar" MaxLength="63" />
           <Property Name="BARCODE" Type="image" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_LGC_DESPACHO_GRID">
+          <Key>
+            <PropertyRef Name="CONSECUTIVO" />
+            <PropertyRef Name="CODIGO_PREMIO" />
+            <PropertyRef Name="REMITENTE_NOMBRE" />
+            <PropertyRef Name="REMITENTE_DIRECCION" />
+            <PropertyRef Name="DESTINATARIO_DIRECCION" />
+            <PropertyRef Name="DESTINO_ID" />
+            <PropertyRef Name="DESTINO" />
+            <PropertyRef Name="UNIDADES" />
+            <PropertyRef Name="PROVEEDOR_ID" />
+          </Key>
+          <Property Name="GUIA_ID" Type="bigint" />
+          <Property Name="GUIA" Type="bigint" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="varchar" MaxLength="10" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CODIGO_PREMIO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PREMIO" Type="text" />
+          <Property Name="FECHA_REDENCION" Type="date" />
+          <Property Name="REMITENTE_NOMBRE" Type="int" Nullable="false" />
+          <Property Name="REMITENTE_VAL" Type="varchar" MaxLength="60" />
+          <Property Name="REMITENTE_DIRECCION" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="ORIGEN_ID" Type="int" />
+          <Property Name="ORIGEN" Type="varchar" MaxLength="403" />
+          <Property Name="DESTINATARIO_NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="DESTINATARIO_DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESTINATARIO_TELEFONO" Type="varchar" MaxLength="27" />
+          <Property Name="DESTINO_ID" Type="int" Nullable="false" />
+          <Property Name="DESTINO" Type="varchar" MaxLength="403" Nullable="false" />
+          <Property Name="UNIDADES" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="PROVEEDOR_ID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__ASFW_ACTI__COMPA__5224328E">
           <End Role="ASFW_COMPANY" Type="Self.ASFW_COMPANY" Multiplicity="1" />
@@ -401,6 +439,18 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
             </Principal>
             <Dependent Role="LGC_CLIENTE_PROVEEDORES">
               <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LGC_DESPA__GUIA___50FB042B">
+          <End Role="LGC_GUIA" Type="Self.LGC_GUIA" Multiplicity="0..1" />
+          <End Role="LGC_DESPACHO" Type="Self.LGC_DESPACHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_GUIA">
+              <PropertyRef Name="GUIA_ID" />
+            </Principal>
+            <Dependent Role="LGC_DESPACHO">
+              <PropertyRef Name="GUIA_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -584,8 +634,33 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
     [V_GUIA].[ELABORADO_POR_VAL] AS [ELABORADO_POR_VAL], 
     [V_GUIA].[ENCARGADO_A] AS [ENCARGADO_A], 
     [V_GUIA].[ENCARGADO_A_VAL] AS [ENCARGADO_A_VAL], 
-    [V_GUIA].[BARCODE] AS [BARCODE]
+    [V_GUIA].[BARCODE] AS [BARCODE], 
+    [V_GUIA].[OBSERVACIONES] AS [OBSERVACIONES]
     FROM [dbo].[V_GUIA] AS [V_GUIA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_LGC_DESPACHO_GRID" EntityType="Self.V_LGC_DESPACHO_GRID" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_LGC_DESPACHO_GRID].[GUIA_ID] AS [GUIA_ID], 
+    [V_LGC_DESPACHO_GRID].[GUIA] AS [GUIA], 
+    [V_LGC_DESPACHO_GRID].[CONSECUTIVO_CLIENTE] AS [CONSECUTIVO_CLIENTE], 
+    [V_LGC_DESPACHO_GRID].[CONSECUTIVO] AS [CONSECUTIVO], 
+    [V_LGC_DESPACHO_GRID].[CODIGO_PREMIO] AS [CODIGO_PREMIO], 
+    [V_LGC_DESPACHO_GRID].[PREMIO] AS [PREMIO], 
+    [V_LGC_DESPACHO_GRID].[FECHA_REDENCION] AS [FECHA_REDENCION], 
+    [V_LGC_DESPACHO_GRID].[REMITENTE_NOMBRE] AS [REMITENTE_NOMBRE], 
+    [V_LGC_DESPACHO_GRID].[REMITENTE_VAL] AS [REMITENTE_VAL], 
+    [V_LGC_DESPACHO_GRID].[REMITENTE_DIRECCION] AS [REMITENTE_DIRECCION], 
+    [V_LGC_DESPACHO_GRID].[ORIGEN_ID] AS [ORIGEN_ID], 
+    [V_LGC_DESPACHO_GRID].[ORIGEN] AS [ORIGEN], 
+    [V_LGC_DESPACHO_GRID].[DESTINATARIO_NOMBRE] AS [DESTINATARIO_NOMBRE], 
+    [V_LGC_DESPACHO_GRID].[DESTINATARIO_DIRECCION] AS [DESTINATARIO_DIRECCION], 
+    [V_LGC_DESPACHO_GRID].[DESTINATARIO_TELEFONO] AS [DESTINATARIO_TELEFONO], 
+    [V_LGC_DESPACHO_GRID].[DESTINO_ID] AS [DESTINO_ID], 
+    [V_LGC_DESPACHO_GRID].[DESTINO] AS [DESTINO], 
+    [V_LGC_DESPACHO_GRID].[UNIDADES] AS [UNIDADES], 
+    [V_LGC_DESPACHO_GRID].[VALOR] AS [VALOR], 
+    [V_LGC_DESPACHO_GRID].[PROVEEDOR_ID] AS [PROVEEDOR_ID]
+    FROM [dbo].[V_LGC_DESPACHO_GRID] AS [V_LGC_DESPACHO_GRID]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__ASFW_ACTI__COMPA__5224328E" Association="Self.FK__ASFW_ACTI__COMPA__5224328E">
             <End Role="ASFW_COMPANY" EntitySet="ASFW_COMPANY" />
@@ -610,6 +685,10 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <AssociationSet Name="FK__LGC_CLIEN__Clien__0A688BB1" Association="Self.FK__LGC_CLIEN__Clien__0A688BB1">
             <End Role="LGC_CLIENTE" EntitySet="LGC_CLIENTE" />
             <End Role="LGC_CLIENTE_PROVEEDORES" EntitySet="LGC_CLIENTE_PROVEEDORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LGC_DESPA__GUIA___50FB042B" Association="Self.FK__LGC_DESPA__GUIA___50FB042B">
+            <End Role="LGC_GUIA" EntitySet="LGC_GUIA" />
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
           </AssociationSet>
           <AssociationSet Name="FK__LGC_GUIA__ELABOR__36470DEF" Association="Self.FK__LGC_GUIA__ELABOR__36470DEF">
             <End Role="ASFW_USER" EntitySet="ASFW_USER" />
@@ -849,6 +928,11 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
             <End Role="LGC_RECOLECCION_ITEM" EntitySet="LGC_RECOLECCION_ITEM" />
           </AssociationSet>
           <EntitySet Name="V_GUIA" EntityType="LgcWMS.Data.Model.V_GUIA" />
+          <EntitySet Name="V_LGC_DESPACHO_GRID" EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" />
+          <AssociationSet Name="FK__LGC_DESPA__GUIA___50FB042B" Association="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B">
+            <End Role="LGC_GUIA" EntitySet="LGC_GUIA" />
+            <End Role="LGC_DESPACHO" EntitySet="LGC_DESPACHO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ASFW_USER">
           <Key>
@@ -1035,6 +1119,8 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <NavigationProperty Name="ASFW_USER1" Relationship="LgcWMS.Data.Model.FK__LGC_GUIA__ENCARG__373B3228" FromRole="LGC_GUIA" ToRole="ASFW_USER" />
           <NavigationProperty Name="LGC_DESPACHO" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_G__DESPA__078C1F06" FromRole="LGC_GUIA" ToRole="LGC_DESPACHO" />
           <NavigationProperty Name="LGC_RECOLECCION" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_G__RECOL__0697FACD" FromRole="LGC_GUIA" ToRole="LGC_RECOLECCION" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LGC_DESPACHO1" Relationship="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B" FromRole="LGC_GUIA" ToRole="LGC_DESPACHO" />
         </EntityType>
         <Association Name="FK__LGC_GUIA__ELABOR__36470DEF">
           <End Type="LgcWMS.Data.Model.ASFW_USER" Role="ASFW_USER" Multiplicity="1" />
@@ -1090,6 +1176,8 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <Property Name="GUIA_ID" Type="Int64" />
           <NavigationProperty Name="LGC_CLIENTE_PROVEEDORES" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_E__PROVE__74794A92" FromRole="LGC_DESPACHO" ToRole="LGC_CLIENTE_PROVEEDORES" />
           <NavigationProperty Name="LGC_GUIA" Relationship="LgcWMS.Data.Model.FK__LGC_WMS_G__DESPA__078C1F06" FromRole="LGC_DESPACHO" ToRole="LGC_GUIA" />
+          <Property Name="VALOR" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="LGC_GUIA1" Relationship="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B" FromRole="LGC_DESPACHO" ToRole="LGC_GUIA" />
         </EntityType>
         <EntityType Name="LGC_RECOLECCION">
           <Key>
@@ -1234,7 +1322,53 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <Property Name="ENCARGADO_A" Type="Int32" />
           <Property Name="ENCARGADO_A_VAL" Type="String" MaxLength="63" FixedLength="false" Unicode="false" />
           <Property Name="BARCODE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="V_LGC_DESPACHO_GRID">
+          <Key>
+            <PropertyRef Name="CONSECUTIVO" />
+            <PropertyRef Name="CODIGO_PREMIO" />
+            <PropertyRef Name="REMITENTE_NOMBRE" />
+            <PropertyRef Name="REMITENTE_DIRECCION" />
+            <PropertyRef Name="DESTINATARIO_DIRECCION" />
+            <PropertyRef Name="DESTINO_ID" />
+            <PropertyRef Name="DESTINO" />
+            <PropertyRef Name="UNIDADES" />
+            <PropertyRef Name="PROVEEDOR_ID" />
+          </Key>
+          <Property Name="GUIA_ID" Type="Int64" />
+          <Property Name="GUIA" Type="Int64" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONSECUTIVO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_PREMIO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PREMIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_REDENCION" Type="DateTime" Precision="0" />
+          <Property Name="REMITENTE_NOMBRE" Type="Int32" Nullable="false" />
+          <Property Name="REMITENTE_VAL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REMITENTE_DIRECCION" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGEN_ID" Type="Int32" />
+          <Property Name="ORIGEN" Type="String" MaxLength="403" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATARIO_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATARIO_DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATARIO_TELEFONO" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINO_ID" Type="Int32" Nullable="false" />
+          <Property Name="DESTINO" Type="String" Nullable="false" MaxLength="403" FixedLength="false" Unicode="false" />
+          <Property Name="UNIDADES" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="PROVEEDOR_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__LGC_DESPA__GUIA___50FB042B">
+          <End Type="LgcWMS.Data.Model.LGC_GUIA" Role="LGC_GUIA" Multiplicity="0..1" />
+          <End Type="LgcWMS.Data.Model.LGC_DESPACHO" Role="LGC_DESPACHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LGC_GUIA">
+              <PropertyRef Name="GUIA_ID" />
+            </Principal>
+            <Dependent Role="LGC_DESPACHO">
+              <PropertyRef Name="GUIA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1440,6 +1574,7 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <EntitySetMapping Name="LGC_GUIA">
             <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_GUIA">
               <MappingFragment StoreEntitySet="LGC_GUIA">
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
                 <ScalarProperty Name="ENCARGADO_A" ColumnName="ENCARGADO_A" />
                 <ScalarProperty Name="ELABORADO_POR" ColumnName="ELABORADO_POR" />
                 <ScalarProperty Name="DICE_CONTENER" ColumnName="DICE_CONTENER" />
@@ -1469,6 +1604,7 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <EntitySetMapping Name="LGC_DESPACHO">
             <EntityTypeMapping TypeName="LgcWMS.Data.Model.LGC_DESPACHO">
               <MappingFragment StoreEntitySet="LGC_DESPACHO">
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
                 <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
                 <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
                 <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
@@ -1519,6 +1655,7 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <EntitySetMapping Name="V_GUIA">
             <EntityTypeMapping TypeName="LgcWMS.Data.Model.V_GUIA">
               <MappingFragment StoreEntitySet="V_GUIA">
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
                 <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
                 <ScalarProperty Name="ENCARGADO_A_VAL" ColumnName="ENCARGADO_A_VAL" />
                 <ScalarProperty Name="ENCARGADO_A" ColumnName="ENCARGADO_A" />
@@ -1547,6 +1684,32 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
                 <ScalarProperty Name="TIPO_ID" ColumnName="TIPO_ID" />
                 <ScalarProperty Name="GUIA_PREFIJO" ColumnName="GUIA_PREFIJO" />
+                <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_LGC_DESPACHO_GRID">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID">
+              <MappingFragment StoreEntitySet="V_LGC_DESPACHO_GRID">
+                <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="UNIDADES" ColumnName="UNIDADES" />
+                <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
+                <ScalarProperty Name="DESTINO_ID" ColumnName="DESTINO_ID" />
+                <ScalarProperty Name="DESTINATARIO_TELEFONO" ColumnName="DESTINATARIO_TELEFONO" />
+                <ScalarProperty Name="DESTINATARIO_DIRECCION" ColumnName="DESTINATARIO_DIRECCION" />
+                <ScalarProperty Name="DESTINATARIO_NOMBRE" ColumnName="DESTINATARIO_NOMBRE" />
+                <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
+                <ScalarProperty Name="ORIGEN_ID" ColumnName="ORIGEN_ID" />
+                <ScalarProperty Name="REMITENTE_DIRECCION" ColumnName="REMITENTE_DIRECCION" />
+                <ScalarProperty Name="REMITENTE_VAL" ColumnName="REMITENTE_VAL" />
+                <ScalarProperty Name="REMITENTE_NOMBRE" ColumnName="REMITENTE_NOMBRE" />
+                <ScalarProperty Name="FECHA_REDENCION" ColumnName="FECHA_REDENCION" />
+                <ScalarProperty Name="PREMIO" ColumnName="PREMIO" />
+                <ScalarProperty Name="CODIGO_PREMIO" ColumnName="CODIGO_PREMIO" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+                <ScalarProperty Name="CONSECUTIVO_CLIENTE" ColumnName="CONSECUTIVO_CLIENTE" />
+                <ScalarProperty Name="GUIA" ColumnName="GUIA" />
                 <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
               </MappingFragment>
             </EntityTypeMapping>

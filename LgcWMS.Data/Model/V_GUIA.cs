@@ -43,5 +43,6 @@ namespace LgcWMS.Data.Model
         public Nullable<int> ENCARGADO_A { get; set; }
         public string ENCARGADO_A_VAL { get; set; }
         public byte[] BARCODE { get; set; }
+        public string OBSERVACIONES { get; set; }
     }
 }

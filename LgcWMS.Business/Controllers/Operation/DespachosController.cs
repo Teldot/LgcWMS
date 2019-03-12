@@ -22,8 +22,8 @@ namespace LgcWMS.Business.Controllers.Operation
         #region Attributes
 
         const string SQL_GET_CLIENTES = "SELECT COMPANYID catId, NOMBRERAZONSOCIAL catVal, CLIENTEID  FROM V_LGC_CLIENTE WHERE ACTIVO = 1 ORDER BY NOMBRERAZONSOCIAL;";
-        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,AÑO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD)
-VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21});";
+        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,AÑO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD,VALOR)
+VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21},{22});";
         const string SQL_CIUDADES = "SELECT V.ID catId, C.NOMBRES catVal FROM V_ASFW_CITY_CODE V INNER JOIN ASFW_CITY_CODE C ON V.ID = C.ID";
         const string SQL_PROVEEDORES = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM LGC_CLIENTE_PROVEEDORES P INNER JOIN ASFW_COMPANY C ON P.CLIENTEID = C.CLIENT_ID WHERE C.COMPANYID = {0};";
         #region Column Indexes
@@ -76,7 +76,7 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
         public const int COL_PROVEEDOR_ID = 19;
         public const int COL_COD_PROVEEDOR = 20;
         public const int COL_CANTIDAD = 21;
-        public const int COL_GUIA_ID = 22;
+        public const int COL_VALOR = 22;
         #endregion
         #endregion
         #region Properties
@@ -175,7 +175,8 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                                 EntUtils.GetStrFromDtRow(r, GV_COL_PREMIO),
                                 EntUtils.GetStrFromDtRow(r, GV_COL_ESPECIFICACIONES),
                                 EntUtils.GetIntFromDtRow(r, GV_COL_PROVEEDOR),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_CANTIDAD));
+                                EntUtils.GetIntFromDtRow(r, GV_COL_CANTIDAD),
+                                EntUtils.GetIntFromDtRow(r, GV_COL_VALOR));
                             sql.Append(s);
                         }
                         DataBaseUtils dbUtils = new DataBaseUtils();

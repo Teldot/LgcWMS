@@ -131,7 +131,7 @@ namespace LgcWMS.View.Operation
                     r = controller.DtDespachosIn.Rows[i];
 
                     if (r[DespachosController.GV_COL_CONSECUTIVO].ToString().Length > 10)
-                        throw new Exception(string.Format("Fila: { 0 })", i + 1) + DespachosController.GV_COL_CONSECUTIVO + ": El valor del campo excede los 10 caracteres de largo.");
+                        throw new Exception(string.Format("Fila: {0})", i + 1) + DespachosController.GV_COL_CONSECUTIVO + ": El valor del campo excede los 10 caracteres de largo.");
                     validateDepto(r, i);
                     validateCiudad(r, i);
                     validateProveedor(r, i);

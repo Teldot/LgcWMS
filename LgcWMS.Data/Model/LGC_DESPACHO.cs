@@ -44,9 +44,11 @@ namespace LgcWMS.Data.Model
         public int PROVEEDOR_ID { get; set; }
         public int CANTIDAD { get; set; }
         public Nullable<long> GUIA_ID { get; set; }
+        public Nullable<decimal> VALOR { get; set; }
     
         public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
+        public virtual LGC_GUIA LGC_GUIA1 { get; set; }
     }
 }
