@@ -1,5 +1,7 @@
 ﻿using AS.FW.Model;
 using LgcWMS.Business.Controllers.Operation;
+using LgcWMS.Reports;
+using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,6 +9,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +22,10 @@ namespace LgcWMS.View.Operation
     public partial class CreacionGuia : Form
     {
         #region Attributes
-        JObject printObj;
-
-
+        //JObject printObj;
+        private IList<Stream> m_streams;
+        private int m_currentPageIndex;
+        private long _guiaNo;
         #endregion
         #region Properties
         GuiasController controller;
@@ -33,24 +39,54 @@ namespace LgcWMS.View.Operation
         #endregion
 
         #region Methods
-        private void Search()
+
+        private void Print(PrintingDocument pDoc)
         {
+            //if (printObj == null) return;
+
             try
             {
-                if (cbConsecutivo.SelectedIndex == 0 && cbProveedor.SelectedIndex == 0) { MessageBox.Show("Debe seleccionar Consecutivo o Proveedor"); return; }
+                switch (pDoc)
+                {
+                    case PrintingDocument.Label:
+                        #region Label
+                        int sel = 0;
+                        List<string> ids = new List<string>();
+                        foreach (DataGridViewRow r in dgvDespachos.Rows)
+                        {
+                            bool val = bool.Parse(((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value.ToString());
+                            if (val) sel++;
+                            ids.Add("'" + ((DataGridViewTextBoxCell)r.Cells["CONSECUTIVO_CLIENTE"]).Value.ToString() + "'");
+                        }
 
-                if (cbConsecutivo.SelectedIndex != 0)
-                {
-                    controller.RequestObj.TransParms.Add(new TransParm("consec", cbConsecutivo.Text));
-                    dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByConsec);
+                        if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
+
+
+
+                        #endregion
+                        break;
+                    case PrintingDocument.Guia:
+                        #region Guia
+                        //LocalReport report = new LocalReport();
+                        //report.ReportPath = @"Reports\OrdenServicio.rdlc";
+                        //controller.RequestObj.TransParms.Clear();
+                        //controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
+                        //report.DataSources.Add(
+                        //   new ReportDataSource("dsGuia", controller.GetData((int)GuiasController.ActionType.GetGuia)));
+                        //Export(report);
+                        //Print();
+                        
+                        RViewer rview = new RViewer();                        
+                        rview.ReportType = RViewer.ActionType.Guia;
+                        controller.RequestObj.TransParms.Clear();
+                        controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
+                        rview.D_Source = controller.GetData((int)GuiasController.ActionType.GetGuia);
+                        rview.ShowDialog();
+                        #endregion
+                        break;
+                    default:
+                        break;
                 }
-                if (cbProveedor.SelectedIndex != 0)
-                {
-                    controller.RequestObj.TransParms.Add(new TransParm("prvId", cbProveedor.SelectedValue.ToString()));
-                    dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByProveedor);
-                }
-                cbConsecutivo.SelectedIndex = 0;
-                cbProveedor.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -58,20 +94,73 @@ namespace LgcWMS.View.Operation
             }
         }
 
-        private void Print(PrintDocument pDoc)
+        private void Export(LocalReport report)
         {
-            if (printObj == null) return;
+            string deviceInfo =
+              @"<DeviceInfo>
+                <OutputFormat>EMF</OutputFormat>
+                <PageWidth>8.2in</PageWidth>
+                <PageHeight>5.8in</PageHeight>
+                <MarginTop>0.25in</MarginTop>
+                <MarginLeft>0.25in</MarginLeft>
+                <MarginRight>0.25in</MarginRight>
+                <MarginBottom>0.25in</MarginBottom>
+            </DeviceInfo>";
+            Warning[] warnings;
+            m_streams = new List<Stream>();
+            report.Render("Image", deviceInfo, CreateStream, out warnings);
+            foreach (Stream stream in m_streams)
+                stream.Position = 0;
+        }
 
-            switch (pDoc)
+        private void Print()
+        {
+            if (m_streams == null || m_streams.Count == 0)
+                throw new Exception("Error: no stream to print.");
+            PrintDocument printDoc = new PrintDocument();
+            if (!printDoc.PrinterSettings.IsValid)
             {
-                case PrintDocument.Label:
-                    break;
-                case PrintDocument.Guia:
-                    break;
-                default:
-                    break;
+                throw new Exception("Error: cannot find the default printer.");
+            }
+            else
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                m_currentPageIndex = 0;
+                printDoc.Print();
             }
         }
+
+        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
+        {
+            Stream stream = new MemoryStream();
+            m_streams.Add(stream);
+            return stream;
+        }
+
+        // Handler for PrintPageEvents
+        private void PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            Metafile pageImage = new
+               Metafile(m_streams[m_currentPageIndex]);
+
+            // Adjust rectangular area with printer margins.
+            Rectangle adjustedRect = new Rectangle(
+                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+                ev.PageBounds.Width,
+                ev.PageBounds.Height);
+
+            // Draw a white background for the report
+            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+
+            // Draw the report content
+            ev.Graphics.DrawImage(pageImage, adjustedRect);
+
+            // Prepare for the next page. Make sure we haven't hit the end.
+            m_currentPageIndex++;
+            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+        }
+
         #endregion
 
         #region Events
@@ -79,12 +168,15 @@ namespace LgcWMS.View.Operation
         {
             try
             {
-                cbConsecutivo.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsec);
-                cbConsecutivo.DisplayMember = "catVal";
-                cbConsecutivo.ValueMember = "catId";
+                cbConsecClient.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsecClient);
+                cbConsecClient.DisplayMember = "catVal";
+                cbConsecClient.ValueMember = "catId";
                 cbProveedor.DataSource = controller.GetData((int)GuiasController.ActionType.GetProveedor);
                 cbProveedor.DisplayMember = "catVal";
                 cbProveedor.ValueMember = "catId";
+                cbPlanilla.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsec);
+                cbPlanilla.DisplayMember = "catVal";
+                cbPlanilla.ValueMember = "catId";
 
                 List<string> ps1 = new List<string>();
                 ps1.Add("Selccione...");
@@ -101,27 +193,12 @@ namespace LgcWMS.View.Operation
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }
         }
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-
-        #endregion
-
-        #region Enums
-        enum PrintDocument
-        {
-            Label,
-            Guia
-        }
-        #endregion
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            int rIndex;
             try
             {
                 if (string.IsNullOrEmpty(tbGuia.Text.Trim())) { MessageBox.Show("Ingrese # de Guia"); return; }
@@ -130,7 +207,9 @@ namespace LgcWMS.View.Operation
                 if (string.IsNullOrEmpty(tbPesoRealVol.Text.Trim())) { MessageBox.Show("Ingrese peso volumetrico"); return; }
                 if (dgvDespachos.SelectedRows.Count == 0) { MessageBox.Show("Debe seleccionar un registro"); return; }
 
+                rIndex = dgvDespachos.SelectedRows[0].Index;
                 var item = dgvDespachos.SelectedRows[0].DataBoundItem;
+                controller.RequestObj.TransParms.Clear();
                 controller.RequestObj.TransParms.Add(new TransParm("NoGuia", tbGuia.Text.Trim()));
                 controller.RequestObj.TransParms.Add(new TransParm("fEnvio", dtFechaEnvio.Value.Date.ToString("dd/MM/yyyy")));
                 controller.RequestObj.TransParms.Add(new TransParm("peso", tbPeso.Text.Trim()));
@@ -142,12 +221,18 @@ namespace LgcWMS.View.Operation
 
                 TransObj response = (TransObj)controller.GetData((int)GuiasController.ActionType.SaveData);
                 if (response.MessCode == TransObj.MessCodes.Ok)
-                    printObj = JsonConvert.DeserializeObject<JObject>(response.TransParms.Where(r => r.Key == "sGuia").FirstOrDefault().Value);
-                else
+                //printObj = JsonConvert.DeserializeObject<JObject>(response.TransParms.Where(r => r.Key == "sGuia").FirstOrDefault().Value);
                 {
-                    printObj = null;
-                    MessageBox.Show(response.Mess);
+                    controller.RequestObj.TransParms.Clear();
+                    controller.RequestObj.TransParms.Add(new TransParm("id", controller.LastSearchData.ToString()));
+                    dgvDespachos.DataSource = controller.GetData((int)controller.LastSearch);
+                    dgvDespachos.Rows[rIndex].Selected = true;
                 }
+                //else
+                //{
+                //    printObj = null;
+                //    MessageBox.Show(response.Mess);
+                //}
             }
             catch (Exception ex)
             {
@@ -158,26 +243,88 @@ namespace LgcWMS.View.Operation
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-
-            if (!(sender is TextBox)) return;
-            TextBox s = (TextBox)sender;
-            int p = 0, pv = 0;
-            if (s.Name == "tbPeso" && !string.IsNullOrEmpty(s.Text))
-                p = int.Parse(s.Text);
-            if (s.Name == "tbPesoRealVol" && !string.IsNullOrEmpty(s.Text))
-                pv = int.Parse(s.Text);
-
-            tbPesoLiq.Text = p > pv ? p.ToString() : pv.ToString();
         }
 
         private void btnPrintLabel_Click(object sender, EventArgs e)
         {
-            Print(PrintDocument.Label);
+            controller.RequestObj.TransParms.Clear();
+            Print(PrintingDocument.Label);
         }
 
         private void btnPrintGuia_Click(object sender, EventArgs e)
         {
-            Print(PrintDocument.Guia);
+            controller.RequestObj.TransParms.Clear();
+            Print(PrintingDocument.Guia);
         }
+
+        private void cbConsecutivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbConsecClient.SelectedIndex != 0)
+            {
+                controller.RequestObj.TransParms.Clear();
+                controller.RequestObj.TransParms.Add(new TransParm("consec", cbConsecClient.Text));
+                dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByConsec);
+            }
+            cbConsecClient.SelectedIndex = 0;
+        }
+
+        private void cbProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbProveedor.SelectedIndex != 0)
+            {
+                controller.RequestObj.TransParms.Clear();
+                controller.RequestObj.TransParms.Add(new TransParm("prvId", cbProveedor.SelectedValue.ToString()));
+                dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByProveedor);
+            }
+            cbProveedor.SelectedIndex = 0;
+        }
+
+        private void cbPlanilla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPlanilla.SelectedIndex != 0)
+            {
+                controller.RequestObj.TransParms.Clear();
+                controller.RequestObj.TransParms.Add(new TransParm("plan", cbPlanilla.Text));
+                dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByPlanilla);
+            }
+            cbPlanilla.SelectedIndex = 0;
+        }
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            int p = 0, pv = 0;
+            if (!string.IsNullOrEmpty(tbPeso.Text)) p = int.Parse(tbPeso.Text);
+            if (!string.IsNullOrEmpty(tbPesoRealVol.Text)) pv = int.Parse(tbPesoRealVol.Text);
+
+            tbPesoLiq.Text = p > pv ? p.ToString() : pv.ToString();
+        }
+
+        private void dgvDespachos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvDespachos.SelectedRows == null || dgvDespachos.SelectedRows.Count == 0) return;
+            var item = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(dgvDespachos.SelectedRows[0].DataBoundItem));
+            bool hasGuia = !(((Newtonsoft.Json.Linq.JValue)(item["GUIA"])).Value == null);
+            gbGuiaData.Enabled = !hasGuia;
+            btnPrintLabel.Enabled = btnPrintGuia.Enabled = hasGuia;
+            if (hasGuia)
+                _guiaNo = long.Parse(item["GUIA"].ToString());
+            else
+                _guiaNo = 0;
+        }
+
+        #endregion
+
+        #region Enums
+        enum PrintingDocument
+        {
+            Label,
+            Guia
+        }
+
+
+
+        #endregion
+
+
     }
 }

@@ -91,9 +91,6 @@
     <Compile Include="Model\LGC_DESPACHO.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\LGC_GUIA.cs">
-      <DependentUpon>LgcWmsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\LGC_RECOLECCION.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>

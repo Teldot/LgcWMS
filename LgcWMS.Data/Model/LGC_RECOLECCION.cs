@@ -17,7 +17,6 @@ namespace LgcWMS.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LGC_RECOLECCION()
         {
-            this.LGC_GUIA = new HashSet<LGC_GUIA>();
             this.LGC_RECOLECCION_ITEM = new HashSet<LGC_RECOLECCION_ITEM>();
         }
     
@@ -38,8 +37,6 @@ namespace LgcWMS.Data.Model
     
         public virtual ASFW_COMPANY ASFW_COMPANY { get; set; }
         public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_RECOLECCION_ITEM> LGC_RECOLECCION_ITEM { get; set; }
     }

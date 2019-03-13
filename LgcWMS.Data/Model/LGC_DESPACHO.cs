@@ -14,12 +14,6 @@ namespace LgcWMS.Data.Model
     
     public partial class LGC_DESPACHO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LGC_DESPACHO()
-        {
-            this.LGC_GUIA = new HashSet<LGC_GUIA>();
-        }
-    
         public long DESPACHO_ID { get; set; }
         public int REMITENTE { get; set; }
         public string CONSECUTIVO { get; set; }
@@ -47,8 +41,5 @@ namespace LgcWMS.Data.Model
         public Nullable<decimal> VALOR { get; set; }
     
         public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
-        public virtual LGC_GUIA LGC_GUIA1 { get; set; }
     }
 }

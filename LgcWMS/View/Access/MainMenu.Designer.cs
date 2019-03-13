@@ -59,7 +59,7 @@
             // 
             this.btnDespachos.Location = new System.Drawing.Point(89, 193);
             this.btnDespachos.Name = "btnDespachos";
-            this.btnDespachos.Size = new System.Drawing.Size(201, 55);
+            this.btnDespachos.Size = new System.Drawing.Size(141, 55);
             this.btnDespachos.TabIndex = 2;
             this.btnDespachos.Text = "4. Despachos";
             this.btnDespachos.UseVisualStyleBackColor = true;

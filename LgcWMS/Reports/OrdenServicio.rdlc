@@ -9,21 +9,22 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>0001</Value>
+                <Value />
                 <Style>
+                  <FontFamily>Consolas</FontFamily>
                   <Format>0;(0)</Format>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <Top>1.3cm</Top>
-        <Left>17.5cm</Left>
+        <Left>15.50583cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>4.16542cm</Width>
         <DataElementName>GUIA_ID</DataElementName>
         <Style>
           <Border>
@@ -42,8 +43,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!ORIGEN_VAL.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -52,7 +61,7 @@
         <Top>2.7cm</Top>
         <Left>9.9475cm</Left>
         <Height>1.1cm</Height>
-        <Width>10.2cm</Width>
+        <Width>9.72375cm</Width>
         <ZIndex>1</ZIndex>
         <DataElementName>ORIGEN</DataElementName>
         <Style>
@@ -72,8 +81,12 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!REMITENTE_NOMBRE.Value</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Consolas</FontFamily>
+                  <FontWeight>Thin</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -102,8 +115,27 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!DESTINATARIO_NOMBRE.Value</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Consolas</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Thin</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!DESTINATARIO_DIRECCION.Value</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Consolas</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Thin</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -132,8 +164,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!DESTINO_VAL.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -142,7 +182,7 @@
         <Top>4.3cm</Top>
         <Left>9.9cm</Left>
         <Height>1.2cm</Height>
-        <Width>10.2cm</Width>
+        <Width>9.77125cm</Width>
         <ZIndex>4</ZIndex>
         <DataElementName>DESTINO</DataElementName>
         <Style>
@@ -162,11 +202,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!FECHA_ENVIO.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                  <Format>dd/MM/yyyy</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.3cm</Top>
@@ -222,11 +267,15 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!UNIDADES.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.4cm</Top>
@@ -252,11 +301,15 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!PESO.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.4cm</Top>
@@ -282,11 +335,15 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!PESO_VOL.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.4cm</Top>
@@ -312,11 +369,15 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!PESO_LIQ.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.4cm</Top>
@@ -342,17 +403,23 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value>=Fields!VALOR_DECLARADO.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                  <Format>'$' #,0;('$' #,0)</Format>
+                  <rd:FormatSymbolCulture>es-CO</rd:FormatSymbolCulture>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <Top>6.4cm</Top>
         <Left>17.4475cm</Left>
         <Height>0.9cm</Height>
-        <Width>2.7cm</Width>
+        <Width>2.22375cm</Width>
         <ZIndex>11</ZIndex>
         <DataElementName>VALOR_DECLARADO</DataElementName>
         <Style>
@@ -372,8 +439,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!DICE_CONTENER.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -402,17 +477,36 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!OBSERVACIONES.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <Top>7.9cm</Top>
-        <Left>9.9cm</Left>
+        <Left>9.9475cm</Left>
         <Height>4.5cm</Height>
-        <Width>10.2cm</Width>
+        <Width>9.72375cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -431,8 +525,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style />
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!ELABORADO_POR_VAL.Value</Value>
+                <Style>
+                  <FontFamily>Consolas</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -484,21 +586,165 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.39in</Height>
+    <Height>5.8in</Height>
     <Style />
   </Body>
-  <Width>9.27491in</Width>
+  <Width>8in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <PageHeight>5.8in</PageHeight>
+    <PageWidth>8.2in</PageWidth>
+    <LeftMargin>0.2in</LeftMargin>
+    <RightMargin>0.2in</RightMargin>
+    <TopMargin>0.2in</TopMargin>
+    <BottomMargin>0.2in</BottomMargin>
+    <ColumnSpacing>0.05118in</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <DataSources>
+    <DataSource Name="LgcWMSDataModel">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>6b9bcd42-b983-4d48-83dc-e8be62a4fdd6</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsGuia">
+      <Query>
+        <DataSourceName>LgcWMSDataModel</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="BARCODE">
+          <DataField>BARCODE</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="DESPACHO_ID">
+          <DataField>DESPACHO_ID</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_DIRECCION">
+          <DataField>DESTINATARIO_DIRECCION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_NOMBRE">
+          <DataField>DESTINATARIO_NOMBRE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINATARIO_TELEFONO">
+          <DataField>DESTINATARIO_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESTINO">
+          <DataField>DESTINO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESTINO_VAL">
+          <DataField>DESTINO_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DICE_CONTENER">
+          <DataField>DICE_CONTENER</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ELABORADO_POR">
+          <DataField>ELABORADO_POR</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ELABORADO_POR_VAL">
+          <DataField>ELABORADO_POR_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENCARGADO_A">
+          <DataField>ENCARGADO_A</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ENCARGADO_A_VAL">
+          <DataField>ENCARGADO_A_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FECHA_ENTREGA">
+          <DataField>FECHA_ENTREGA</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="FECHA_ENVIO">
+          <DataField>FECHA_ENVIO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_ID">
+          <DataField>GUIA_ID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_PREFIJO">
+          <DataField>GUIA_PREFIJO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OBSERVACIONES">
+          <DataField>OBSERVACIONES</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORIGEN">
+          <DataField>ORIGEN</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ORIGEN_VAL">
+          <DataField>ORIGEN_VAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PESO">
+          <DataField>PESO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PESO_LIQ">
+          <DataField>PESO_LIQ</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PESO_VOL">
+          <DataField>PESO_VOL</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RECOLECCION_ID">
+          <DataField>RECOLECCION_ID</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_DIRECCION">
+          <DataField>REMITENTE_DIRECCION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_NOMBRE">
+          <DataField>REMITENTE_NOMBRE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REMITENTE_TELEFONO">
+          <DataField>REMITENTE_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TIPO">
+          <DataField>TIPO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TIPO_ID">
+          <DataField>TIPO_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="UNIDADES">
+          <DataField>UNIDADES</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_DECLARADO">
+          <DataField>VALOR_DECLARADO</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>LgcWMS.Data.Model</rd:DataSetName>
+        <rd:TableName>V_GUIA</rd:TableName>
+        <rd:ObjectDataSourceType>LgcWMS.Data.Model.V_GUIA, LgcWMS.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>431a75d1-aa6c-4ced-8586-951835bd74a1</rd:ReportID>
 </Report>

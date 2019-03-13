@@ -39,10 +39,9 @@ namespace LgcWMS.Data.Model
         public virtual DbSet<V_ASFW_CATTYPE> V_ASFW_CATTYPE { get; set; }
         public virtual DbSet<V_ASFW_CATVAL> V_ASFW_CATVAL { get; set; }
         public virtual DbSet<V_ASFW_CITY_CODE_DEP> V_ASFW_CITY_CODE_DEP { get; set; }
-        public virtual DbSet<LGC_GUIA> LGC_GUIA { get; set; }
         public virtual DbSet<LGC_DESPACHO> LGC_DESPACHO { get; set; }
         public virtual DbSet<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
-        public virtual DbSet<V_GUIA> V_GUIA { get; set; }
         public virtual DbSet<V_LGC_DESPACHO_GRID> V_LGC_DESPACHO_GRID { get; set; }
+        public virtual DbSet<V_GUIA> V_GUIA { get; set; }
     }
 }
