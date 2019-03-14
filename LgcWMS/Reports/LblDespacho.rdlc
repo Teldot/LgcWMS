@@ -57,7 +57,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!NOMBRE1.Value</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Consolas</FontFamily>
@@ -124,7 +124,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!DIRECCION1.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -191,7 +191,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!TELEFONO1.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -258,7 +258,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!CIUDAD1.Value</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -331,7 +331,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!REFERENCIA1.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -398,7 +398,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!CONSECUTIVO_CLIENTE1.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -426,8 +426,8 @@
             </Style>
           </Textbox>
           <Image Name="imgBarCode">
-            <Source>Embedded</Source>
-            <Value>barcode</Value>
+            <Source>Database</Source>
+            <Value>=Fields!BARCODE1.Value</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -509,7 +509,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!NOMBRE2.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -575,7 +575,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!DIRECCION2.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -642,7 +642,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!TELEFONO2.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -709,7 +709,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!CIUDAD2.Value</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -782,7 +782,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!REFERENCIA2.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -849,7 +849,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!CONSECUTIVO_CLIENTE2.Value</Value>
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -877,8 +877,8 @@
             </Style>
           </Textbox>
           <Image Name="imgBarCode2">
-            <Source>Embedded</Source>
-            <Value>barcode</Value>
+            <Source>Database</Source>
+            <Value>=Fields!BARCODE2.Value</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -927,6 +927,102 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="LgcWMSDataEntities">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>4e4e2170-7cb4-4d85-b0a7-9307af6f6b28</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetGuiaDuo">
+      <Query>
+        <DataSourceName>LgcWMSDataEntities</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="BARCODE1">
+          <DataField>BARCODE1</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="BARCODE2">
+          <DataField>BARCODE2</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="CIUDAD1">
+          <DataField>CIUDAD1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CIUDAD2">
+          <DataField>CIUDAD2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONSECUTIVO_CLIENTE1">
+          <DataField>CONSECUTIVO_CLIENTE1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONSECUTIVO_CLIENTE2">
+          <DataField>CONSECUTIVO_CLIENTE2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIRECCION1">
+          <DataField>DIRECCION1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIRECCION2">
+          <DataField>DIRECCION2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_ID1">
+          <DataField>GUIA_ID1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_ID2">
+          <DataField>GUIA_ID2</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_PREFIJO1">
+          <DataField>GUIA_PREFIJO1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GUIA_PREFIJO2">
+          <DataField>GUIA_PREFIJO2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMBRE1">
+          <DataField>NOMBRE1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMBRE2">
+          <DataField>NOMBRE2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REFERENCIA1">
+          <DataField>REFERENCIA1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REFERENCIA2">
+          <DataField>REFERENCIA2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TELEFONO1">
+          <DataField>TELEFONO1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TELEFONO2">
+          <DataField>TELEFONO2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>LgcWMS.Data.Entities</rd:DataSetName>
+        <rd:TableName>GUIA_LABEL_DUO</rd:TableName>
+        <rd:ObjectDataSourceType>LgcWMS.Data.Entities.GUIA_LABEL_DUO, LgcWMS.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <EmbeddedImages>
     <EmbeddedImage Name="logoblanconegro">
       <MIMEType>image/png</MIMEType>
