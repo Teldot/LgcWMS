@@ -78,10 +78,10 @@ namespace LgcWMS.Reports
                     pg.Margins.Right = 5;
                     size = new PaperSize();
                     size.RawKind = (int)PaperKind.Custom;
-                    size.Height = 442;
-                    size.Width = 472;
+                    size.Height = 480;
+                    size.Width = 400;
                     pg.PaperSize = size;
-                    pg.Landscape = true;
+                    pg.Landscape = false;
                     this.GUIA_DUOBindingSource.DataSource = D_Source;//typeof(LgcWMS.Data.Model.V_GUIA);
                     reportDataSource1.Name = "DataSetGuiaDuo";
                     reportDataSource1.Value = this.GUIA_DUOBindingSource;
