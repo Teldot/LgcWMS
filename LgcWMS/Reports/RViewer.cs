@@ -20,6 +20,7 @@ namespace LgcWMS.Reports
         #region Properties
         public ActionType ReportType { get; set; }
         public object D_Source { get; set; }
+        public string PrinterName { get; set; }
         #endregion
         public RViewer()
         {
@@ -30,15 +31,19 @@ namespace LgcWMS.Reports
         {
 
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Drawing.Printing.PaperSize size;
+            PageSettings pg;
+            PrinterSettings pSett;
             switch (ReportType)
             {
                 case ActionType.Guia:
-                    PageSettings pg = new PageSettings();
+                    #region Guia
+                    pg = new PageSettings();
                     pg.Margins.Top = 0;
                     pg.Margins.Bottom = 0;
                     pg.Margins.Left = 5;
                     pg.Margins.Right = 5;
-                    System.Drawing.Printing.PaperSize size = new PaperSize();
+                    size = new PaperSize();
                     size.RawKind = (int)PaperKind.Custom;
                     size.Height = 820;
                     size.Width = 580;
@@ -51,11 +56,51 @@ namespace LgcWMS.Reports
                     this.rv.LocalReport.ReportEmbeddedResource = "LgcWMS.Reports.OrdenServicio.rdlc";
                     rv.SetPageSettings(pg);
                     this.rv.RefreshReport();
-                    rv.PrintDialog();
+                    rv.SetDisplayMode(DisplayMode.PrintLayout);
+
+                    pSett = new PrinterSettings();
+                    pSett.Copies = 1;
+                    pSett.FromPage = 1;
+                    pSett.ToPage = 1;
+                    pSett.PrinterName = PrinterName;
+                    rv.PrintDialog(pSett);
+
+                    //if ( == DialogResult.OK)
 
                     break;
+                #endregion
                 case ActionType.Label:
+                    #region Label
+                    pg = new PageSettings();
+                    pg.Margins.Top = 0;
+                    pg.Margins.Bottom = 0;
+                    pg.Margins.Left = 5;
+                    pg.Margins.Right = 5;
+                    size = new PaperSize();
+                    size.RawKind = (int)PaperKind.Custom;
+                    size.Height = 442;
+                    size.Width = 472;
+                    pg.PaperSize = size;
+                    pg.Landscape = true;
+                    this.GUIA_DUOBindingSource.DataSource = D_Source;//typeof(LgcWMS.Data.Model.V_GUIA);
+                    reportDataSource1.Name = "dsGuia";
+                    reportDataSource1.Value = this.GUIA_DUOBindingSource;
+                    //ReportDataSource rpSource = new ReportDataSource("GuiaDuo", D_Source);
+                    //this.V_GUIABindingSource.DataSource = rpSource;
+                    this.rv.LocalReport.DataSources.Add(reportDataSource1);
+                    this.rv.LocalReport.ReportEmbeddedResource = "LgcWMS.Reports.LblDespacho.rdlc";
+                    rv.SetPageSettings(pg);
+                    this.rv.RefreshReport();
+                    rv.SetDisplayMode(DisplayMode.PrintLayout);
+
+                    pSett = new PrinterSettings();
+                    pSett.Copies = 1;
+                    pSett.FromPage = 1;
+                    pSett.ToPage = 1;
+                    pSett.PrinterName = PrinterName;
+                    rv.PrintDialog(pSett);
                     break;
+                #endregion
                 default:
                     break;
             }

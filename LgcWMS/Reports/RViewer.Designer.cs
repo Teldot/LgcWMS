@@ -30,19 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             this.V_GUIABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GUIA_DUOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rv = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.V_GUIABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GUIA_DUOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // V_GUIABindingSource
             // 
             this.V_GUIABindingSource.DataSource = typeof(LgcWMS.Data.Model.V_GUIA);
+            //
+            //GUIA_DUOBindingSource
+            //
+            this.GUIA_DUOBindingSource.DataSource = typeof(Data.Entities.GUIA_LABEL_DUO);
             // 
             // rv
             // 
             this.rv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rv.Location = new System.Drawing.Point(0, 0);
             this.rv.Name = "rv";
+            this.rv.ShowBackButton = false;
+            this.rv.ShowContextMenu = false;
+            this.rv.ShowCredentialPrompts = false;
+            this.rv.ShowDocumentMapButton = false;
+            this.rv.ShowExportButton = false;
+            this.rv.ShowFindControls = false;
+            this.rv.ShowPageNavigationControls = false;
+            this.rv.ShowParameterPrompts = false;
+            this.rv.ShowPromptAreaButton = false;
+            this.rv.ShowRefreshButton = false;
+            this.rv.ShowStopButton = false;
+            this.rv.ShowZoomControl = false;
             this.rv.Size = new System.Drawing.Size(507, 345);
             this.rv.TabIndex = 0;
             // 
@@ -56,12 +74,14 @@
             this.Text = "RViewer";
             this.Load += new System.EventHandler(this.RViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.V_GUIABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GUIA_DUOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.BindingSource V_GUIABindingSource;
+        private System.Windows.Forms.BindingSource GUIA_DUOBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer rv;
     }
 }
