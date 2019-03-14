@@ -18,6 +18,7 @@ namespace LgcWMS.Data.Model
         public LGC_RECOLECCION()
         {
             this.LGC_RECOLECCION_ITEM = new HashSet<LGC_RECOLECCION_ITEM>();
+            this.LGC_GUIA = new HashSet<LGC_GUIA>();
         }
     
         public long RECOLECCION_ID { get; set; }
@@ -39,5 +40,7 @@ namespace LgcWMS.Data.Model
         public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LGC_RECOLECCION_ITEM> LGC_RECOLECCION_ITEM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LGC_GUIA> LGC_GUIA { get; set; }
     }
 }

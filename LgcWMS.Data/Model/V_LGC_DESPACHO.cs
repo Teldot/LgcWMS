@@ -12,16 +12,13 @@ namespace LgcWMS.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LGC_DESPACHO
+    public partial class V_LGC_DESPACHO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LGC_DESPACHO()
-        {
-            this.LGC_GUIA1 = new HashSet<LGC_GUIA>();
-        }
-    
         public long DESPACHO_ID { get; set; }
         public int REMITENTE { get; set; }
+        public Nullable<int> REMITENTE_CIUDAD_ID { get; set; }
+        public string REMITENTE_CIUDAD { get; set; }
+        public string REMITENTE_VAL { get; set; }
         public string CONSECUTIVO { get; set; }
         public string CONSECUTIVO_AVMK { get; set; }
         public string CONSECUTIVO_CLIENTE { get; set; }
@@ -34,7 +31,9 @@ namespace LgcWMS.Data.Model
         public string ENTREGAR_A { get; set; }
         public string DIRECCION { get; set; }
         public int CIUDAD { get; set; }
+        public string CIUDAD_VAL { get; set; }
         public int DEPARTAMENTO { get; set; }
+        public string DEPARTAMENTO_VAL { get; set; }
         public string TELEFONO { get; set; }
         public string CELULAR { get; set; }
         public string CORREO_ELECTRONICO { get; set; }
@@ -42,13 +41,10 @@ namespace LgcWMS.Data.Model
         public string PREMIO { get; set; }
         public string ESPECIFICACIONES { get; set; }
         public int PROVEEDOR_ID { get; set; }
+        public string PROVEEDOR { get; set; }
         public int CANTIDAD { get; set; }
         public Nullable<decimal> VALOR { get; set; }
         public Nullable<long> GUIA_ID { get; set; }
-    
-        public virtual LGC_CLIENTE_PROVEEDORES LGC_CLIENTE_PROVEEDORES { get; set; }
-        public virtual LGC_GUIA LGC_GUIA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LGC_GUIA> LGC_GUIA1 { get; set; }
+        public Nullable<long> GUIA { get; set; }
     }
 }

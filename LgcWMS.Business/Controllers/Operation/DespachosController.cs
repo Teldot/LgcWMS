@@ -22,7 +22,7 @@ namespace LgcWMS.Business.Controllers.Operation
         #region Attributes
 
         const string SQL_GET_CLIENTES = "SELECT COMPANYID catId, NOMBRERAZONSOCIAL catVal, CLIENTEID  FROM V_LGC_CLIENTE WHERE ACTIVO = 1 ORDER BY NOMBRERAZONSOCIAL;";
-        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,AÑO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD,VALOR)
+        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,ANO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD,VALOR)
 VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21},{22});";
         const string SQL_CIUDADES = "SELECT V.ID catId, C.NOMBRES catVal FROM V_ASFW_CITY_CODE V INNER JOIN ASFW_CITY_CODE C ON V.ID = C.ID";
         const string SQL_PROVEEDORES = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM LGC_CLIENTE_PROVEEDORES P INNER JOIN ASFW_COMPANY C ON P.CLIENTEID = C.CLIENT_ID WHERE C.COMPANYID = {0};";
@@ -148,6 +148,7 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                         for (int i = 0; i < DtDespachosOut.Rows.Count; i++)
                         {
                             r = DtDespachosOut.Rows[i];
+                            if (r[COL_CONSECUTIVO_CLIENTE].ToString().Trim().Length == 0) continue;
                             conCliente = r[COL_CONSECUTIVO_CLIENTE].ToString();
                             var e = Entities.LGC_DESPACHO.
                                 Where(d => d.CONSECUTIVO_CLIENTE == conCliente)
@@ -162,7 +163,7 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                                 "",
                                 "",
                                 EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_DE_REDENCION, false).Value.ToString("dd/MM/yyyy"),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_CEDULA),
+                                EntUtils.GetStrFromDtRow(r, GV_COL_CEDULA),
                                 EntUtils.GetStrFromDtRow(r, GV_COL_CLIENTE),
                                 EntUtils.GetStrFromDtRow(r, GV_COL_ENTREGAR_A),
                                 EntUtils.GetStrFromDtRow(r, GV_COL_DIRECCION),

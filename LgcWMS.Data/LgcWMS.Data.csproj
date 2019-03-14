@@ -92,6 +92,9 @@
     <Compile Include="Model\LGC_DESPACHO.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LGC_GUIA.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\LGC_RECOLECCION.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GUIA_ETIQUETA.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_LGC_DESPACHO.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_LGC_DESPACHO_GRID.cs">

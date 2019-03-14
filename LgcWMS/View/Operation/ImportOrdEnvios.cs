@@ -146,6 +146,7 @@ namespace LgcWMS.View.Operation
 
         public void validateCiudad(DataRow r, int i)
         {
+            if (((DataGridViewComboBoxCell)dgEnvios.Rows[i].Cells[DespachosController.GV_COL_CIUDAD]).Value != null) return;
             if (r[DespachosController.COL_CIUDAD] == null || r[DespachosController.COL_CIUDAD].ToString().Trim().Length == 0)
                 throw new Exception(string.Format("No hay ciudad (Fila: {0})", i + 1));
             string depto = r[DespachosController.COL_DEPARTAMENTO].ToString();
@@ -172,6 +173,8 @@ namespace LgcWMS.View.Operation
         public int FindCiudadInCityList(string city)
         {
             var cs = controller.CitiesFullNames.Where(c => c.catVal == city).ToList();
+            if (cs == null || cs.Count == 0)
+                cs = controller.CitiesFullNames.Where(c => c.catVal.Split('/').Contains(city)).ToList();
             if (cs == null || cs.Count == 0)
                 cs = controller.CitiesFullNames.Where(c => c.catVal.Contains(city)).ToList();
             if (cs == null || cs.Count == 0)
@@ -208,6 +211,7 @@ namespace LgcWMS.View.Operation
 
         public void validateDepto(DataRow r, int i)
         {
+            if (((DataGridViewComboBoxCell)dgEnvios.Rows[i].Cells[DespachosController.GV_COL_DEPARTAMENTO]).Value != null) return;
             if (r[DespachosController.COL_DEPARTAMENTO] == null || r[DespachosController.COL_DEPARTAMENTO].ToString().Trim().Length == 0)
                 return;
             var cs = controller.Deptos.Where(c => c.catVal.Contains(r[DespachosController.COL_DEPARTAMENTO].ToString())).OrderBy(c => c.catVal).ToList();
@@ -222,6 +226,7 @@ namespace LgcWMS.View.Operation
 
         public void validateProveedor(DataRow r, int i)
         {
+            if (((DataGridViewComboBoxCell)dgEnvios.Rows[i].Cells[DespachosController.GV_COL_PROVEEDOR]).Value != null) return;
             if (r[DespachosController.COL_PROVEEDOR_ID] == null || r[DespachosController.COL_PROVEEDOR_ID].ToString().Trim().Length == 0)
                 throw new Exception(string.Format("No hay proveedor (Fila: {0})", i + 1));
             var cs = controller.Proveedores.Where(c => c.catVal.Contains(r[DespachosController.COL_PROVEEDOR_ID].ToString())).OrderBy(c => c.catVal).ToList();

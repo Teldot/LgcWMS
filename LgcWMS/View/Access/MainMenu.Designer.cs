@@ -39,6 +39,7 @@
             // 
             // btnRecoleccion
             // 
+            this.btnRecoleccion.Enabled = false;
             this.btnRecoleccion.Location = new System.Drawing.Point(89, 10);
             this.btnRecoleccion.Name = "btnRecoleccion";
             this.btnRecoleccion.Size = new System.Drawing.Size(201, 55);
@@ -48,6 +49,7 @@
             // 
             // btnInventario
             // 
+            this.btnInventario.Enabled = false;
             this.btnInventario.Location = new System.Drawing.Point(89, 71);
             this.btnInventario.Name = "btnInventario";
             this.btnInventario.Size = new System.Drawing.Size(201, 55);
@@ -59,7 +61,7 @@
             // 
             this.btnDespachos.Location = new System.Drawing.Point(89, 193);
             this.btnDespachos.Name = "btnDespachos";
-            this.btnDespachos.Size = new System.Drawing.Size(141, 55);
+            this.btnDespachos.Size = new System.Drawing.Size(201, 55);
             this.btnDespachos.TabIndex = 2;
             this.btnDespachos.Text = "4. Despachos";
             this.btnDespachos.UseVisualStyleBackColor = true;
@@ -77,6 +79,7 @@
             // 
             // btnAsignRepartos
             // 
+            this.btnAsignRepartos.Enabled = false;
             this.btnAsignRepartos.Location = new System.Drawing.Point(89, 254);
             this.btnAsignRepartos.Name = "btnAsignRepartos";
             this.btnAsignRepartos.Size = new System.Drawing.Size(201, 55);
@@ -86,6 +89,7 @@
             // 
             // btnAdmonDespachos
             // 
+            this.btnAdmonDespachos.Enabled = false;
             this.btnAdmonDespachos.Location = new System.Drawing.Point(89, 315);
             this.btnAdmonDespachos.Name = "btnAdmonDespachos";
             this.btnAdmonDespachos.Size = new System.Drawing.Size(201, 55);

@@ -260,14 +260,16 @@ namespace LgcWMS.View.Operation
 
                 rIndex = dgvDespachos.SelectedRows[0].Index;
                 var item = dgvDespachos.SelectedRows[0].DataBoundItem;
+                string itemS = JsonConvert.SerializeObject(item);
+                string obs = JsonConvert.DeserializeObject<JObject>(itemS)["CONSECUTIVO_CLIENTE"].ToString() + " - " + tbObservaciones.Text.Trim();
                 controller.RequestObj.TransParms.Clear();
                 controller.RequestObj.TransParms.Add(new TransParm("NoGuia", tbGuia.Text.Trim()));
                 controller.RequestObj.TransParms.Add(new TransParm("fEnvio", dtFechaEnvio.Value.Date.ToString("dd/MM/yyyy")));
                 controller.RequestObj.TransParms.Add(new TransParm("peso", tbPeso.Text.Trim()));
                 controller.RequestObj.TransParms.Add(new TransParm("pesoVol", tbPesoRealVol.Text.Trim()));
                 controller.RequestObj.TransParms.Add(new TransParm("pesoLiq", tbPesoLiq.Text.Trim()));
-                controller.RequestObj.TransParms.Add(new TransParm("obs", tbObservaciones.Text.Trim()));
-                controller.RequestObj.TransParms.Add(new TransParm("data", JsonConvert.SerializeObject(item)));
+                controller.RequestObj.TransParms.Add(new TransParm("obs", obs));
+                controller.RequestObj.TransParms.Add(new TransParm("data", itemS));
                 controller.RequestObj.TransParms.Add(new TransParm("usId", Program.usrObj.UsrId.ToString()));
 
                 TransObj response = (TransObj)controller.GetData((int)GuiasController.ActionType.SaveData);
@@ -370,6 +372,26 @@ namespace LgcWMS.View.Operation
             }
         }
 
+        private void llAllWithGuia_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvDespachos.Rows)
+            {
+                var item = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(dgvDespachos.SelectedRows[0].DataBoundItem));
+                bool hasGuia = (((Newtonsoft.Json.Linq.JValue)(item["GUIA"])).Value != null);
+                ((DataGridViewCheckBoxCell)row.Cells["Imp_Etqueta"]).Value = hasGuia;
+            }
+        }
+
+        private void llNone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvDespachos.Rows)
+            {
+                //var item = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(dgvDespachos.SelectedRows[0].DataBoundItem));
+                //bool hasGuia = !(((Newtonsoft.Json.Linq.JValue)(item["GUIA"])).Value != null);
+                ((DataGridViewCheckBoxCell)row.Cells["Imp_Etqueta"]).Value = false;
+            }
+        }
+
         #endregion
 
         #region Enums
@@ -381,8 +403,15 @@ namespace LgcWMS.View.Operation
 
 
 
+
+
+
         #endregion
 
+        private void dgvDespachos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
 
+
+        }
     }
 }

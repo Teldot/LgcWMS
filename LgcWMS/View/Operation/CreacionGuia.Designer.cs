@@ -33,31 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.dgvDespachos = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtFechaEnvio = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbPeso = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbPesoRealVol = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbPesoLiq = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbObservaciones = new System.Windows.Forms.TextBox();
-            this.tbGuia = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnPrintGuia = new System.Windows.Forms.Button();
-            this.cbPrinterLabel = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbPrinterGuia = new System.Windows.Forms.ComboBox();
-            this.btnPrintLabel = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbPlanilla = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gbGuiaData = new System.Windows.Forms.GroupBox();
             this.Imp_Etqueta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CONSECUTIVO_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESPACHO_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,10 +54,37 @@
             this.Valor_Declarado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GUIA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GUIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtFechaEnvio = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbPeso = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbPesoRealVol = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbPesoLiq = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbObservaciones = new System.Windows.Forms.TextBox();
+            this.tbGuia = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnPrintGuia = new System.Windows.Forms.Button();
+            this.cbPrinterLabel = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbPrinterGuia = new System.Windows.Forms.ComboBox();
+            this.btnPrintLabel = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbGuiaData = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbPlanilla = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.llAllWithGuia = new System.Windows.Forms.LinkLabel();
+            this.llNone = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDespachos)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.gbGuiaData.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -161,9 +163,162 @@
             this.dgvDespachos.MultiSelect = false;
             this.dgvDespachos.Name = "dgvDespachos";
             this.dgvDespachos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDespachos.Size = new System.Drawing.Size(789, 391);
+            this.dgvDespachos.Size = new System.Drawing.Size(842, 391);
             this.dgvDespachos.TabIndex = 6;
+            this.dgvDespachos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDespachos_CellValueChanged);
             this.dgvDespachos.SelectionChanged += new System.EventHandler(this.dgvDespachos_SelectionChanged);
+            // 
+            // Imp_Etqueta
+            // 
+            this.Imp_Etqueta.HeaderText = "Imp Etqueta";
+            this.Imp_Etqueta.Name = "Imp_Etqueta";
+            this.Imp_Etqueta.Width = 70;
+            // 
+            // CONSECUTIVO_CLIENTE
+            // 
+            this.CONSECUTIVO_CLIENTE.DataPropertyName = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.HeaderText = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.Name = "CONSECUTIVO_CLIENTE";
+            this.CONSECUTIVO_CLIENTE.Width = 160;
+            // 
+            // DESPACHO_ID
+            // 
+            this.DESPACHO_ID.DataPropertyName = "DESPACHO_ID";
+            this.DESPACHO_ID.HeaderText = "DESPACHO_ID";
+            this.DESPACHO_ID.Name = "DESPACHO_ID";
+            this.DESPACHO_ID.Visible = false;
+            this.DESPACHO_ID.Width = 108;
+            // 
+            // CONSECUTIVO
+            // 
+            this.CONSECUTIVO.DataPropertyName = "CONSECUTIVO";
+            this.CONSECUTIVO.HeaderText = "CONSECUTIVO";
+            this.CONSECUTIVO.Name = "CONSECUTIVO";
+            this.CONSECUTIVO.Width = 109;
+            // 
+            // FECHA_REDENCION
+            // 
+            this.FECHA_REDENCION.DataPropertyName = "FECHA_REDENCION";
+            this.FECHA_REDENCION.HeaderText = "FECHA_REDENCION";
+            this.FECHA_REDENCION.Name = "FECHA_REDENCION";
+            this.FECHA_REDENCION.Width = 137;
+            // 
+            // CODIGO_PREMIO
+            // 
+            this.CODIGO_PREMIO.DataPropertyName = "CODIGO_PREMIO";
+            this.CODIGO_PREMIO.HeaderText = "CODIGO_PREMIO";
+            this.CODIGO_PREMIO.Name = "CODIGO_PREMIO";
+            this.CODIGO_PREMIO.Width = 122;
+            // 
+            // PREMIO
+            // 
+            this.PREMIO.DataPropertyName = "PREMIO";
+            this.PREMIO.HeaderText = "PREMIO";
+            this.PREMIO.Name = "PREMIO";
+            this.PREMIO.Width = 74;
+            // 
+            // Remitente
+            // 
+            this.Remitente.DataPropertyName = "REMITENTE_NOMBRE";
+            this.Remitente.HeaderText = "REMITENTE";
+            this.Remitente.Name = "Remitente";
+            this.Remitente.Visible = false;
+            this.Remitente.Width = 95;
+            // 
+            // REMITENTE_VAL
+            // 
+            this.REMITENTE_VAL.DataPropertyName = "REMITENTE_VAL";
+            this.REMITENTE_VAL.HeaderText = "REMITENTE_VAL";
+            this.REMITENTE_VAL.Name = "REMITENTE_VAL";
+            this.REMITENTE_VAL.Width = 121;
+            // 
+            // REMITENTE_DIRECCION
+            // 
+            this.REMITENTE_DIRECCION.DataPropertyName = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.HeaderText = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Name = "REMITENTE_DIRECCION";
+            this.REMITENTE_DIRECCION.Visible = false;
+            this.REMITENTE_DIRECCION.Width = 160;
+            // 
+            // Origen
+            // 
+            this.Origen.DataPropertyName = "ORIGEN_ID";
+            this.Origen.HeaderText = "Origen";
+            this.Origen.Name = "Origen";
+            this.Origen.Visible = false;
+            this.Origen.Width = 63;
+            // 
+            // ORIGEN_VAL
+            // 
+            this.ORIGEN_VAL.DataPropertyName = "ORIGEN";
+            this.ORIGEN_VAL.HeaderText = "ORIGEN";
+            this.ORIGEN_VAL.Name = "ORIGEN_VAL";
+            this.ORIGEN_VAL.Width = 74;
+            // 
+            // Nombre_destinatario
+            // 
+            this.Nombre_destinatario.DataPropertyName = "DESTINATARIO_NOMBRE";
+            this.Nombre_destinatario.HeaderText = "NOMBRE";
+            this.Nombre_destinatario.Name = "Nombre_destinatario";
+            this.Nombre_destinatario.Width = 79;
+            // 
+            // Direccion_Destinatario
+            // 
+            this.Direccion_Destinatario.DataPropertyName = "DESTINATARIO_DIRECCION";
+            this.Direccion_Destinatario.HeaderText = "DIRECCION";
+            this.Direccion_Destinatario.Name = "Direccion_Destinatario";
+            this.Direccion_Destinatario.Width = 91;
+            // 
+            // Telefono_Destinatario
+            // 
+            this.Telefono_Destinatario.DataPropertyName = "DESTINATARIO_TELEFONO";
+            this.Telefono_Destinatario.HeaderText = "TELEFONO";
+            this.Telefono_Destinatario.Name = "Telefono_Destinatario";
+            this.Telefono_Destinatario.Width = 89;
+            // 
+            // Destino_Id
+            // 
+            this.Destino_Id.DataPropertyName = "DESTINO_ID";
+            this.Destino_Id.HeaderText = "Destino";
+            this.Destino_Id.Name = "Destino_Id";
+            this.Destino_Id.Visible = false;
+            this.Destino_Id.Width = 68;
+            // 
+            // DESTINO_VAL
+            // 
+            this.DESTINO_VAL.DataPropertyName = "DESTINO";
+            this.DESTINO_VAL.HeaderText = "Destino";
+            this.DESTINO_VAL.Name = "DESTINO_VAL";
+            this.DESTINO_VAL.Width = 68;
+            // 
+            // Unidades
+            // 
+            this.Unidades.DataPropertyName = "UNIDADES";
+            this.Unidades.HeaderText = "Cantidad";
+            this.Unidades.Name = "Unidades";
+            this.Unidades.Width = 74;
+            // 
+            // Valor_Declarado
+            // 
+            this.Valor_Declarado.DataPropertyName = "VALOR";
+            this.Valor_Declarado.HeaderText = "Vr. Declarado";
+            this.Valor_Declarado.Name = "Valor_Declarado";
+            this.Valor_Declarado.Width = 97;
+            // 
+            // GUIA_ID
+            // 
+            this.GUIA_ID.DataPropertyName = "GUIA_ID";
+            this.GUIA_ID.HeaderText = "GUIA_ID";
+            this.GUIA_ID.Name = "GUIA_ID";
+            this.GUIA_ID.Visible = false;
+            this.GUIA_ID.Width = 75;
+            // 
+            // GUIA
+            // 
+            this.GUIA.DataPropertyName = "GUIA";
+            this.GUIA.HeaderText = "GUIA";
+            this.GUIA.Name = "GUIA";
+            this.GUIA.Width = 58;
             // 
             // label4
             // 
@@ -396,44 +551,11 @@
             this.groupBox1.Controls.Add(this.cbPrinterLabel);
             this.groupBox1.Controls.Add(this.btnPrintGuia);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Location = new System.Drawing.Point(824, 108);
+            this.groupBox1.Location = new System.Drawing.Point(877, 108);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(274, 391);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cbPlanilla);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cbConsecClient);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.cbProveedor);
-            this.groupBox2.Location = new System.Drawing.Point(29, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(789, 83);
-            this.groupBox2.TabIndex = 31;
-            this.groupBox2.TabStop = false;
-            // 
-            // cbPlanilla
-            // 
-            this.cbPlanilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPlanilla.FormattingEnabled = true;
-            this.cbPlanilla.Location = new System.Drawing.Point(391, 19);
-            this.cbPlanilla.Name = "cbPlanilla";
-            this.cbPlanilla.Size = new System.Drawing.Size(168, 21);
-            this.cbPlanilla.TabIndex = 7;
-            this.cbPlanilla.SelectedIndexChanged += new System.EventHandler(this.cbPlanilla_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Planilla #:";
             // 
             // gbGuiaData
             // 
@@ -456,163 +578,68 @@
             this.gbGuiaData.TabIndex = 32;
             this.gbGuiaData.TabStop = false;
             // 
-            // Imp_Etqueta
+            // groupBox2
             // 
-            this.Imp_Etqueta.HeaderText = "Imp Etqueta";
-            this.Imp_Etqueta.Name = "Imp_Etqueta";
-            this.Imp_Etqueta.Width = 70;
+            this.groupBox2.Controls.Add(this.cbPlanilla);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.cbConsecClient);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.cbProveedor);
+            this.groupBox2.Location = new System.Drawing.Point(29, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(842, 76);
+            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabStop = false;
             // 
-            // CONSECUTIVO_CLIENTE
+            // cbPlanilla
             // 
-            this.CONSECUTIVO_CLIENTE.DataPropertyName = "CONSECUTIVO_CLIENTE";
-            this.CONSECUTIVO_CLIENTE.HeaderText = "CONSECUTIVO_CLIENTE";
-            this.CONSECUTIVO_CLIENTE.Name = "CONSECUTIVO_CLIENTE";
-            this.CONSECUTIVO_CLIENTE.Width = 160;
+            this.cbPlanilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPlanilla.FormattingEnabled = true;
+            this.cbPlanilla.Location = new System.Drawing.Point(391, 19);
+            this.cbPlanilla.Name = "cbPlanilla";
+            this.cbPlanilla.Size = new System.Drawing.Size(168, 21);
+            this.cbPlanilla.TabIndex = 7;
+            this.cbPlanilla.SelectedIndexChanged += new System.EventHandler(this.cbPlanilla_SelectedIndexChanged);
             // 
-            // DESPACHO_ID
+            // label2
             // 
-            this.DESPACHO_ID.DataPropertyName = "DESPACHO_ID";
-            this.DESPACHO_ID.HeaderText = "DESPACHO_ID";
-            this.DESPACHO_ID.Name = "DESPACHO_ID";
-            this.DESPACHO_ID.Visible = false;
-            this.DESPACHO_ID.Width = 108;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(335, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Planilla #:";
             // 
-            // CONSECUTIVO
+            // llAllWithGuia
             // 
-            this.CONSECUTIVO.DataPropertyName = "CONSECUTIVO";
-            this.CONSECUTIVO.HeaderText = "CONSECUTIVO";
-            this.CONSECUTIVO.Name = "CONSECUTIVO";
-            this.CONSECUTIVO.Width = 109;
+            this.llAllWithGuia.AutoSize = true;
+            this.llAllWithGuia.Location = new System.Drawing.Point(26, 91);
+            this.llAllWithGuia.Name = "llAllWithGuia";
+            this.llAllWithGuia.Size = new System.Drawing.Size(103, 13);
+            this.llAllWithGuia.TabIndex = 32;
+            this.llAllWithGuia.TabStop = true;
+            this.llAllWithGuia.Text = "Todos con No. Guia";
+            this.llAllWithGuia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llAllWithGuia_LinkClicked);
             // 
-            // FECHA_REDENCION
+            // llNone
             // 
-            this.FECHA_REDENCION.DataPropertyName = "FECHA_REDENCION";
-            this.FECHA_REDENCION.HeaderText = "FECHA_REDENCION";
-            this.FECHA_REDENCION.Name = "FECHA_REDENCION";
-            this.FECHA_REDENCION.Width = 137;
-            // 
-            // CODIGO_PREMIO
-            // 
-            this.CODIGO_PREMIO.DataPropertyName = "CODIGO_PREMIO";
-            this.CODIGO_PREMIO.HeaderText = "CODIGO_PREMIO";
-            this.CODIGO_PREMIO.Name = "CODIGO_PREMIO";
-            this.CODIGO_PREMIO.Width = 122;
-            // 
-            // PREMIO
-            // 
-            this.PREMIO.DataPropertyName = "PREMIO";
-            this.PREMIO.HeaderText = "PREMIO";
-            this.PREMIO.Name = "PREMIO";
-            this.PREMIO.Width = 74;
-            // 
-            // Remitente
-            // 
-            this.Remitente.DataPropertyName = "REMITENTE_NOMBRE";
-            this.Remitente.HeaderText = "REMITENTE";
-            this.Remitente.Name = "Remitente";
-            this.Remitente.Visible = false;
-            this.Remitente.Width = 95;
-            // 
-            // REMITENTE_VAL
-            // 
-            this.REMITENTE_VAL.DataPropertyName = "REMITENTE_VAL";
-            this.REMITENTE_VAL.HeaderText = "REMITENTE_VAL";
-            this.REMITENTE_VAL.Name = "REMITENTE_VAL";
-            this.REMITENTE_VAL.Width = 121;
-            // 
-            // REMITENTE_DIRECCION
-            // 
-            this.REMITENTE_DIRECCION.DataPropertyName = "REMITENTE_DIRECCION";
-            this.REMITENTE_DIRECCION.HeaderText = "REMITENTE_DIRECCION";
-            this.REMITENTE_DIRECCION.Name = "REMITENTE_DIRECCION";
-            this.REMITENTE_DIRECCION.Visible = false;
-            this.REMITENTE_DIRECCION.Width = 160;
-            // 
-            // Origen
-            // 
-            this.Origen.DataPropertyName = "ORIGEN_ID";
-            this.Origen.HeaderText = "Origen";
-            this.Origen.Name = "Origen";
-            this.Origen.Visible = false;
-            this.Origen.Width = 63;
-            // 
-            // ORIGEN_VAL
-            // 
-            this.ORIGEN_VAL.DataPropertyName = "ORIGEN";
-            this.ORIGEN_VAL.HeaderText = "ORIGEN";
-            this.ORIGEN_VAL.Name = "ORIGEN_VAL";
-            this.ORIGEN_VAL.Width = 74;
-            // 
-            // Nombre_destinatario
-            // 
-            this.Nombre_destinatario.DataPropertyName = "DESTINATARIO_NOMBRE";
-            this.Nombre_destinatario.HeaderText = "NOMBRE";
-            this.Nombre_destinatario.Name = "Nombre_destinatario";
-            this.Nombre_destinatario.Width = 79;
-            // 
-            // Direccion_Destinatario
-            // 
-            this.Direccion_Destinatario.DataPropertyName = "DESTINATARIO_DIRECCION";
-            this.Direccion_Destinatario.HeaderText = "DIRECCION";
-            this.Direccion_Destinatario.Name = "Direccion_Destinatario";
-            this.Direccion_Destinatario.Width = 91;
-            // 
-            // Telefono_Destinatario
-            // 
-            this.Telefono_Destinatario.DataPropertyName = "DESTINATARIO_TELEFONO";
-            this.Telefono_Destinatario.HeaderText = "TELEFONO";
-            this.Telefono_Destinatario.Name = "Telefono_Destinatario";
-            this.Telefono_Destinatario.Width = 89;
-            // 
-            // Destino_Id
-            // 
-            this.Destino_Id.DataPropertyName = "DESTINO_ID";
-            this.Destino_Id.HeaderText = "Destino";
-            this.Destino_Id.Name = "Destino_Id";
-            this.Destino_Id.Visible = false;
-            this.Destino_Id.Width = 68;
-            // 
-            // DESTINO_VAL
-            // 
-            this.DESTINO_VAL.DataPropertyName = "DESTINO";
-            this.DESTINO_VAL.HeaderText = "Destino";
-            this.DESTINO_VAL.Name = "DESTINO_VAL";
-            this.DESTINO_VAL.Width = 68;
-            // 
-            // Unidades
-            // 
-            this.Unidades.DataPropertyName = "UNIDADES";
-            this.Unidades.HeaderText = "Cantidad";
-            this.Unidades.Name = "Unidades";
-            this.Unidades.Width = 74;
-            // 
-            // Valor_Declarado
-            // 
-            this.Valor_Declarado.DataPropertyName = "VALOR";
-            this.Valor_Declarado.HeaderText = "Vr. Declarado";
-            this.Valor_Declarado.Name = "Valor_Declarado";
-            this.Valor_Declarado.Width = 97;
-            // 
-            // GUIA_ID
-            // 
-            this.GUIA_ID.DataPropertyName = "GUIA_ID";
-            this.GUIA_ID.HeaderText = "GUIA_ID";
-            this.GUIA_ID.Name = "GUIA_ID";
-            this.GUIA_ID.Visible = false;
-            this.GUIA_ID.Width = 75;
-            // 
-            // GUIA
-            // 
-            this.GUIA.DataPropertyName = "GUIA";
-            this.GUIA.HeaderText = "GUIA";
-            this.GUIA.Name = "GUIA";
-            this.GUIA.Width = 58;
+            this.llNone.AutoSize = true;
+            this.llNone.Location = new System.Drawing.Point(140, 91);
+            this.llNone.Name = "llNone";
+            this.llNone.Size = new System.Drawing.Size(47, 13);
+            this.llNone.TabIndex = 33;
+            this.llNone.TabStop = true;
+            this.llNone.Text = "Ninguno";
+            this.llNone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llNone_LinkClicked);
             // 
             // CreacionGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 516);
+            this.ClientSize = new System.Drawing.Size(1163, 516);
+            this.Controls.Add(this.llNone);
+            this.Controls.Add(this.llAllWithGuia);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDespachos);
@@ -622,11 +649,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDespachos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.gbGuiaData.ResumeLayout(false);
             this.gbGuiaData.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -683,5 +711,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Declarado;
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
+        private System.Windows.Forms.LinkLabel llAllWithGuia;
+        private System.Windows.Forms.LinkLabel llNone;
     }
 }

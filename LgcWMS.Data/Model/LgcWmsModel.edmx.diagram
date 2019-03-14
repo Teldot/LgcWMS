@@ -23,15 +23,22 @@
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_ASFW_CATTYPE" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_ASFW_CATVAL" Width="1.5" PointX="12.375" PointY="9.75" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_ASFW_CITY_CODE_DEP" Width="1.5" PointX="12.375" PointY="3.75" />
-        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_DESPACHO" Width="1.5" PointX="5.25" PointY="10.125" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_RECOLECCION" Width="1.5" PointX="10.25" PointY="13.5" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__CLIEN__7849DB76" />
-        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_E__PROVE__74794A92" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__PROVE__7755B73D" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_R__RECOL__7EF6D905" />
-        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" Width="1.5" PointX="12.375" PointY="13.75" />
-        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA_ETIQUETA" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_DESPACHO" Width="1.5" PointX="17.875" PointY="6.25" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.LGC_GUIA" Width="1.5" PointX="15.625" PointY="6.25" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA_ETIQUETA" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" Width="1.5" PointX="7.375" PointY="13.75" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_GUIA__ELABOR__36470DEF" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_GUIA__ENCARG__373B3228" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_E__PROVE__74794A92" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__DESPA__078C1F06" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__RECOL__0697FACD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
