@@ -56,12 +56,14 @@ namespace LgcWMS.View.Operation
                         List<string> ids = new List<string>();
                         foreach (DataGridViewRow r in dgvDespachos.Rows)
                         {
+                            if (((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value == null) continue;
                             bool val = bool.Parse(((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value.ToString());
-                            if (val) sel++;
-                            ids.Add(((DataGridViewTextBoxCell)r.Cells["GUIA_ID"]).Value.ToString());
+                            if (val) { 
+                                ids.Add(((DataGridViewTextBoxCell)r.Cells["GUIA_ID"]).Value.ToString());}
                         }
 
-                        if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
+                        //if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
+                        if (ids.Count == 0) { MessageBox.Show("Debe seleccionar al menos 1 registro para imprimir etiquetas"); return; }
 
                         rview = new RViewer();
                         rview.ReportType = RViewer.ActionType.Label;

@@ -95,8 +95,8 @@ namespace LgcWMS.Reports
 
                     pSett = new PrinterSettings();
                     pSett.Copies = 1;
-                    pSett.FromPage = 1;
-                    pSett.ToPage = 1;
+                    //pSett.FromPage = 1;
+                    //pSett.ToPage = 1;
                     pSett.PrinterName = PrinterName;
                     rv.PrintDialog(pSett);
                     break;
