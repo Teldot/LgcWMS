@@ -13,10 +13,10 @@ namespace LgcWMS.View.Operation
     public partial class IngMovInv : Form
     {
         const string SQL_ = "SELECT INVENTARIO_ID,PRODUCTO_ID,PRODUCTO,CANTIDAD,BODEGA_ID,BODEGA, RACK_ID, RACK, POSICION_ID, POSICION FROM V_LGD_INVENTARIO";
-        const string SQL_ = "select CATVALID, VAL from ASFW_CATVAL where CATTYPEID = 48";
-        const string SQL_ = "select CODIGO, DETALLE from LGC_WMS_PRODUCTO";
-        const string SQL_ = "";
-        const string SQL_ = "";
+        const string SQL_1 = "select CATVALID, VAL from ASFW_CATVAL where CATTYPEID = 48";
+        const string SQL_2 = "select CODIGO, DETALLE from LGC_WMS_PRODUCTO";
+        const string SQL_3 = "";
+        const string SQL_4 = "";
 
         public IngMovInv()
         {
