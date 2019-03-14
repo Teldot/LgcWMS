@@ -1,5 +1,6 @@
 ﻿using AS.FW.Model;
 using LgcWMS.Business.Controllers.Operation;
+using LgcWMS.Business.Utils;
 using LgcWMS.Data.Entities;
 using LgcWMS.Data.Model;
 using LgcWMS.Reports;
@@ -82,7 +83,7 @@ namespace LgcWMS.View.Operation
                                 d.CIUDAD1 = dSource[i].CUIDAD;
                                 d.REFERENCIA1 = dSource[i].REFERENCIA;
                                 d.CONSECUTIVO_CLIENTE1 = dSource[i].CONSECUTIVO_CLIENTE;
-                                d.BARCODE1 = dSource[i].BARCODE;
+                                d.BARCODE1 = BarcodeUtils.GenBarcode(d.GUIA_PREFIJO1 + d.GUIA_ID1.ToString());
                             }
                             i++;
                             if (i < dSource.Count)
@@ -94,7 +95,7 @@ namespace LgcWMS.View.Operation
                                 d.CIUDAD2 = dSource[i].CUIDAD;
                                 d.REFERENCIA2 = dSource[i].REFERENCIA;
                                 d.CONSECUTIVO_CLIENTE2 = dSource[i].CONSECUTIVO_CLIENTE;
-                                d.BARCODE2 = dSource[i].BARCODE;
+                                d.BARCODE2 = BarcodeUtils.GenBarcode(d.GUIA_ID2 + d.GUIA_ID2.ToString());
                             }
                             ds.Add(d);
                         }

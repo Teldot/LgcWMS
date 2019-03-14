@@ -83,7 +83,7 @@ namespace LgcWMS.Reports
                     pg.PaperSize = size;
                     pg.Landscape = true;
                     this.GUIA_DUOBindingSource.DataSource = D_Source;//typeof(LgcWMS.Data.Model.V_GUIA);
-                    reportDataSource1.Name = "dsGuia";
+                    reportDataSource1.Name = "DataSetGuiaDuo";
                     reportDataSource1.Value = this.GUIA_DUOBindingSource;
                     //ReportDataSource rpSource = new ReportDataSource("GuiaDuo", D_Source);
                     //this.V_GUIABindingSource.DataSource = rpSource;

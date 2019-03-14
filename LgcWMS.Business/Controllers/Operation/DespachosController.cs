@@ -195,15 +195,7 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
         }
         #endregion
         #region Methods
-        public byte[] GenBarcode(string data)
-        {
-            Barcode b = new Barcode();
-            Image img = b.Encode(BarcodeLib.TYPE.CODE128, data, Color.Black, Color.White, 450, 50);
-            MemoryStream stream = new System.IO.MemoryStream();
-            img.Save(stream, ImageFormat.Jpeg);
-            return stream.ToArray();
-
-        }
+        
         #endregion
         #region Enums
         public enum ActionType

@@ -26,12 +26,14 @@
                   <TextRun>
                     <Value>Nombre:</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -61,6 +63,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Thin</FontWeight>
                     </Style>
                   </TextRun>
@@ -93,12 +96,14 @@
                   <TextRun>
                     <Value>Direccion:</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -126,8 +131,8 @@
                   <TextRun>
                     <Value>=Fields!DIRECCION1.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -160,12 +165,14 @@
                   <TextRun>
                     <Value>Telefono:</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -193,8 +200,8 @@
                   <TextRun>
                     <Value>=Fields!TELEFONO1.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -227,12 +234,14 @@
                   <TextRun>
                     <Value>Ciudad:</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -260,7 +269,8 @@
                   <TextRun>
                     <Value>=Fields!CIUDAD1.Value</Value>
                     <Style>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -284,46 +294,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox9">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Referencia:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value xml:space="preserve"> </Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.01313cm</Top>
-            <Left>2.25526cm</Left>
-            <Height>0.52943cm</Height>
-            <Width>1.81208cm</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox10">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -333,8 +303,8 @@
                   <TextRun>
                     <Value>=Fields!REFERENCIA1.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -346,7 +316,7 @@
             <Left>4.06734cm</Left>
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>9</ZIndex>
             <DataElementName>REFERENCIA1</DataElementName>
             <Style>
               <Border>
@@ -367,12 +337,14 @@
                   <TextRun>
                     <Value>Consecutivo Cliente:</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -380,7 +352,7 @@
             <Left>0.87942cm</Left>
             <Height>0.40598cm</Height>
             <Width>3.18792cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -400,8 +372,8 @@
                   <TextRun>
                     <Value>=Fields!CONSECUTIVO_CLIENTE1.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -413,7 +385,7 @@
             <Left>4.10262cm</Left>
             <Height>0.44125cm</Height>
             <Width>5.81743cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <DataElementName>CONSECUTIVO_CLIENTE1</DataElementName>
             <Style>
               <Border>
@@ -434,13 +406,48 @@
             <Left>1.63746cm</Left>
             <Height>1.11808cm</Height>
             <Width>7.90292cm</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Image>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Referencia:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>3.04135cm</Top>
+            <Left>1.63746cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>2.3946cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>0.12349cm</Top>
@@ -469,39 +476,6 @@
               </Border>
             </Style>
           </Image>
-          <Textbox Name="Textbox5">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Nombre:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>1.05409cm</Top>
-            <Left>2.51984cm</Left>
-            <Height>0.51181cm</Height>
-            <Width>1.51222cm</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="tbNOMBRE2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -511,8 +485,8 @@
                   <TextRun>
                     <Value>=Fields!NOMBRE2.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -523,41 +497,8 @@
             <Left>4.06734cm</Left>
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>2</ZIndex>
+            <ZIndex>1</ZIndex>
             <DataElementName>NOMBRE2</DataElementName>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox13">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Direccion:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>1.54826cm</Top>
-            <Left>2.34345cm</Left>
-            <Height>0.49417cm</Height>
-            <Width>1.72389cm</Width>
-            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -577,8 +518,8 @@
                   <TextRun>
                     <Value>=Fields!DIRECCION2.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -590,41 +531,8 @@
             <Left>4.06734cm</Left>
             <Height>0.49417cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>2</ZIndex>
             <DataElementName>DIRECCION2</DataElementName>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox15">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Telefono:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>2.04243cm</Top>
-            <Left>2.34345cm</Left>
-            <Height>0.49417cm</Height>
-            <Width>1.72389cm</Width>
-            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -644,8 +552,8 @@
                   <TextRun>
                     <Value>=Fields!TELEFONO2.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -657,41 +565,8 @@
             <Left>4.06734cm</Left>
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>3</ZIndex>
             <DataElementName>TELEFONO2</DataElementName>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox17">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Ciudad:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.51896cm</Top>
-            <Left>2.62026cm</Left>
-            <Height>0.47653cm</Height>
-            <Width>1.44708cm</Width>
-            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -711,7 +586,8 @@
                   <TextRun>
                     <Value>=Fields!CIUDAD2.Value</Value>
                     <Style>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -723,48 +599,8 @@
             <Left>4.06734cm</Left>
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>4</ZIndex>
             <DataElementName>CIUDAD2</DataElementName>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox19">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Referencia:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value xml:space="preserve"> </Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.01313cm</Top>
-            <Left>2.25526cm</Left>
-            <Height>0.52943cm</Height>
-            <Width>1.81208cm</Width>
-            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -784,8 +620,8 @@
                   <TextRun>
                     <Value>=Fields!REFERENCIA2.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -797,41 +633,8 @@
             <Left>4.06734cm</Left>
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>5</ZIndex>
             <DataElementName>REFERENCIA2</DataElementName>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox21">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Consecutivo Cliente:</Value>
-                    <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.61313cm</Top>
-            <Left>0.84414cm</Left>
-            <Height>0.47654cm</Height>
-            <Width>3.18792cm</Width>
-            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -851,8 +654,8 @@
                   <TextRun>
                     <Value>=Fields!CONSECUTIVO_CLIENTE2.Value</Value>
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -864,7 +667,7 @@
             <Left>4.10262cm</Left>
             <Height>0.44125cm</Height>
             <Width>5.81743cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>6</ZIndex>
             <DataElementName>CONSECUTIVO_CLIENTE2</DataElementName>
             <Style>
               <Border>
@@ -885,13 +688,223 @@
             <Left>1.67274cm</Left>
             <Height>1.171cm</Height>
             <Width>7.90292cm</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Image>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nombre:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.05409cm</Top>
+            <Left>2.34345cm</Left>
+            <Height>0.51181cm</Height>
+            <Width>1.51222cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Direccion:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.54826cm</Top>
+            <Left>2.16706cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Telefono:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.04243cm</Top>
+            <Left>2.16706cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.72389cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ciudad:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>2.51896cm</Top>
+            <Left>2.44387cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>1.44708cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Consecutivo Cliente:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>3.61313cm</Top>
+            <Left>0.70303cm</Left>
+            <Height>0.40598cm</Height>
+            <Width>3.18792cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Referencia:</Value>
+                    <Style>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>3.04135cm</Top>
+            <Left>1.46107cm</Left>
+            <Height>0.47653cm</Height>
+            <Width>2.3946cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>6.05443cm</Top>
