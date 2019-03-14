@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Catalog.cs" />
+    <Compile Include="Entities\GUIA_LABEL_DUO.cs" />
     <Compile Include="Model\ASFW_ACTIVESESSION.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
@@ -110,6 +111,9 @@
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GUIA.cs">
+      <DependentUpon>LgcWmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_GUIA_ETIQUETA.cs">
       <DependentUpon>LgcWmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_LGC_DESPACHO_GRID.cs">

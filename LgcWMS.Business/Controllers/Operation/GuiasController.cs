@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,62 +106,87 @@ namespace LgcWMS.Business.Controllers.Operation
                     #endregion
                     case ActionType.SaveData:
                         #region SaveData
-                        var data = JsonConvert.DeserializeObject<JObject>(RequestObj.TransParms.Where(p => p.Key == "data").FirstOrDefault().Value);
-                        var NoGuia = long.Parse(RequestObj.TransParms.Where(p => p.Key == "NoGuia").FirstOrDefault().Value);
-                        var fEnvio = RequestObj.TransParms.Where(p => p.Key == "fEnvio").FirstOrDefault().Value;
-                        var peso = RequestObj.TransParms.Where(p => p.Key == "peso").FirstOrDefault().Value;
-                        var pesoVol = RequestObj.TransParms.Where(p => p.Key == "pesoVol").FirstOrDefault().Value;
-                        var pesoLiq = RequestObj.TransParms.Where(p => p.Key == "pesoLiq").FirstOrDefault().Value;
-                        var obs = RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
-                        var usId = RequestObj.TransParms.Where(p => p.Key == "usId").FirstOrDefault().Value;
+                        try
+                        {
+                            var data = JsonConvert.DeserializeObject<JObject>(RequestObj.TransParms.Where(p => p.Key == "data").FirstOrDefault().Value);
+                            var NoGuia = long.Parse(RequestObj.TransParms.Where(p => p.Key == "NoGuia").FirstOrDefault().Value);
+                            var fEnvio = RequestObj.TransParms.Where(p => p.Key == "fEnvio").FirstOrDefault().Value;
+                            var peso = RequestObj.TransParms.Where(p => p.Key == "peso").FirstOrDefault().Value;
+                            var pesoVol = RequestObj.TransParms.Where(p => p.Key == "pesoVol").FirstOrDefault().Value;
+                            var pesoLiq = RequestObj.TransParms.Where(p => p.Key == "pesoLiq").FirstOrDefault().Value;
+                            var obs = RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
+                            var usId = RequestObj.TransParms.Where(p => p.Key == "usId").FirstOrDefault().Value;
 
-                        string sql = string.Format(SQL_IN_GUIA,
-                                                        NoGuia, //GUIA_ID 
-"LOG", //GUIA_PREFIJO 
-(int)CatTipoGuia.Despacho, //TIPO_ID 
-"NULL", //recoleccion  //idRECOLECCION_ID 
-"NULL", //Despacho  //IdDESPACHO_ID 
-data["ORIGEN_ID"], //ORIGEN 
-data["REMITENTE_VAL"], //REMITENTE_NOMBRE 
-data["REMITENTE_DIRECCION"], //REMITENTE_DIRECCION 
-data["REMITENTE_TELEFONO"], //REMITENTE_TELEFONO 
-data["DESTINO_ID"], //DESTINO 
-data["DESTINATARIO_NOMBRE"], //DESTINATARIO_NOMBRE 
-data["DESTINATARIO_DIRECCION"], //DESTINATARIO_DIRECCION 
-data["DESTINATARIO_TELEFONO"], //DESTINATARIO_TELEFONO 
-data["UNIDADES"], //UNIDADES 
-peso, //PESO 
-pesoVol, //PESO_VOL 
-pesoLiq, //PESO_LIQ 
-data["VALOR"], //VALOR_DECLARADO 
-"Obsequio",//data["DICE_CONTENER"], //DICE_CONTENER 
-usId, //ELABORADO_POR 
-      //"NULL", //ENCARGADO_A 
- obs//OBSERVACIONES
-                            );
+                            string sql = string.Format(SQL_IN_GUIA,
+                                                            NoGuia, //GUIA_ID 
+    "LOG", //GUIA_PREFIJO 
+    (int)CatTipoGuia.Despacho, //TIPO_ID 
+    "NULL", //recoleccion  //idRECOLECCION_ID 
+    "NULL", //Despacho  //IdDESPACHO_ID 
+    data["ORIGEN_ID"], //ORIGEN 
+    data["REMITENTE_VAL"], //REMITENTE_NOMBRE 
+    data["REMITENTE_DIRECCION"], //REMITENTE_DIRECCION 
+    data["REMITENTE_TELEFONO"], //REMITENTE_TELEFONO 
+    data["DESTINO_ID"], //DESTINO 
+    data["DESTINATARIO_NOMBRE"], //DESTINATARIO_NOMBRE 
+    data["DESTINATARIO_DIRECCION"], //DESTINATARIO_DIRECCION 
+    data["DESTINATARIO_TELEFONO"], //DESTINATARIO_TELEFONO 
+    data["UNIDADES"], //UNIDADES 
+    peso, //PESO 
+    pesoVol, //PESO_VOL 
+    pesoLiq, //PESO_LIQ 
+    data["VALOR"], //VALOR_DECLARADO 
+    "Obsequio",//data["DICE_CONTENER"], //DICE_CONTENER 
+    usId, //ELABORADO_POR 
+          //"NULL", //ENCARGADO_A 
+     obs//OBSERVACIONES
+                                );
 
-                        int res = Entities.Database.ExecuteSqlCommand(sql);
-                        if (res == 0)
-                            throw new Exception("Los datos no han sido guardados");
-                        string cc = data["CONSECUTIVO_CLIENTE"].ToString();
-                        var des = Entities.LGC_DESPACHO.Where(d => d.CONSECUTIVO_CLIENTE == cc).FirstOrDefault();
-                        des.GUIA_ID = NoGuia;
-                        Entities.SaveChanges();
+                            int res = Entities.Database.ExecuteSqlCommand(sql);
+                            if (res == 0)
+                                throw new Exception("Los datos no han sido guardados");
+                            string cc = data["CONSECUTIVO_CLIENTE"].ToString();
+                            var des = Entities.LGC_DESPACHO.Where(d => d.CONSECUTIVO_CLIENTE == cc).FirstOrDefault();
+                            des.GUIA_ID = NoGuia;
+                            Entities.SaveChanges();
 
-                        ResponseObj.MessCode = TransObj.MessCodes.Ok;
+                            ResponseObj.MessCode = TransObj.MessCodes.Ok;
+                        }
+                        catch (SqlException sqlEx)
+                        {
+                            if (sqlEx.Message.Contains("PRIMARY KEY"))
+                                    throw new Exception("El numero de guia ya existe.");
+                            else
+                                throw sqlEx;
+                        }
+                        catch (Exception ex)
+                        {
+                            ResponseObj.MessCode = TransObj.MessCodes.Error;
+                            throw ex;
+                        }
                         break;
                     #endregion
-                    default:
                     case ActionType.GetGuia:
                         #region GetGuia
                         long gId = long.Parse(RequestObj.TransParms[0].Value);
                         var guia = (from g in Entities.V_GUIA
                                     where g.GUIA_ID == gId
                                     select new { g.GUIA_ID, g.GUIA_PREFIJO, g.ORIGEN, g.REMITENTE_NOMBRE, g.REMITENTE_DIRECCION, g.REMITENTE_TELEFONO, g.DESTINATARIO_NOMBRE, g.DESTINATARIO_DIRECCION, g.DESTINATARIO_TELEFONO, g.FECHA_ENVIO, g.UNIDADES, g.PESO, g.PESO_VOL, g.PESO_LIQ, g.VALOR_DECLARADO, g.DICE_CONTENER, g.BARCODE, g.OBSERVACIONES, g.ORIGEN_VAL, g.DESTINO_VAL, g.ELABORADO_POR_VAL }).ToList();
-                            //Entities.Database.SqlQuery<V_GUIA>(string.Format(SQL_GET_GUIA, gId)).FirstOrDefault();
+                        //Entities.Database.SqlQuery<V_GUIA>(string.Format(SQL_GET_GUIA, gId)).FirstOrDefault();
                         //var et = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(guia));
                         return guia;
-                        #endregion                        
+                    #endregion
+                    case ActionType.GetLabels:
+                        #region GetLabels
+                        List<long> gIds = JsonConvert.DeserializeObject<List<long>>(RequestObj.TransParms[0].Value);
+                        var guias = (from g in Entities.V_GUIA_ETIQUETA
+                                     where gIds.Contains(g.GUIA_ID)
+                                     select g).ToList();
+                        return guias;
+                        #endregion
+                        break;
+                    default:
+                        break;
                 }
             }
             catch (Exception ex)
@@ -185,6 +211,7 @@ usId, //ELABORADO_POR
             GetDespachoByProveedor,
             GetDespachoByPlanilla,
             GetGuia,
+            GetLabels,
             SaveData
         }
         #endregion

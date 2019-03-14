@@ -307,15 +307,24 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA' does not have a primary k
           <Property Name="OBSERVACIONES" Type="varchar" MaxLength="250" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'lgcwebdb_dev.dbo.V_GUIA_ETIQUETA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6002: The table/view 'lgcwebdb_dev.dbo.V_GUIA_ETIQUETA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_GUIA_ETIQUETA">
-          <Property Name="RId1" Type="bigint" />
-          <Property Name="REMITENTE_CIUDAD1" Type="varchar" MaxLength="403" />
-          <Property Name="CONSECUTIVO_CLIENTE1" Type="varchar" MaxLength="10" />
-          <Property Name="RId2" Type="bigint" />
-          <Property Name="REMITENTE_CIUDAD2" Type="varchar" MaxLength="403" />
-          <Property Name="CONSECUTIVO_CLIENTE2" Type="varchar" MaxLength="10" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="GUIA_ID" />
+            <PropertyRef Name="CUIDAD" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DIRECCION" />
+          </Key>
+          <Property Name="GUIA_PREFIJO" Type="varchar" MaxLength="5" />
+          <Property Name="GUIA_ID" Type="bigint" Nullable="false" />
+          <Property Name="CUIDAD" Type="varchar" MaxLength="403" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="12" />
+          <Property Name="REFERENCIA" Type="text" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="varchar" MaxLength="10" />
+          <Property Name="BARCODE" Type="image" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_LGC_DESPACHO_GRID">
@@ -557,6 +566,19 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not hav
     [V_GUIA].[BARCODE] AS [BARCODE], 
     [V_GUIA].[OBSERVACIONES] AS [OBSERVACIONES]
     FROM [dbo].[V_GUIA] AS [V_GUIA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_GUIA_ETIQUETA" EntityType="Self.V_GUIA_ETIQUETA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_GUIA_ETIQUETA].[GUIA_PREFIJO] AS [GUIA_PREFIJO], 
+    [V_GUIA_ETIQUETA].[GUIA_ID] AS [GUIA_ID], 
+    [V_GUIA_ETIQUETA].[CUIDAD] AS [CUIDAD], 
+    [V_GUIA_ETIQUETA].[NOMBRE] AS [NOMBRE], 
+    [V_GUIA_ETIQUETA].[DIRECCION] AS [DIRECCION], 
+    [V_GUIA_ETIQUETA].[TELEFONO] AS [TELEFONO], 
+    [V_GUIA_ETIQUETA].[REFERENCIA] AS [REFERENCIA], 
+    [V_GUIA_ETIQUETA].[CONSECUTIVO_CLIENTE] AS [CONSECUTIVO_CLIENTE], 
+    [V_GUIA_ETIQUETA].[BARCODE] AS [BARCODE]
+    FROM [dbo].[V_GUIA_ETIQUETA] AS [V_GUIA_ETIQUETA]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_LGC_DESPACHO_GRID" EntityType="Self.V_LGC_DESPACHO_GRID" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -812,6 +834,7 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not hav
           </AssociationSet>
           <EntitySet Name="V_LGC_DESPACHO_GRID" EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" />
           <EntitySet Name="V_GUIA" EntityType="LgcWMS.Data.Model.V_GUIA" />
+          <EntitySet Name="V_GUIA_ETIQUETA" EntityType="LgcWMS.Data.Model.V_GUIA_ETIQUETA" />
         </EntityContainer>
         <EntityType Name="ASFW_USER">
           <Key>
@@ -1149,6 +1172,23 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not hav
           <Property Name="BARCODE" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OBSERVACIONES" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="V_GUIA_ETIQUETA">
+          <Key>
+            <PropertyRef Name="GUIA_ID" />
+            <PropertyRef Name="CUIDAD" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DIRECCION" />
+          </Key>
+          <Property Name="GUIA_PREFIJO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GUIA_ID" Type="Int64" Nullable="false" />
+          <Property Name="CUIDAD" Type="String" Nullable="false" MaxLength="403" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="REFERENCIA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CONSECUTIVO_CLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BARCODE" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1461,6 +1501,21 @@ warning 6002: The table/view 'lgcwebdb_dev.dbo.V_LGC_DESPACHO_GRID' does not hav
                 <ScalarProperty Name="TIPO_ID" ColumnName="TIPO_ID" />
                 <ScalarProperty Name="GUIA_PREFIJO" ColumnName="GUIA_PREFIJO" />
                 <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_GUIA_ETIQUETA">
+            <EntityTypeMapping TypeName="LgcWMS.Data.Model.V_GUIA_ETIQUETA">
+              <MappingFragment StoreEntitySet="V_GUIA_ETIQUETA">
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="CONSECUTIVO_CLIENTE" ColumnName="CONSECUTIVO_CLIENTE" />
+                <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CUIDAD" ColumnName="CUIDAD" />
+                <ScalarProperty Name="GUIA_ID" ColumnName="GUIA_ID" />
+                <ScalarProperty Name="GUIA_PREFIJO" ColumnName="GUIA_PREFIJO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -57,10 +57,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>hjvgfjsfhfisdhfius</Value>
+                    <Value />
                     <Style>
-                      <FontFamily>Swis721 BT</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Consolas</FontFamily>
+                      <FontWeight>Thin</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -72,7 +73,7 @@
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>2</ZIndex>
-            <DataElementName>DESTINATARIO_NOMBRE</DataElementName>
+            <DataElementName>NOMBRE1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -123,7 +124,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>jxhcbvdilod</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -139,7 +140,7 @@
             <Height>0.49417cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>4</ZIndex>
-            <DataElementName>DESTINATARIO_DIRECCION</DataElementName>
+            <DataElementName>DIRECCION1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -190,7 +191,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>dfghjklñ´ñlkjhgf</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -206,7 +207,7 @@
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>6</ZIndex>
-            <DataElementName>DESTINATARIO_TELEFONO</DataElementName>
+            <DataElementName>TELEFONO1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -257,7 +258,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>dfgiopojhg</Value>
+                    <Value />
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -272,7 +273,7 @@
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>8</ZIndex>
-            <DataElementName>DESTINO</DataElementName>
+            <DataElementName>CIUDAD1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -330,7 +331,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>xcjopolkjv</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -346,7 +347,7 @@
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>10</ZIndex>
-            <DataElementName>DICE_CONTENER</DataElementName>
+            <DataElementName>REFERENCIA1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -397,7 +398,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>vbplkjhg</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -413,7 +414,7 @@
             <Height>0.44125cm</Height>
             <Width>5.81743cm</Width>
             <ZIndex>12</ZIndex>
-            <DataElementName>CONSECUTIVO_CLIENTE</DataElementName>
+            <DataElementName>CONSECUTIVO_CLIENTE1</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -425,8 +426,8 @@
             </Style>
           </Textbox>
           <Image Name="imgBarCode">
-            <Source>Database</Source>
-            <Value>=First(Fields!BARCODE.Value, "DataSetGuia")</Value>
+            <Source>Embedded</Source>
+            <Value>barcode</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -508,7 +509,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>hjvgfjsfhfisdhfius</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -523,7 +524,7 @@
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>2</ZIndex>
-            <DataElementName>DESTINATARIO_NOMBRE</DataElementName>
+            <DataElementName>NOMBRE2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -574,7 +575,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>jxhcbvdilod</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -590,7 +591,7 @@
             <Height>0.49417cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>4</ZIndex>
-            <DataElementName>DESTINATARIO_DIRECCION</DataElementName>
+            <DataElementName>DIRECCION2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -641,7 +642,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>dfghjklñ´ñlkjhgf</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -657,7 +658,7 @@
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>6</ZIndex>
-            <DataElementName>DESTINATARIO_TELEFONO</DataElementName>
+            <DataElementName>TELEFONO2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -708,7 +709,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>dfgiopojhg</Value>
+                    <Value />
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -723,7 +724,7 @@
             <Height>0.47653cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>8</ZIndex>
-            <DataElementName>DESTINO</DataElementName>
+            <DataElementName>CIUDAD2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -781,7 +782,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>xcjopolkjv</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -797,7 +798,7 @@
             <Height>0.51181cm</Height>
             <Width>6.51757cm</Width>
             <ZIndex>10</ZIndex>
-            <DataElementName>DICE_CONTENER</DataElementName>
+            <DataElementName>REFERENCIA2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -848,7 +849,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>vbplkjhg</Value>
+                    <Value />
                     <Style>
                       <FontFamily>Swis721 BT</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -864,7 +865,7 @@
             <Height>0.44125cm</Height>
             <Width>5.81743cm</Width>
             <ZIndex>12</ZIndex>
-            <DataElementName>CONSECUTIVO_CLIENTE</DataElementName>
+            <DataElementName>CONSECUTIVO_CLIENTE2</DataElementName>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -876,8 +877,8 @@
             </Style>
           </Textbox>
           <Image Name="imgBarCode2">
-            <Source>Database</Source>
-            <Value>=First(Fields!BARCODE.Value, "DataSetGuia")</Value>
+            <Source>Embedded</Source>
+            <Value>barcode</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>4.1955cm</Top>
@@ -906,7 +907,7 @@
         </Style>
       </Rectangle>
     </ReportItems>
-    <Height>12.00299cm</Height>
+    <Height>4.72559in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>
@@ -914,158 +915,18 @@
       </Border>
     </Style>
   </Body>
-  <Width>11.23457cm</Width>
+  <Width>4.42306in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <PageHeight>4.72in</PageHeight>
+    <PageWidth>4.42in</PageWidth>
+    <LeftMargin>0.05in</LeftMargin>
+    <RightMargin>0.05in</RightMargin>
+    <TopMargin>0.05in</TopMargin>
+    <BottomMargin>0.05in</BottomMargin>
+    <ColumnSpacing>0.05118in</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
-  <DataSources>
-    <DataSource Name="LgcWMSDataModel">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>913f1651-c551-43f4-9eb2-8794c85f9a87</rd:DataSourceID>
-    </DataSource>
-  </DataSources>
-  <DataSets>
-    <DataSet Name="DataSetGuia">
-      <Query>
-        <DataSourceName>LgcWMSDataModel</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="BARCODE">
-          <DataField>BARCODE</DataField>
-          <rd:TypeName>System.Byte[]</rd:TypeName>
-        </Field>
-        <Field Name="DESPACHO_ID">
-          <DataField>DESPACHO_ID</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
-        <Field Name="DESTINATARIO_DIRECCION">
-          <DataField>DESTINATARIO_DIRECCION</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DESTINATARIO_NOMBRE">
-          <DataField>DESTINATARIO_NOMBRE</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DESTINATARIO_TELEFONO">
-          <DataField>DESTINATARIO_TELEFONO</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DESTINO">
-          <DataField>DESTINO</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DESTINO_VAL">
-          <DataField>DESTINO_VAL</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DICE_CONTENER">
-          <DataField>DICE_CONTENER</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ELABORADO_POR">
-          <DataField>ELABORADO_POR</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ELABORADO_POR_VAL">
-          <DataField>ELABORADO_POR_VAL</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ENCARGADO_A">
-          <DataField>ENCARGADO_A</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
-        <Field Name="ENCARGADO_A_VAL">
-          <DataField>ENCARGADO_A_VAL</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FECHA_ENTREGA">
-          <DataField>FECHA_ENTREGA</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
-        <Field Name="FECHA_ENVIO">
-          <DataField>FECHA_ENVIO</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="GUIA_ID">
-          <DataField>GUIA_ID</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="GUIA_PREFIJO">
-          <DataField>GUIA_PREFIJO</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ORIGEN">
-          <DataField>ORIGEN</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ORIGEN_VAL">
-          <DataField>ORIGEN_VAL</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PESO">
-          <DataField>PESO</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="PESO_LIQ">
-          <DataField>PESO_LIQ</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="PESO_VOL">
-          <DataField>PESO_VOL</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="RECOLECCION_ID">
-          <DataField>RECOLECCION_ID</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
-        <Field Name="REMITENTE_DIRECCION">
-          <DataField>REMITENTE_DIRECCION</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="REMITENTE_NOMBRE">
-          <DataField>REMITENTE_NOMBRE</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="REMITENTE_TELEFONO">
-          <DataField>REMITENTE_TELEFONO</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TIPO">
-          <DataField>TIPO</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TIPO_ID">
-          <DataField>TIPO_ID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="UNIDADES">
-          <DataField>UNIDADES</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="VALOR_DECLARADO">
-          <DataField>VALOR_DECLARADO</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>LgcWMS.Data.Model</rd:DataSetName>
-        <rd:TableName>V_GUIA</rd:TableName>
-        <rd:ObjectDataSourceType>LgcWMS.Data.Model.V_GUIA, LgcWMS.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-  </DataSets>
   <EmbeddedImages>
     <EmbeddedImage Name="logoblanconegro">
       <MIMEType>image/png</MIMEType>
@@ -1085,6 +946,6 @@ cVEtLqpFUzsuqsVFtbioFk3tuFiN79bU/nqh3uGFevdqLnf7NZ9/oX4KzbpfuLy9NMa9NbW/mnVfuF+a
 mtpxUS0uqkVTOy6qxUW1uKgWTe24WI3v1tT+eqHe4YV692oud/s1n3+hfgrNul+4vL00xr01tb+adV+4X5ra0dSOZt0Xf9X7vjS1/9LUjqZ2XFSLi2rR1I6LanFRLZracVEtLqpFUzsuqsVFtbioFk3tuFiN79bU/nqh3uGFevdqLnf7NZ9/oX4KzbpfuLy9NMa9NbW/mnVfuF+a2tHUjmbdF3/V+740tf/S1I6mdlxUi4tq0dSOi2pxUS2a2nFRLS6qRVM7LqrFRbW4qBZN7bhYje/W1P56od7hhXr3ai53+zWff6F+Cs26X7i8vTTGvTW1v5p1X7hfmtrR1I5m3Rd/1fu+NLX/0tSOpnZcVIuLatHUjotqcVEtmtpxUS0uqkVTOy6qxUW1uKgWTe24WI3v1tT+eqHe4YV692oud/st//33Py8FLCGs8/YyAAAAAElFTkSuQmCC</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>8a3b3827-985c-4143-8b10-c78ca74302bb</rd:ReportID>
 </Report>

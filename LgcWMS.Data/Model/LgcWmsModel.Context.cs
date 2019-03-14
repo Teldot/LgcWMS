@@ -12,21 +12,19 @@ namespace LgcWMS.Data.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class LgcWebEntities : DbContext
     {
         public LgcWebEntities()
             : base("name=LgcWebEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<ASFW_CATTYPE> ASFW_CATTYPE { get; set; }
         public virtual DbSet<LCG_CLIENTE_CLIENTE> LCG_CLIENTE_CLIENTE { get; set; }
         public virtual DbSet<LGC_CLIENTE> LGC_CLIENTE { get; set; }
@@ -43,5 +41,6 @@ namespace LgcWMS.Data.Model
         public virtual DbSet<LGC_RECOLECCION> LGC_RECOLECCION { get; set; }
         public virtual DbSet<V_LGC_DESPACHO_GRID> V_LGC_DESPACHO_GRID { get; set; }
         public virtual DbSet<V_GUIA> V_GUIA { get; set; }
+        public virtual DbSet<V_GUIA_ETIQUETA> V_GUIA_ETIQUETA { get; set; }
     }
 }

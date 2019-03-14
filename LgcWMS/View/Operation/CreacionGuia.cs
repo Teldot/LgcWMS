@@ -1,5 +1,7 @@
 ﻿using AS.FW.Model;
 using LgcWMS.Business.Controllers.Operation;
+using LgcWMS.Data.Entities;
+using LgcWMS.Data.Model;
 using LgcWMS.Reports;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
@@ -42,10 +44,9 @@ namespace LgcWMS.View.Operation
 
         private void Print(PrintingDocument pDoc)
         {
-            //if (printObj == null) return;
-
             try
             {
+                RViewer rview;
                 switch (pDoc)
                 {
                     case PrintingDocument.Label:
@@ -56,28 +57,68 @@ namespace LgcWMS.View.Operation
                         {
                             bool val = bool.Parse(((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value.ToString());
                             if (val) sel++;
-                            ids.Add("'" + ((DataGridViewTextBoxCell)r.Cells["CONSECUTIVO_CLIENTE"]).Value.ToString() + "'");
+                            ids.Add(((DataGridViewTextBoxCell)r.Cells["GUIA_ID"]).Value.ToString());
                         }
 
                         if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
 
+                        rview = new RViewer();
+                        rview.ReportType = RViewer.ActionType.Label;
+                        rview.PrinterName = cbPrinterLabel.Text;
+                        controller.RequestObj.TransParms.Clear();
+                        controller.RequestObj.TransParms.Add(new TransParm("gNo", JsonConvert.SerializeObject(ids.ToArray())));
+                        List<V_GUIA_ETIQUETA> dSource = (List<V_GUIA_ETIQUETA>)controller.GetData((int)GuiasController.ActionType.GetLabels);
 
+                        List<GUIA_LABEL_DUO> ds = new List<GUIA_LABEL_DUO>();
+                        for (int i = 0; i < dSource.Count; i++)
+                        {
+                            GUIA_LABEL_DUO d = new GUIA_LABEL_DUO();
+                            if (i % 2 == 0)
+                            {
+                                d.GUIA_PREFIJO1 = dSource[i].GUIA_PREFIJO;
+                                d.GUIA_ID1 = dSource[i].GUIA_ID;
+                                d.NOMBRE1 = dSource[i].NOMBRE;
+                                d.DIRECCION1 = dSource[i].DIRECCION;
+                                d.CIUDAD1 = dSource[i].CUIDAD;
+                                d.REFERENCIA1 = dSource[i].REFERENCIA;
+                                d.CONSECUTIVO_CLIENTE1 = dSource[i].CONSECUTIVO_CLIENTE;
+                                d.BARCODE1 = dSource[i].BARCODE;
+                            }
+                            i++;
+                            if (i < dSource.Count)
+                            {
+                                d.GUIA_PREFIJO2 = dSource[i].GUIA_PREFIJO;
+                                d.GUIA_ID2 = dSource[i].GUIA_ID;
+                                d.NOMBRE2 = dSource[i].NOMBRE;
+                                d.DIRECCION2 = dSource[i].DIRECCION;
+                                d.CIUDAD2 = dSource[i].CUIDAD;
+                                d.REFERENCIA2 = dSource[i].REFERENCIA;
+                                d.CONSECUTIVO_CLIENTE2 = dSource[i].CONSECUTIVO_CLIENTE;
+                                d.BARCODE2 = dSource[i].BARCODE;
+                            }
+                            ds.Add(d);
+                        }
+
+                        rview.D_Source = ds;
+                        rview.ShowDialog();
 
                         #endregion
                         break;
                     case PrintingDocument.Guia:
                         #region Guia
                         //LocalReport report = new LocalReport();
-                        //report.ReportPath = @"Reports\OrdenServicio.rdlc";
+                        //report.ReportEmbeddedResource = @"LgcWMS.Reports.OrdenServicio.rdlc";
                         //controller.RequestObj.TransParms.Clear();
                         //controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
                         //report.DataSources.Add(
                         //   new ReportDataSource("dsGuia", controller.GetData((int)GuiasController.ActionType.GetGuia)));
                         //Export(report);
                         //Print();
-                        
-                        RViewer rview = new RViewer();                        
+
+                        //WITH VIEWER
+                        rview = new RViewer();
                         rview.ReportType = RViewer.ActionType.Guia;
+                        rview.PrinterName = cbPrinterGuia.Text;
                         controller.RequestObj.TransParms.Clear();
                         controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
                         rview.D_Source = controller.GetData((int)GuiasController.ActionType.GetGuia);
@@ -101,10 +142,10 @@ namespace LgcWMS.View.Operation
                 <OutputFormat>EMF</OutputFormat>
                 <PageWidth>8.2in</PageWidth>
                 <PageHeight>5.8in</PageHeight>
-                <MarginTop>0.25in</MarginTop>
-                <MarginLeft>0.25in</MarginLeft>
-                <MarginRight>0.25in</MarginRight>
-                <MarginBottom>0.25in</MarginBottom>
+                <MarginTop>0.05in</MarginTop>
+                <MarginLeft>0.05in</MarginLeft>
+                <MarginRight>0.05in</MarginRight>
+                <MarginBottom>0.05in</MarginBottom>
             </DeviceInfo>";
             Warning[] warnings;
             m_streams = new List<Stream>();
@@ -118,6 +159,12 @@ namespace LgcWMS.View.Operation
             if (m_streams == null || m_streams.Count == 0)
                 throw new Exception("Error: no stream to print.");
             PrintDocument printDoc = new PrintDocument();
+            PrinterSettings pSett = new PrinterSettings();
+            pSett.Copies = 1;
+            pSett.FromPage = 1;
+            pSett.ToPage = 1;
+            pSett.PrinterName = cbPrinterGuia.Text;
+            printDoc.PrinterSettings = pSett;
             if (!printDoc.PrinterSettings.IsValid)
             {
                 throw new Exception("Error: cannot find the default printer.");
@@ -141,14 +188,17 @@ namespace LgcWMS.View.Operation
         private void PrintPage(object sender, PrintPageEventArgs ev)
         {
             Metafile pageImage = new
-               Metafile(m_streams[m_currentPageIndex]);
+                           Metafile(m_streams[m_currentPageIndex]);
 
             // Adjust rectangular area with printer margins.
+            //PORTRATE
             Rectangle adjustedRect = new Rectangle(
                 ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
                 ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
                 ev.PageBounds.Width,
                 ev.PageBounds.Height);
+
+
 
             // Draw a white background for the report
             ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
@@ -179,9 +229,9 @@ namespace LgcWMS.View.Operation
                 cbPlanilla.ValueMember = "catId";
 
                 List<string> ps1 = new List<string>();
-                ps1.Add("Selccione...");
+                //ps1.Add("Selccione...");
                 List<string> ps2 = new List<string>();
-                ps2.Add("Selccione...");
+                //ps2.Add("Selccione...");
                 foreach (var p in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
                 {
                     ps1.Add(p.ToString());
@@ -307,9 +357,16 @@ namespace LgcWMS.View.Operation
             gbGuiaData.Enabled = !hasGuia;
             btnPrintLabel.Enabled = btnPrintGuia.Enabled = hasGuia;
             if (hasGuia)
+            {
                 _guiaNo = long.Parse(item["GUIA"].ToString());
+                tbGuia.Text = _guiaNo.ToString();
+            }
             else
+            {
                 _guiaNo = 0;
+                tbGuia.Text = string.Empty;
+
+            }
         }
 
         #endregion
