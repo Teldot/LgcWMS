@@ -39,10 +39,10 @@
             // V_GUIABindingSource
             // 
             this.V_GUIABindingSource.DataSource = typeof(LgcWMS.Data.Model.V_GUIA);
-            //
-            //GUIA_DUOBindingSource
-            //
-            this.GUIA_DUOBindingSource.DataSource = typeof(Data.Entities.GUIA_LABEL_DUO);
+            // 
+            // GUIA_DUOBindingSource
+            // 
+            this.GUIA_DUOBindingSource.DataSource = typeof(LgcWMS.Data.Entities.GUIA_LABEL_DUO);
             // 
             // rv
             // 
@@ -55,7 +55,6 @@
             this.rv.ShowDocumentMapButton = false;
             this.rv.ShowExportButton = false;
             this.rv.ShowFindControls = false;
-            this.rv.ShowPageNavigationControls = false;
             this.rv.ShowParameterPrompts = false;
             this.rv.ShowPromptAreaButton = false;
             this.rv.ShowRefreshButton = false;

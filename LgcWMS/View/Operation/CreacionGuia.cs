@@ -282,6 +282,7 @@ namespace LgcWMS.View.Operation
                     controller.RequestObj.TransParms.Add(new TransParm("id", controller.LastSearchData.ToString()));
                     dgvDespachos.DataSource = controller.GetData((int)controller.LastSearch);
                     dgvDespachos.Rows[rIndex].Selected = true;
+                    MessageBox.Show("Datos guardados.");
                 }
                 //else
                 //{

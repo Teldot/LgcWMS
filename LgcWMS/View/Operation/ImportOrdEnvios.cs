@@ -108,6 +108,7 @@ namespace LgcWMS.View.Operation
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
+            tbError.Text = string.Empty;
             int i = 0;
             try
             {
@@ -136,11 +137,14 @@ namespace LgcWMS.View.Operation
                     validateCiudad(r, i);
                     validateProveedor(r, i);
                 }
+                tbError.Text = "Datos validados";
+                btnSave.Enabled = false;
             }
             catch (Exception ex)
             {
                 tbError.Text = ex.Message;
                 dgEnvios.Rows[i].Selected = true;
+                dgEnvios.FirstDisplayedScrollingRowIndex = dgEnvios.SelectedRows[0].Index;
             }
         }
 
