@@ -137,7 +137,8 @@ namespace LgcWMS.Business.Controllers.Operation
                             var peso = RequestObj.TransParms.Where(p => p.Key == "peso").FirstOrDefault().Value;
                             var pesoVol = RequestObj.TransParms.Where(p => p.Key == "pesoVol").FirstOrDefault().Value;
                             var pesoLiq = RequestObj.TransParms.Where(p => p.Key == "pesoLiq").FirstOrDefault().Value;
-                            var obs = RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
+                            var obs = data["REMITENTE_TELEFONO"].ToString() + " + " +
+                                RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
                             var usId = RequestObj.TransParms.Where(p => p.Key == "usId").FirstOrDefault().Value;
 
                             string sql = string.Format(SQL_IN_GUIA,
