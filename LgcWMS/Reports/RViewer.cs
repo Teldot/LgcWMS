@@ -93,12 +93,13 @@ namespace LgcWMS.Reports
                     this.rv.RefreshReport();
                     rv.SetDisplayMode(DisplayMode.PrintLayout);
 
-                    pSett = new PrinterSettings();
-                    pSett.Copies = 1;
+                    //pSett = new PrinterSettings();
+                    //pSett.Copies = 1;
                     //pSett.FromPage = 1;
                     //pSett.ToPage = 1;
-                    pSett.PrinterName = PrinterName;
-                    rv.PrintDialog(pSett);
+                    //pSett.PrinterName = PrinterName;
+                    //rv.PrintDialog(pSett);
+                    rv.PrintDialog();
                     break;
                 #endregion
                 default:
