@@ -104,6 +104,29 @@ namespace LgcWMS.Business.Controllers.Operation
                         LastSearchData = plan;
                         return despByPlan;
                     #endregion
+
+                    case ActionType.GetDespachoByNumGuia:
+                        #region GetDespachoByNumGuia
+                        int ini = int.Parse(RequestObj.TransParms[0].Value);
+                        int end = int.Parse(RequestObj.TransParms[1].Value);
+
+                        var despByNumGuia = (from d in Entities.V_LGC_DESPACHO_GRID
+                                             where ini <= d.GUIA_ID && d.GUIA_ID <= end
+                                             select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
+                                          .OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
+                        LastSearch = (ActionType)actionType;
+                        LastSearchData = new int[] { ini, end };
+                        return despByNumGuia;
+                    #endregion
+                    case ActionType.GetDespachoAll:
+                        #region GetDespachoAll
+                        var despByAll = (from d in Entities.V_LGC_DESPACHO_GRID
+                                         select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
+                                          .OrderBy(d => d.CONSECUTIVO_CLIENTE).OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
+                        LastSearch = (ActionType)actionType;
+                        LastSearchData = "";
+                        return despByAll;
+                    #endregion
                     case ActionType.SaveData:
                         #region SaveData
                         try
@@ -155,7 +178,7 @@ namespace LgcWMS.Business.Controllers.Operation
                         catch (SqlException sqlEx)
                         {
                             if (sqlEx.Message.Contains("PRIMARY KEY"))
-                                    throw new Exception("El numero de guia ya existe.");
+                                throw new Exception("El numero de guia ya existe.");
                             else
                                 throw sqlEx;
                         }
@@ -210,6 +233,8 @@ namespace LgcWMS.Business.Controllers.Operation
             GetDespachoByFecha,
             GetDespachoByProveedor,
             GetDespachoByPlanilla,
+            GetDespachoAll,
+            GetDespachoByNumGuia,
             GetGuia,
             GetLabels,
             SaveData

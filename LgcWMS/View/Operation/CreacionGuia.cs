@@ -58,8 +58,10 @@ namespace LgcWMS.View.Operation
                         {
                             if (((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value == null) continue;
                             bool val = bool.Parse(((DataGridViewCheckBoxCell)r.Cells["Imp_Etqueta"]).Value.ToString());
-                            if (val) { 
-                                ids.Add(((DataGridViewTextBoxCell)r.Cells["GUIA_ID"]).Value.ToString());}
+                            if (val)
+                            {
+                                ids.Add(((DataGridViewTextBoxCell)r.Cells["GUIA_ID"]).Value.ToString());
+                            }
                         }
 
                         //if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
@@ -279,7 +281,14 @@ namespace LgcWMS.View.Operation
                 //printObj = JsonConvert.DeserializeObject<JObject>(response.TransParms.Where(r => r.Key == "sGuia").FirstOrDefault().Value);
                 {
                     controller.RequestObj.TransParms.Clear();
-                    controller.RequestObj.TransParms.Add(new TransParm("id", controller.LastSearchData.ToString()));
+                    if (controller.LastSearch == GuiasController.ActionType.GetDespachoByNumGuia)
+                    {
+                        int[] d = (int[])controller.LastSearchData;
+                        controller.RequestObj.TransParms.Add(new TransParm("ini", d[0].ToString()));
+                        controller.RequestObj.TransParms.Add(new TransParm("end", d[1].ToString()));
+                    }
+                    else
+                        controller.RequestObj.TransParms.Add(new TransParm("id", controller.LastSearchData.ToString()));
                     dgvDespachos.DataSource = controller.GetData((int)controller.LastSearch);
                     dgvDespachos.Rows[rIndex].Selected = true;
                     MessageBox.Show("Datos guardados.");
@@ -346,6 +355,36 @@ namespace LgcWMS.View.Operation
             cbPlanilla.SelectedIndex = 0;
         }
 
+        private void nudGuiaNoFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (nudGuiaNoTo.Value < nudGuiaNoFrom.Value)
+                nudGuiaNoTo.Value = nudGuiaNoFrom.Value;
+        }
+
+        private void btnGetAll_Click(object sender, EventArgs e)
+        {
+            controller.RequestObj.TransParms.Clear();
+            dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoAll);
+        }
+
+        private void btnGetByNumGuia_Click(object sender, EventArgs e)
+        {
+            if (nudGuiaNoFrom.Value > 0 && nudGuiaNoFrom.Value > 0)
+            {
+                controller.RequestObj.TransParms.Clear();
+                controller.RequestObj.TransParms.Add(new TransParm("ini", nudGuiaNoFrom.Value.ToString()));
+                controller.RequestObj.TransParms.Add(new TransParm("end", nudGuiaNoTo.Value.ToString()));
+                dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByNumGuia);
+            }
+            cbPlanilla.SelectedIndex = 0;
+        }
+
+        private void dgvDespachos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+
         private void tb_TextChanged(object sender, EventArgs e)
         {
             int p = 0, pv = 0;
@@ -379,7 +418,7 @@ namespace LgcWMS.View.Operation
         {
             foreach (DataGridViewRow row in dgvDespachos.Rows)
             {
-                var item = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(dgvDespachos.SelectedRows[0].DataBoundItem));
+                var item = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(row.DataBoundItem));
                 bool hasGuia = (((Newtonsoft.Json.Linq.JValue)(item["GUIA"])).Value != null);
                 ((DataGridViewCheckBoxCell)row.Cells["Imp_Etqueta"]).Value = hasGuia;
             }
@@ -409,12 +448,9 @@ namespace LgcWMS.View.Operation
 
 
 
+
         #endregion
 
-        private void dgvDespachos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
 
-
-        }
     }
 }
