@@ -81,10 +81,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.llAllWithGuia = new System.Windows.Forms.LinkLabel();
             this.llNone = new System.Windows.Forms.LinkLabel();
+            this.nudGuiaNoFrom = new System.Windows.Forms.NumericUpDown();
+            this.nudGuiaNoTo = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnGetAll = new System.Windows.Forms.Button();
+            this.btnGetByNumGuia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDespachos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbGuiaData.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGuiaNoFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGuiaNoTo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -580,6 +588,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGetByNumGuia);
+            this.groupBox2.Controls.Add(this.btnGetAll);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.nudGuiaNoTo);
+            this.groupBox2.Controls.Add(this.nudGuiaNoFrom);
             this.groupBox2.Controls.Add(this.cbPlanilla);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cbConsecClient);
@@ -633,6 +647,71 @@
             this.llNone.Text = "Ninguno";
             this.llNone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llNone_LinkClicked);
             // 
+            // nudGuiaNoFrom
+            // 
+            this.nudGuiaNoFrom.Location = new System.Drawing.Point(391, 50);
+            this.nudGuiaNoFrom.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudGuiaNoFrom.Name = "nudGuiaNoFrom";
+            this.nudGuiaNoFrom.Size = new System.Drawing.Size(73, 20);
+            this.nudGuiaNoFrom.TabIndex = 8;
+            this.nudGuiaNoFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudGuiaNoFrom.ValueChanged += new System.EventHandler(this.nudGuiaNoFrom_ValueChanged);
+            // 
+            // nudGuiaNoTo
+            // 
+            this.nudGuiaNoTo.Location = new System.Drawing.Point(486, 50);
+            this.nudGuiaNoTo.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudGuiaNoTo.Name = "nudGuiaNoTo";
+            this.nudGuiaNoTo.Size = new System.Drawing.Size(73, 20);
+            this.nudGuiaNoTo.TabIndex = 9;
+            this.nudGuiaNoTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(467, 54);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(13, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "a";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(343, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Guia #:";
+            // 
+            // btnGetAll
+            // 
+            this.btnGetAll.Location = new System.Drawing.Point(634, 19);
+            this.btnGetAll.Name = "btnGetAll";
+            this.btnGetAll.Size = new System.Drawing.Size(75, 23);
+            this.btnGetAll.TabIndex = 12;
+            this.btnGetAll.Text = "Traer Todos";
+            this.btnGetAll.UseVisualStyleBackColor = true;
+            this.btnGetAll.Click += new System.EventHandler(this.btnGetAll_Click);
+            // 
+            // btnGetByNumGuia
+            // 
+            this.btnGetByNumGuia.Location = new System.Drawing.Point(564, 51);
+            this.btnGetByNumGuia.Name = "btnGetByNumGuia";
+            this.btnGetByNumGuia.Size = new System.Drawing.Size(43, 20);
+            this.btnGetByNumGuia.TabIndex = 13;
+            this.btnGetByNumGuia.Text = "-->";
+            this.btnGetByNumGuia.UseVisualStyleBackColor = true;
+            this.btnGetByNumGuia.Click += new System.EventHandler(this.btnGetByNumGuia_Click);
+            // 
             // CreacionGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,6 +732,8 @@
             this.gbGuiaData.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGuiaNoFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGuiaNoTo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -713,5 +794,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
         private System.Windows.Forms.LinkLabel llAllWithGuia;
         private System.Windows.Forms.LinkLabel llNone;
+        private System.Windows.Forms.Button btnGetAll;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown nudGuiaNoTo;
+        private System.Windows.Forms.NumericUpDown nudGuiaNoFrom;
+        private System.Windows.Forms.Button btnGetByNumGuia;
     }
 }
