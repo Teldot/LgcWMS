@@ -138,7 +138,7 @@ namespace LgcWMS.View.Operation
                     validateProveedor(r, i);
                 }
                 tbError.Text = "Datos validados";
-                btnSave.Enabled = false;
+                btnSave.Enabled = true;
             }
             catch (Exception ex)
             {
