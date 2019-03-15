@@ -131,7 +131,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reports\LblDespacho.rdlc" />
+    <EmbeddedResource Include="Reports\LblDespacho.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\OrdenServicio.rdlc" />
     <EmbeddedResource Include="Reports\repTest.resx">
       <DependentUpon>repTest.cs</DependentUpon>
@@ -139,6 +141,7 @@
     <EmbeddedResource Include="Reports\RViewer.resx">
       <DependentUpon>RViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TestReport.rdlc" />
     <EmbeddedResource Include="View\Access\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
