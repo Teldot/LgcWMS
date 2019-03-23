@@ -1,5 +1,6 @@
 ﻿using AS.FW.Model;
 using LgcWMS.Business.Controllers.Operation;
+using LgcWMS.Business.PrintDocs;
 using LgcWMS.Business.Utils;
 using LgcWMS.Data.Entities;
 using LgcWMS.Data.Model;
@@ -10,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -47,7 +49,8 @@ namespace LgcWMS.View.Operation
         {
             try
             {
-                RViewer rview;
+                //RViewer rview;
+                LabelPrintDoc printDoc;
                 switch (pDoc)
                 {
                     case PrintingDocument.Label:
@@ -67,14 +70,19 @@ namespace LgcWMS.View.Operation
                         //if (sel < 2) { MessageBox.Show("Debe seleccionar al menos 2 registros para imprimir etiquetas"); return; }
                         if (ids.Count == 0) { MessageBox.Show("Debe seleccionar al menos 1 registro para imprimir etiquetas"); return; }
 
-                        rview = new RViewer();
-                        rview.ReportType = RViewer.ActionType.Label;
-                        rview.PrinterName = cbPrinterLabel.Text;
+                        //rview = new RViewer();
+                        //rview.ReportType = RViewer.ActionType.Label;
+                        //rview.PrinterName = cbPrinterLabel.Text;
                         controller.RequestObj.TransParms.Clear();
                         controller.RequestObj.TransParms.Add(new TransParm("gNo", JsonConvert.SerializeObject(ids.ToArray())));
                         List<V_GUIA_ETIQUETA> dSource = (List<V_GUIA_ETIQUETA>)controller.GetData((int)GuiasController.ActionType.GetLabels);
 
-                        List<GUIA_LABEL_DUO> ds = new List<GUIA_LABEL_DUO>();
+                        printDoc = new LabelPrintDoc(400, 480);
+                        printDoc.Images.Add(Properties.Resources.logoblanconegro);
+                        printDoc.PrinterName = cbPrinterLabel.Text;
+                        printDoc.TypeDocToPrint = LabelPrintDoc.TypeDoc.Label;
+
+                        //List<GUIA_LABEL_DUO> ds = new List<GUIA_LABEL_DUO>();
                         for (int i = 0; i < dSource.Count; i++)
                         {
                             GUIA_LABEL_DUO d = new GUIA_LABEL_DUO();
@@ -99,35 +107,39 @@ namespace LgcWMS.View.Operation
                                 d.CIUDAD2 = dSource[i].CUIDAD;
                                 d.REFERENCIA2 = dSource[i].REFERENCIA;
                                 d.CONSECUTIVO_CLIENTE2 = dSource[i].CONSECUTIVO_CLIENTE;
-                                d.BARCODE2 = BarcodeUtils.GenBarcode(d.GUIA_ID2 + d.GUIA_ID2.ToString());
+                                d.BARCODE2 = BarcodeUtils.GenBarcode(d.GUIA_PREFIJO2 + d.GUIA_ID2.ToString());
                             }
-                            ds.Add(d);
+                            //ds.Add(d);
+                            printDoc.DataToPrint = d;
+                            printDoc.PrintDoc();
                         }
 
-                        rview.D_Source = ds;
-                        rview.ShowDialog();
-
+                        //rview.D_Source = ds;
+                        //rview.ShowDialog();
                         #endregion
                         break;
                     case PrintingDocument.Guia:
                         #region Guia
-                        //LocalReport report = new LocalReport();
-                        //report.ReportEmbeddedResource = @"LgcWMS.Reports.OrdenServicio.rdlc";
-                        //controller.RequestObj.TransParms.Clear();
-                        //controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
-                        //report.DataSources.Add(
-                        //   new ReportDataSource("dsGuia", controller.GetData((int)GuiasController.ActionType.GetGuia)));
-                        //Export(report);
-                        //Print();
-
                         //WITH VIEWER
-                        rview = new RViewer();
-                        rview.ReportType = RViewer.ActionType.Guia;
-                        rview.PrinterName = cbPrinterGuia.Text;
+                        //rview = new RViewer();
+                        //rview.ReportType = RViewer.ActionType.Guia;
+                        //rview.PrinterName = cbPrinterGuia.Text;
                         controller.RequestObj.TransParms.Clear();
                         controller.RequestObj.TransParms.Add(new TransParm("gNo", _guiaNo.ToString()));
-                        rview.D_Source = controller.GetData((int)GuiasController.ActionType.GetGuia);
-                        rview.ShowDialog();
+
+                        //JObject o = JsonConvert.DeserializeObject<JObject>(JsonConvert.SerializeObject(controller.GetData((int)GuiasController.ActionType.GetGuia)));
+                        //rview.D_Source = o;
+                        //rview.ShowDialog();
+
+                        //With LabelPrintDoc
+                        printDoc = new LabelPrintDoc(580, 820);
+                        printDoc.PrinterName = cbPrinterGuia.Text;
+                        printDoc.TypeDocToPrint = LabelPrintDoc.TypeDoc.Guia;
+                        JArray o = JsonConvert.DeserializeObject<JArray>(JsonConvert.SerializeObject(controller.GetData((int)GuiasController.ActionType.GetGuia)));
+                        if (o.Count == 0) throw new Exception("Error cargando datos de guia");
+                        printDoc.DataToPrint = o[0].ToObject<JObject>();
+                        printDoc.PrintDoc();
+
                         #endregion
                         break;
                     default:
@@ -140,81 +152,81 @@ namespace LgcWMS.View.Operation
             }
         }
 
-        private void Export(LocalReport report)
-        {
-            string deviceInfo =
-              @"<DeviceInfo>
-                <OutputFormat>EMF</OutputFormat>
-                <PageWidth>8.2in</PageWidth>
-                <PageHeight>5.8in</PageHeight>
-                <MarginTop>0.05in</MarginTop>
-                <MarginLeft>0.05in</MarginLeft>
-                <MarginRight>0.05in</MarginRight>
-                <MarginBottom>0.05in</MarginBottom>
-            </DeviceInfo>";
-            Warning[] warnings;
-            m_streams = new List<Stream>();
-            report.Render("Image", deviceInfo, CreateStream, out warnings);
-            foreach (Stream stream in m_streams)
-                stream.Position = 0;
-        }
+        //private void Export(LocalReport report)
+        //{
+        //    string deviceInfo =
+        //      @"<DeviceInfo>
+        //        <OutputFormat>EMF</OutputFormat>
+        //        <PageWidth>8.2in</PageWidth>
+        //        <PageHeight>5.8in</PageHeight>
+        //        <MarginTop>0.05in</MarginTop>
+        //        <MarginLeft>0.05in</MarginLeft>
+        //        <MarginRight>0.05in</MarginRight>
+        //        <MarginBottom>0.05in</MarginBottom>
+        //    </DeviceInfo>";
+        //    Warning[] warnings;
+        //    m_streams = new List<Stream>();
+        //    report.Render("Image", deviceInfo, CreateStream, out warnings);
+        //    foreach (Stream stream in m_streams)
+        //        stream.Position = 0;
+        //}
 
-        private void Print()
-        {
-            if (m_streams == null || m_streams.Count == 0)
-                throw new Exception("Error: no stream to print.");
-            PrintDocument printDoc = new PrintDocument();
-            PrinterSettings pSett = new PrinterSettings();
-            pSett.Copies = 1;
-            pSett.FromPage = 1;
-            pSett.ToPage = 1;
-            pSett.PrinterName = cbPrinterGuia.Text;
-            printDoc.PrinterSettings = pSett;
-            if (!printDoc.PrinterSettings.IsValid)
-            {
-                throw new Exception("Error: cannot find the default printer.");
-            }
-            else
-            {
-                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
-                m_currentPageIndex = 0;
-                printDoc.Print();
-            }
-        }
+        //private void Print()
+        //{
+        //    if (m_streams == null || m_streams.Count == 0)
+        //        throw new Exception("Error: no stream to print.");
+        //    PrintDocument printDoc = new PrintDocument();
+        //    PrinterSettings pSett = new PrinterSettings();
+        //    pSett.Copies = 1;
+        //    pSett.FromPage = 1;
+        //    pSett.ToPage = 1;
+        //    pSett.PrinterName = cbPrinterGuia.Text;
+        //    printDoc.PrinterSettings = pSett;
+        //    if (!printDoc.PrinterSettings.IsValid)
+        //    {
+        //        throw new Exception("Error: cannot find the default printer.");
+        //    }
+        //    else
+        //    {
+        //        printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+        //        m_currentPageIndex = 0;
+        //        printDoc.Print();
+        //    }
+        //}
 
-        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
-        {
-            Stream stream = new MemoryStream();
-            m_streams.Add(stream);
-            return stream;
-        }
+        //private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
+        //{
+        //    Stream stream = new MemoryStream();
+        //    m_streams.Add(stream);
+        //    return stream;
+        //}
 
-        // Handler for PrintPageEvents
-        private void PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            Metafile pageImage = new
-                           Metafile(m_streams[m_currentPageIndex]);
+        //// Handler for PrintPageEvents
+        //private void PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    Metafile pageImage = new
+        //                   Metafile(m_streams[m_currentPageIndex]);
 
-            // Adjust rectangular area with printer margins.
-            //PORTRATE
-            Rectangle adjustedRect = new Rectangle(
-                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
-                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
-                ev.PageBounds.Width,
-                ev.PageBounds.Height);
+        //    // Adjust rectangular area with printer margins.
+        //    //PORTRATE
+        //    Rectangle adjustedRect = new Rectangle(
+        //        ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+        //        ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+        //        ev.PageBounds.Width,
+        //        ev.PageBounds.Height);
 
 
 
-            // Draw a white background for the report
-            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+        //    // Draw a white background for the report
+        //    ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
 
-            // Draw the report content
-            ev.Graphics.DrawImage(pageImage, adjustedRect);
+        //    // Draw the report content
+        //    ev.Graphics.DrawImage(pageImage, adjustedRect);
 
-            // Prepare for the next page. Make sure we haven't hit the end.
-            m_currentPageIndex++;
-            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
-        }
+        //    // Prepare for the next page. Make sure we haven't hit the end.
+        //    m_currentPageIndex++;
+        //    ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+        //}
 
         #endregion
 
@@ -223,15 +235,18 @@ namespace LgcWMS.View.Operation
         {
             try
             {
-                cbConsecClient.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsecClient);
-                cbConsecClient.DisplayMember = "catVal";
-                cbConsecClient.ValueMember = "catId";
+                //cbConsecClient.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsecClient);
+                //cbConsecClient.DisplayMember = "catVal";
+                //cbConsecClient.ValueMember = "catId";
                 cbProveedor.DataSource = controller.GetData((int)GuiasController.ActionType.GetProveedor);
                 cbProveedor.DisplayMember = "catVal";
                 cbProveedor.ValueMember = "catId";
                 cbPlanilla.DataSource = controller.GetData((int)GuiasController.ActionType.GetConsec);
                 cbPlanilla.DisplayMember = "catVal";
                 cbPlanilla.ValueMember = "catId";
+                cbAliado.DataSource = controller.GetData((int)GuiasController.ActionType.GetTransp);
+                cbAliado.DisplayMember = "catVal";
+                cbAliado.ValueMember = "catId";
 
                 List<string> ps1 = new List<string>();
                 //ps1.Add("Selccione...");
@@ -244,6 +259,18 @@ namespace LgcWMS.View.Operation
                 }
                 cbPrinterGuia.DataSource = ps1;
                 cbPrinterLabel.DataSource = ps2;
+
+                string pL = ConfigurationSettings.AppSettings["CreacionGuiaLblPrinter"];
+                string pG = ConfigurationSettings.AppSettings["CreacionGuiaGuiaPrinter"];
+                if (ps1.Contains(pL))
+                    cbPrinterLabel.SelectedIndex = cbPrinterLabel.FindStringExact(pL);
+                if (ps2.Contains(pG))
+                    cbPrinterGuia.SelectedIndex = cbPrinterGuia.FindStringExact(pG);
+
+                this.cbPrinterLabel.SelectedIndexChanged += new System.EventHandler(this.cbPrinterLabel_SelectedIndexChanged);
+                this.cbPrinterGuia.SelectedIndexChanged += new System.EventHandler(this.cbPrinterGuia_SelectedIndexChanged);
+                this.cbAliado.SelectedIndexChanged += new System.EventHandler(this.cbAliado_SelectedIndexChanged);
+
             }
             catch (Exception ex)
             {
@@ -265,7 +292,9 @@ namespace LgcWMS.View.Operation
                 rIndex = dgvDespachos.SelectedRows[0].Index;
                 var item = dgvDespachos.SelectedRows[0].DataBoundItem;
                 string itemS = JsonConvert.SerializeObject(item);
-                string obs = JsonConvert.DeserializeObject<JObject>(itemS)["CONSECUTIVO_CLIENTE"].ToString() + " - " + tbObservaciones.Text.Trim();
+                string obs = JsonConvert.DeserializeObject<JObject>(itemS)["CONSECUTIVO_CLIENTE"].ToString() + " - " +
+                    //JsonConvert.DeserializeObject<JObject>(itemS)["ESPECIFICACIONES"].ToString() + " - " +
+                    tbObservaciones.Text.Trim();
                 controller.RequestObj.TransParms.Clear();
                 controller.RequestObj.TransParms.Add(new TransParm("NoGuia", tbGuia.Text.Trim()));
                 controller.RequestObj.TransParms.Add(new TransParm("fEnvio", dtFechaEnvio.Value.Date.ToString("dd/MM/yyyy")));
@@ -275,6 +304,8 @@ namespace LgcWMS.View.Operation
                 controller.RequestObj.TransParms.Add(new TransParm("obs", obs));
                 controller.RequestObj.TransParms.Add(new TransParm("data", itemS));
                 controller.RequestObj.TransParms.Add(new TransParm("usId", Program.usrObj.UsrId.ToString()));
+                controller.RequestObj.TransParms.Add(new TransParm("provId", cbAliado.SelectedValue.ToString()));
+                controller.RequestObj.TransParms.Add(new TransParm("NoGuiaAl", tbGuiaAliado.Text.Trim()));
 
                 TransObj response = (TransObj)controller.GetData((int)GuiasController.ActionType.SaveData);
                 if (response.MessCode == TransObj.MessCodes.Ok)
@@ -292,6 +323,7 @@ namespace LgcWMS.View.Operation
                     dgvDespachos.DataSource = controller.GetData((int)controller.LastSearch);
                     dgvDespachos.Rows[rIndex].Selected = true;
                     MessageBox.Show("Datos guardados.");
+                    tbGuiaAliado.Text = string.Empty;
                 }
                 //else
                 //{
@@ -322,15 +354,24 @@ namespace LgcWMS.View.Operation
             Print(PrintingDocument.Guia);
         }
 
-        private void cbConsecutivo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbConsecClient_KeyDown(object sender, KeyEventArgs e)
         {
-            if (cbConsecClient.SelectedIndex != 0)
+            if (e.KeyCode == Keys.Enter)
             {
-                controller.RequestObj.TransParms.Clear();
-                controller.RequestObj.TransParms.Add(new TransParm("consec", cbConsecClient.Text));
-                dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByConsec);
+                try
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    controller.RequestObj.TransParms.Clear();
+                    controller.RequestObj.TransParms.Add(new TransParm("consec", cbConsecClient.Text));
+                    dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoByConsec);
+                    Cursor.Current = Cursors.Default;
+                }
+                catch (Exception ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message);
+                }
             }
-            cbConsecClient.SelectedIndex = 0;
         }
 
         private void cbProveedor_SelectedIndexChanged(object sender, EventArgs e)
@@ -365,6 +406,12 @@ namespace LgcWMS.View.Operation
         {
             controller.RequestObj.TransParms.Clear();
             dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoAll);
+        }
+
+        private void btnWithGuia_Click(object sender, EventArgs e)
+        {
+            controller.RequestObj.TransParms.Clear();
+            dgvDespachos.DataSource = controller.GetData((int)GuiasController.ActionType.GetDespachoWthGuia);
         }
 
         private void btnGetByNumGuia_Click(object sender, EventArgs e)
@@ -434,6 +481,30 @@ namespace LgcWMS.View.Operation
             }
         }
 
+        private void cbPrinterLabel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConfigurationSettings.AppSettings["CreacionGuiaLblPrinter"] = cbPrinterLabel.Text;
+        }
+
+        private void cbPrinterGuia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConfigurationSettings.AppSettings["CreacionGuiaGuiaPrinter"] = cbPrinterGuia.Text;
+        }
+
+        private void cbAliado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConfigurationSettings.AppSettings["CreacionGuiaLastTrans"] = cbAliado.Text;
+            if (cbAliado.Text == "LOGISTIC")
+            {
+                tbGuiaAliado.ReadOnly = true;
+                tbGuiaAliado.Text = string.Empty;
+            }
+            else
+            {
+                tbGuiaAliado.ReadOnly = false;
+            }
+        }
+
         #endregion
 
         #region Enums
@@ -442,6 +513,12 @@ namespace LgcWMS.View.Operation
             Label,
             Guia
         }
+
+
+
+
+
+
 
 
 

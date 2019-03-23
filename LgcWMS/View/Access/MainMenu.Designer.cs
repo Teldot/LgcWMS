@@ -35,6 +35,10 @@
             this.btnAsignRepartos = new System.Windows.Forms.Button();
             this.btnAdmonDespachos = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.ssStatus = new System.Windows.Forms.StatusStrip();
+            this.tsslVer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ssStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRecoleccion
@@ -108,6 +112,32 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // ssStatus
+            // 
+            this.ssStatus.AllowMerge = false;
+            this.ssStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslVer,
+            this.tsslUser});
+            this.ssStatus.Location = new System.Drawing.Point(0, 376);
+            this.ssStatus.Name = "ssStatus";
+            this.ssStatus.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.ssStatus.Size = new System.Drawing.Size(407, 22);
+            this.ssStatus.TabIndex = 7;
+            // 
+            // tsslVer
+            // 
+            this.tsslVer.Name = "tsslVer";
+            this.tsslVer.Size = new System.Drawing.Size(27, 17);
+            this.tsslVer.Text = "Ver:";
+            this.tsslVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tsslUser
+            // 
+            this.tsslUser.Name = "tsslUser";
+            this.tsslUser.Size = new System.Drawing.Size(47, 17);
+            this.tsslUser.Text = "Usuario:";
+            this.tsslUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,6 +145,7 @@
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(407, 398);
             this.ControlBox = false;
+            this.Controls.Add(this.ssStatus);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAdmonDespachos);
             this.Controls.Add(this.btnAsignRepartos);
@@ -126,7 +157,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIL WMS - MainMenu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
+            this.ssStatus.ResumeLayout(false);
+            this.ssStatus.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -139,5 +173,8 @@
         private System.Windows.Forms.Button btnAsignRepartos;
         private System.Windows.Forms.Button btnAdmonDespachos;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.StatusStrip ssStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tsslVer;
+        private System.Windows.Forms.ToolStripStatusLabel tsslUser;
     }
 }

@@ -34,5 +34,6 @@ namespace LgcWMS.Data.Model
         public int UNIDADES { get; set; }
         public Nullable<decimal> VALOR { get; set; }
         public int PROVEEDOR_ID { get; set; }
+        public string ESPECIFICACIONES { get; set; }
     }
 }

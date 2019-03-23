@@ -32,6 +32,7 @@ namespace LgcWMS.Data.Model
         public int CIUDAD { get; set; }
         public System.Guid ClienteID { get; set; }
         public string EXT { get; set; }
+        public Nullable<int> WMS_PROVEEDOR_ID { get; set; }
     
         public virtual LGC_CLIENTE LGC_CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

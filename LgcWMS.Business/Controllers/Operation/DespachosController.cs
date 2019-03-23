@@ -22,10 +22,12 @@ namespace LgcWMS.Business.Controllers.Operation
         #region Attributes
 
         const string SQL_GET_CLIENTES = "SELECT COMPANYID catId, NOMBRERAZONSOCIAL catVal, CLIENTEID  FROM V_LGC_CLIENTE WHERE ACTIVO = 1 ORDER BY NOMBRERAZONSOCIAL;";
-        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,ANO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD,VALOR)
-VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21},{22});";
+        const string SQL_IN_DESPACHO = @"INSERT INTO LGC_DESPACHO (REMITENTE,CONSECUTIVO,CONSECUTIVO_AVMK,CONSECUTIVO_CLIENTE,FECHA_ENVIO_ARCHIVO,MES,ANO,FECHA_REDENCION,CEDULA,DESTINATARIO,ENTREGAR_A,DIRECCION,CIUDAD,DEPARTAMENTO,TELEFONO,CELULAR,CORREO_ELECTRONICO,CODIGO_PREMIO,PREMIO,ESPECIFICACIONES,PROVEEDOR_ID,CANTIDAD,VALOR,COMPANYID)
+VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}',103),{8},'{9}','{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}',{20},{21},{22},{23});
+";
         const string SQL_CIUDADES = "SELECT V.ID catId, C.NOMBRES catVal FROM V_ASFW_CITY_CODE V INNER JOIN ASFW_CITY_CODE C ON V.ID = C.ID";
         const string SQL_PROVEEDORES = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM LGC_CLIENTE_PROVEEDORES P INNER JOIN ASFW_COMPANY C ON P.CLIENTEID = C.CLIENT_ID WHERE C.COMPANYID = {0};";
+        const string SQL_IS_IN_DESPACHO = "SELECT CONSECUTIVO_CLIENTE FROM LGC_DESPACHO WHERE COMPANYID = {0} ORDER BY CONSECUTIVO_CLIENTE ";
         #region Column Indexes
         public const string GV_COL_CIUDAD = "Ciudad";
         public const string GV_COL_DEPARTAMENTO = "Departamento";
@@ -87,6 +89,7 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
         public List<GeneralCat> CitiesFullNames { get; set; }
         public List<GeneralCat> CitiesDeptos { get; set; }
         public List<GeneralCat> Proveedores { get; set; }
+        public List<string> ConsecCliente { get; set; }
         public int ClienteID { get; set; }
         #endregion
         #region Constructor
@@ -101,7 +104,9 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
             //return base.GetData(actionType);
             ResponseObj = new TransObj();
             StringBuilder sql;
-            int cat;
+            ExcelLoader exLoader;
+            string path;
+            int cat, i = 0;
             try
             {
                 switch ((ActionType)actionType)
@@ -113,12 +118,18 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                         catController.RequestObj = this.RequestObj;
                         return catController.GetData((int)CatalogsController.ActionType.GetCatalog);
                     #endregion
+                    case ActionType.GetWorksheets:
+                        #region GetWorksheets
+                        path = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "fName").FirstOrDefault().Value);
+                        exLoader = new ExcelLoader();
+                        return exLoader.LoadWorkSheets(path);
+                    #endregion
                     case ActionType.ImportDespachos:
                         #region ImportDespachos
-                        string fileName = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "fName").FirstOrDefault().Value);
+                        path = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "fName").FirstOrDefault().Value);
                         string workSheet = JsonConvert.DeserializeObject<string>(RequestObj.TransParms.Where(p => p.Key == "workSheet").FirstOrDefault().Value);
-                        ExcelLoader exLoader = new ExcelLoader();
-                        DtDespachosIn = exLoader.LoadFile(fileName, workSheet);
+                        exLoader = new ExcelLoader();
+                        DtDespachosIn = exLoader.LoadFile(path, workSheet);
                         return true;
                     #endregion
                     case ActionType.LoadRemitente:
@@ -135,8 +146,12 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                         break;
                     case ActionType.LoadProveedores:
                         #region LoadProveedores
-                        //int cId = JsonConvert.DeserializeObject<int>(RequestObj.TransParms.Where(p => p.Key == "cId").FirstOrDefault().Value);
                         Proveedores = Entities.Database.SqlQuery<GeneralCat>(string.Format(SQL_PROVEEDORES, ClienteID)).ToList();
+                        #endregion
+                        break;
+                    case ActionType.IsInDespacho:
+                        #region IsInDespacho
+                        ConsecCliente = Entities.Database.SqlQuery<string>(SQL_IS_IN_DESPACHO, ClienteID).ToList();
                         #endregion
                         break;
                     case ActionType.InsertDespachos:
@@ -145,43 +160,55 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
                         DataRow r = null;
                         sql = new StringBuilder();
                         string s = "", conCliente = "";
-                        for (int i = 0; i < DtDespachosOut.Rows.Count; i++)
+                        try
                         {
-                            r = DtDespachosOut.Rows[i];
-                            if (r[COL_CONSECUTIVO_CLIENTE].ToString().Trim().Length == 0) continue;
-                            conCliente = r[COL_CONSECUTIVO_CLIENTE].ToString();
-                            var e = Entities.LGC_DESPACHO.
-                                Where(d => d.CONSECUTIVO_CLIENTE == conCliente)
-                                .FirstOrDefault();
-                            if (e != null) { sql.Clear(); throw new GeneralControllerException(string.Format("El registro en la fila {0} ya existe.", i)); }
-                            s = string.Format(SQL_IN_DESPACHO,
-                                ClienteID,
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTVO_AVMK),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO_CLIENTE),
-                                EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_ENVIO_ARCHIVO, false).Value.ToString("dd/MM/yyyy"),
-                                "",
-                                "",
-                                EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_DE_REDENCION, false).Value.ToString("dd/MM/yyyy"),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CEDULA),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CLIENTE),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_ENTREGAR_A),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_DIRECCION),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CIUDAD),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_DEPARTAMENTO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_TELEFONO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CELULAR),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CORREO_ELECTRONICO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_CODIGO_PREMIO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_PREMIO),
-                                EntUtils.GetStrFromDtRow(r, GV_COL_ESPECIFICACIONES),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_PROVEEDOR),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_CANTIDAD),
-                                EntUtils.GetIntFromDtRow(r, GV_COL_VALOR));
-                            sql.Append(s);
+                            for (i = 0; i < DtDespachosOut.Rows.Count; i++)
+                            {
+                                r = DtDespachosOut.Rows[i];
+                                if (r[COL_CONSECUTIVO_CLIENTE].ToString().Trim().Length == 0) continue;
+                                conCliente = r[COL_CONSECUTIVO_CLIENTE].ToString();
+                                var e = Entities.LGC_DESPACHO.
+                                    Where(d => d.CONSECUTIVO_CLIENTE == conCliente)
+                                    .FirstOrDefault();
+                                if (e != null) { sql.Clear(); throw new GeneralControllerException(string.Format("El registro en la fila {0} ya existe.(Consec:{1})", i + 1, conCliente)); }
+                                s = string.Format(SQL_IN_DESPACHO,
+                                    ClienteID,
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTVO_AVMK),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CONSECUTIVO_CLIENTE),
+                                    EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_ENVIO_ARCHIVO, false).Value.ToString("dd/MM/yyyy"),
+                                    "",
+                                    "",
+                                    EntUtils.GetDTFromDtRow(r, GV_COL_FECHA_DE_REDENCION, false).Value.ToString("dd/MM/yyyy"),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CEDULA),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CLIENTE),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_ENTREGAR_A),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_DIRECCION),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CIUDAD),
+                                    EntUtils.GetIntFromDtRow(r, GV_COL_DEPARTAMENTO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_TELEFONO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CELULAR),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CORREO_ELECTRONICO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_CODIGO_PREMIO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_PREMIO),
+                                    EntUtils.GetStrFromDtRow(r, GV_COL_ESPECIFICACIONES),
+                                    EntUtils.GetIntFromDtRow(r, GV_COL_PROVEEDOR),
+                                    EntUtils.GetIntFromDtRow(r, GV_COL_CANTIDAD),
+                                    EntUtils.GetIntFromDtRow(r, GV_COL_VALOR),
+                                    ClienteID);
+                                sql.Append(s);
+                            }
+                            DataBaseUtils dbUtils = new DataBaseUtils();
+                            return dbUtils.RunScriptFromStngBldr(sql, Entities);
                         }
-                        DataBaseUtils dbUtils = new DataBaseUtils();
-                        return dbUtils.RunScriptFromStngBldr(sql, Entities);
+                        catch (Exception ex)
+                        {
+
+                            string rData = "";
+                            if (r != null)
+                                rData = string.Join("|", r.ItemArray);
+                            throw new Exception(string.Format("Error en fila {0}. [{1}] ", i + 1, rData) + ex.Message);
+                        }
 
                     #endregion
                     default:
@@ -196,16 +223,18 @@ VALUES({0},'{1}','{2}','{3}',convert(date,'{4}',103),NULL,NULL,convert(date,'{7}
         }
         #endregion
         #region Methods
-        
+
         #endregion
         #region Enums
         public enum ActionType
         {
             ImportDespachos,
+            GetWorksheets,
             LoadRemitente,
             InsertDespachos,
             LoadCitiesFullName,
             LoadProveedores,
+            IsInDespacho,
             GetCatalog = 44089
         }
         #endregion

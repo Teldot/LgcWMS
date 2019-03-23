@@ -32,13 +32,14 @@
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_GUIA_ETIQUETA" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO" Width="1.5" PointX="5.375" PointY="13.75" />
-        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" Width="1.5" PointX="7.375" PointY="13.75" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_GUIA__ELABOR__36470DEF" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_GUIA__ENCARG__373B3228" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_E__PROVE__74794A92" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_DESPA__GUIA___50FB042B" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__DESPA__078C1F06" />
         <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_WMS_G__RECOL__0697FACD" />
+        <EntityTypeShape EntityType="LgcWMS.Data.Model.V_LGC_DESPACHO_GRID" Width="1.5" PointX="7.375" PointY="13.75" />
+        <AssociationConnector Association="LgcWMS.Data.Model.FK__LGC_DESPA__COMPA__019E3B86" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -60,8 +60,9 @@
             this.btnValidate = new System.Windows.Forms.Button();
             this.tbError = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tbWorkSheet = new System.Windows.Forms.TextBox();
             this.btnBuscarArchivo = new System.Windows.Forms.Button();
+            this.btnDeleteRow = new System.Windows.Forms.Button();
+            this.cbWorksheet = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgEnvios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,13 +73,13 @@
             this.tbRutaArchivo.Location = new System.Drawing.Point(89, 61);
             this.tbRutaArchivo.Name = "tbRutaArchivo";
             this.tbRutaArchivo.ReadOnly = true;
-            this.tbRutaArchivo.Size = new System.Drawing.Size(736, 20);
+            this.tbRutaArchivo.Size = new System.Drawing.Size(561, 20);
             this.tbRutaArchivo.TabIndex = 0;
             // 
             // btnCargarArchivo
             // 
             this.btnCargarArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCargarArchivo.Location = new System.Drawing.Point(1081, 87);
+            this.btnCargarArchivo.Location = new System.Drawing.Point(906, 87);
             this.btnCargarArchivo.Name = "btnCargarArchivo";
             this.btnCargarArchivo.Size = new System.Drawing.Size(97, 23);
             this.btnCargarArchivo.TabIndex = 1;
@@ -88,7 +89,8 @@
             // 
             // dgEnvios
             // 
-            this.dgEnvios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgEnvios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgEnvios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEnvios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -120,7 +122,7 @@
             this.dgEnvios.MultiSelect = false;
             this.dgEnvios.Name = "dgEnvios";
             this.dgEnvios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dgEnvios.Size = new System.Drawing.Size(1196, 281);
+            this.dgEnvios.Size = new System.Drawing.Size(1021, 281);
             this.dgEnvios.TabIndex = 2;
             this.dgEnvios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgEnvios.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgEnvios_DataError);
@@ -285,9 +287,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(1081, 159);
+            this.btnSave.Location = new System.Drawing.Point(906, 159);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(119, 23);
             this.btnSave.TabIndex = 5;
@@ -297,8 +299,8 @@
             // 
             // btnValidate
             // 
-            this.btnValidate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnValidate.Location = new System.Drawing.Point(966, 159);
+            this.btnValidate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnValidate.Location = new System.Drawing.Point(791, 159);
             this.btnValidate.Name = "btnValidate";
             this.btnValidate.Size = new System.Drawing.Size(82, 23);
             this.btnValidate.TabIndex = 6;
@@ -314,7 +316,7 @@
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ReadOnly = true;
-            this.tbError.Size = new System.Drawing.Size(986, 66);
+            this.tbError.Size = new System.Drawing.Size(811, 66);
             this.tbError.TabIndex = 7;
             // 
             // openFileDialog1
@@ -322,19 +324,10 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // tbWorkSheet
-            // 
-            this.tbWorkSheet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbWorkSheet.Location = new System.Drawing.Point(832, 60);
-            this.tbWorkSheet.Name = "tbWorkSheet";
-            this.tbWorkSheet.Size = new System.Drawing.Size(243, 20);
-            this.tbWorkSheet.TabIndex = 8;
-            this.tbWorkSheet.Text = "Nombre de la hoja";
-            // 
             // btnBuscarArchivo
             // 
             this.btnBuscarArchivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscarArchivo.Location = new System.Drawing.Point(1081, 57);
+            this.btnBuscarArchivo.Location = new System.Drawing.Point(906, 57);
             this.btnBuscarArchivo.Name = "btnBuscarArchivo";
             this.btnBuscarArchivo.Size = new System.Drawing.Size(97, 23);
             this.btnBuscarArchivo.TabIndex = 9;
@@ -342,13 +335,35 @@
             this.btnBuscarArchivo.UseVisualStyleBackColor = true;
             this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
+            // btnDeleteRow
+            // 
+            this.btnDeleteRow.Location = new System.Drawing.Point(12, 159);
+            this.btnDeleteRow.Name = "btnDeleteRow";
+            this.btnDeleteRow.Size = new System.Drawing.Size(82, 23);
+            this.btnDeleteRow.TabIndex = 10;
+            this.btnDeleteRow.Text = "Eliminar Fila";
+            this.btnDeleteRow.UseVisualStyleBackColor = true;
+            this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
+            // 
+            // cbWorksheet
+            // 
+            this.cbWorksheet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbWorksheet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWorksheet.FormattingEnabled = true;
+            this.cbWorksheet.Location = new System.Drawing.Point(656, 61);
+            this.cbWorksheet.Name = "cbWorksheet";
+            this.cbWorksheet.Size = new System.Drawing.Size(243, 21);
+            this.cbWorksheet.TabIndex = 11;
+            // 
             // ImportOrdEnvios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 490);
+            this.ClientSize = new System.Drawing.Size(1045, 490);
+            this.Controls.Add(this.btnDeleteRow);
+            this.Controls.Add(this.cbWorksheet);
             this.Controls.Add(this.btnBuscarArchivo);
-            this.Controls.Add(this.tbWorkSheet);
             this.Controls.Add(this.tbError);
             this.Controls.Add(this.btnValidate);
             this.Controls.Add(this.btnSave);
@@ -377,7 +392,6 @@
         private System.Windows.Forms.Button btnValidate;
         private System.Windows.Forms.TextBox tbError;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox tbWorkSheet;
         private System.Windows.Forms.Button btnBuscarArchivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consecutivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Consecutvo_AVMK;
@@ -402,5 +416,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo_Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.Button btnDeleteRow;
+        private System.Windows.Forms.ComboBox cbWorksheet;
     }
 }

@@ -21,11 +21,12 @@ namespace LgcWMS.Business.Controllers.Operation
         const string SQL_GET_CONSECT_CLINT = "SELECT 0 catId, CONSECUTIVO_CLIENTE catVal FROM V_LGC_DESPACHO WHERE DATEDIFF(DAY,FECHA_ENVIO_ARCHIVO,GETDATE())<10 ORDER BY CONSECUTIVO_CLIENTE;";
         const string SQL_GET_CONSECT = "SELECT 0 catId, CONSECUTIVO catVal FROM V_LGC_DESPACHO GROUP BY CONSECUTIVO ORDER BY CONSECUTIVO;";
         const string SQL_GET_PROVE = "SELECT PROVEEDOR_ID catId, NOMBRE catVal FROM V_LGC_CLIENTE_PROVEEDORES ORDER BY NOMBRE;";
-        const string SQL_GET_GRIDGUIA = "SELECT  GUIA_ID, GUIA, CONSECUTIVO_CLIENTE, CONSECUTIVO, CODIGO_PREMIO, PREMIO, FECHA_REDENCION, REMITENTE_NOMBRE, REMITENTE_VAL, REMITENTE_DIRECCION, ORIGEN_ID, ORIGEN, DESTINATARIO_NOMBRE, DESTINATARIO_DIRECCION, DESTINATARIO_TELEFONO, DESTINO_ID, DESTINO, UNIDADES, VALOR FROM V_LGC_DESPACHO_GRID";
+        const string SQL_GET_GRIDGUIA = "SELECT  GUIA_ID, GUIA, CONSECUTIVO_CLIENTE, CONSECUTIVO, CODIGO_PREMIO, PREMIO, FECHA_REDENCION, REMITENTE_NOMBRE, REMITENTE_VAL, REMITENTE_DIRECCION, ORIGEN_ID, ORIGEN, DESTINATARIO_NOMBRE, DESTINATARIO_DIRECCION, DESTINATARIO_TELEFONO, DESTINO_ID, DESTINO, UNIDADES, VALOR, ESPECIFICACIONES FROM V_LGC_DESPACHO_GRID";
         const string SQL_WHERE_CONS = "WHERE CONSECUTIVO_CLIENTE = '{0}'";
         const string SQL_WHERE_PROV = "WHERE PROVEEDOR_ID = {0}";
-        const string SQL_IN_GUIA = "INSERT INTO LGC_GUIA (GUIA_ID,GUIA_PREFIJO,TIPO_ID,RECOLECCION_ID,DESPACHO_ID,ORIGEN,REMITENTE_NOMBRE,REMITENTE_DIRECCION,REMITENTE_TELEFONO,DESTINO,DESTINATARIO_NOMBRE,DESTINATARIO_DIRECCION,DESTINATARIO_TELEFONO,FECHA_ENVIO,UNIDADES,PESO,PESO_VOL,PESO_LIQ,VALOR_DECLARADO,DICE_CONTENER,ELABORADO_POR,OBSERVACIONES) VALUES ({0},'{1}',{2},{3},{4},{5},'{6}','{7}','{8}',{9},'{10}','{11}','{12}',GETDATE(),{13},{14},{15},{16},{17},'{18}',{19},'{20}');";
+        const string SQL_IN_GUIA = "INSERT INTO LGC_GUIA (GUIA_ID,GUIA_PREFIJO,TIPO_ID,RECOLECCION_ID,DESPACHO_ID,ORIGEN,REMITENTE_NOMBRE,REMITENTE_DIRECCION,REMITENTE_TELEFONO,DESTINO,DESTINATARIO_NOMBRE,DESTINATARIO_DIRECCION,DESTINATARIO_TELEFONO,FECHA_ENVIO,UNIDADES,PESO,PESO_VOL,PESO_LIQ,VALOR_DECLARADO,DICE_CONTENER,ELABORADO_POR,OBSERVACIONES,PROVEEDOR_ID,PROVEEDOR_GUIA_NO) VALUES ({0},'{1}',{2},{3},{4},{5},'{6}','{7}','{8}',{9},'{10}','{11}','{12}',GETDATE(),{13},{14},{15},{16},{17},'{18}',{19},'{20}',{21},'{22}');";
         const string SQL_GET_GUIA = "SELECT GUIA_ID,GUIA_PREFIJO,ORIGEN,REMITENTE_NOMBRE,REMITENTE_DIRECCION,REMITENTE_TELEFONO,DESTINATARIO_NOMBRE,DESTINATARIO_DIRECCION,DESTINATARIO_TELEFONO,FECHA_ENVIO,UNIDADES,PESO,PESO_VOL,PESO_LIQ,VALOR_DECLARADO,DICE_CONTENER, BARCODE,OBSERVACIONES FROM V_GUIA WHERE GUIA_ID = {0};";
+        const string SQL_GET_TRANSP = "SELECT PROVEEDORID catId, NOMBREABREVIADO catVal FROM LGC_PROVEEDORES WHERE ACTIVO = 1 AND PRODOSERV = 1466 ORDER BY NOMBREABREVIADO";
         #endregion
         #region Properties
         LgcWebEntities Entities;
@@ -70,12 +71,18 @@ namespace LgcWMS.Business.Controllers.Operation
 
                         return prov;
                     #endregion
+                    case ActionType.GetTransp:
+                        #region GetTransp
+                        var trasp = Entities.Database.SqlQuery<GeneralCat>(SQL_GET_TRANSP).ToList();
+                        trasp.Insert(0, new GeneralCat { catId = -1, catVal = "Seleccione..." });
+                        return trasp;
+                    #endregion
                     case ActionType.GetDespachoByConsec:
                         #region GetDespachoByConsec
                         consec = RequestObj.TransParms[0].Value;
                         var despByCon = (from d in Entities.V_LGC_DESPACHO_GRID
                                          where d.CONSECUTIVO_CLIENTE == consec
-                                         select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR }).ToList();
+                                         select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES }).ToList();
                         LastSearch = (ActionType)actionType;
                         LastSearchData = consec;
                         return despByCon;
@@ -87,7 +94,7 @@ namespace LgcWMS.Business.Controllers.Operation
                         prvId = int.Parse(RequestObj.TransParms[0].Value);
                         var despByProv = (from d in Entities.V_LGC_DESPACHO_GRID
                                           where d.PROVEEDOR_ID == prvId
-                                          select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
+                                          select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES })
                                           .OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
                         LastSearch = (ActionType)actionType;
                         LastSearchData = prvId;
@@ -98,7 +105,7 @@ namespace LgcWMS.Business.Controllers.Operation
                         plan = RequestObj.TransParms[0].Value;
                         var despByPlan = (from d in Entities.V_LGC_DESPACHO_GRID
                                           where d.CONSECUTIVO == plan
-                                          select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
+                                          select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES })
                                           .OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
                         LastSearch = (ActionType)actionType;
                         LastSearchData = plan;
@@ -112,8 +119,8 @@ namespace LgcWMS.Business.Controllers.Operation
 
                         var despByNumGuia = (from d in Entities.V_LGC_DESPACHO_GRID
                                              where ini <= d.GUIA_ID && d.GUIA_ID <= end
-                                             select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
-                                          .OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
+                                             select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES })
+                                          .OrderBy(d => d.GUIA_ID).ToList();
                         LastSearch = (ActionType)actionType;
                         LastSearchData = new int[] { ini, end };
                         return despByNumGuia;
@@ -121,11 +128,21 @@ namespace LgcWMS.Business.Controllers.Operation
                     case ActionType.GetDespachoAll:
                         #region GetDespachoAll
                         var despByAll = (from d in Entities.V_LGC_DESPACHO_GRID
-                                         select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR })
+                                         select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES })
                                           .OrderBy(d => d.CONSECUTIVO_CLIENTE).OrderBy(d => d.CONSECUTIVO_CLIENTE).ToList();
                         LastSearch = (ActionType)actionType;
                         LastSearchData = "";
                         return despByAll;
+                    #endregion
+                    case ActionType.GetDespachoWthGuia:
+                        #region GetDespachoWthGuia
+                        var despByWthG = (from d in Entities.V_LGC_DESPACHO_GRID
+                                          where d.GUIA_ID.HasValue
+                                          select new { d.GUIA_ID, d.GUIA, d.CONSECUTIVO_CLIENTE, d.CONSECUTIVO, d.CODIGO_PREMIO, d.PREMIO, d.FECHA_REDENCION, d.REMITENTE_NOMBRE, d.REMITENTE_VAL, d.REMITENTE_DIRECCION, d.ORIGEN_ID, d.ORIGEN, d.DESTINATARIO_NOMBRE, d.DESTINATARIO_DIRECCION, d.DESTINATARIO_TELEFONO, d.DESTINO_ID, d.DESTINO, d.UNIDADES, d.VALOR, d.ESPECIFICACIONES })
+                                          .OrderBy(d => d.GUIA_ID).ToList();
+                        LastSearch = (ActionType)actionType;
+                        LastSearchData = "";
+                        return despByWthG;
                     #endregion
                     case ActionType.SaveData:
                         #region SaveData
@@ -137,9 +154,10 @@ namespace LgcWMS.Business.Controllers.Operation
                             var peso = RequestObj.TransParms.Where(p => p.Key == "peso").FirstOrDefault().Value;
                             var pesoVol = RequestObj.TransParms.Where(p => p.Key == "pesoVol").FirstOrDefault().Value;
                             var pesoLiq = RequestObj.TransParms.Where(p => p.Key == "pesoLiq").FirstOrDefault().Value;
-                            var obs = data["REMITENTE_TELEFONO"].ToString() + " + " +
-                                RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
+                            var obs = RequestObj.TransParms.Where(p => p.Key == "obs").FirstOrDefault().Value;
                             var usId = RequestObj.TransParms.Where(p => p.Key == "usId").FirstOrDefault().Value;
+                            var provId = RequestObj.TransParms.Where(p => p.Key == "provId").FirstOrDefault().Value;
+                            var NoGuiaAl = RequestObj.TransParms.Where(p => p.Key == "NoGuiaAl").FirstOrDefault().Value;
 
                             string sql = string.Format(SQL_IN_GUIA,
                                                             NoGuia, //GUIA_ID 
@@ -163,7 +181,9 @@ namespace LgcWMS.Business.Controllers.Operation
     "Obsequio",//data["DICE_CONTENER"], //DICE_CONTENER 
     usId, //ELABORADO_POR 
           //"NULL", //ENCARGADO_A 
-     obs//OBSERVACIONES
+     obs,//OBSERVACIONES
+    provId,
+    NoGuiaAl
                                 );
 
                             int res = Entities.Database.ExecuteSqlCommand(sql);
@@ -235,9 +255,11 @@ namespace LgcWMS.Business.Controllers.Operation
             GetDespachoByProveedor,
             GetDespachoByPlanilla,
             GetDespachoAll,
+            GetDespachoWthGuia,
             GetDespachoByNumGuia,
             GetGuia,
             GetLabels,
+            GetTransp,
             SaveData
         }
         #endregion

@@ -44,6 +44,8 @@ namespace LgcWMS.Data.Model
         public int ELABORADO_POR { get; set; }
         public Nullable<int> ENCARGADO_A { get; set; }
         public string OBSERVACIONES { get; set; }
+        public Nullable<int> PROVEEDOR_ID { get; set; }
+        public string PROVEEDOR_GUIA_NO { get; set; }
     
         public virtual ASFW_USER ASFW_USER { get; set; }
         public virtual ASFW_USER ASFW_USER1 { get; set; }
