@@ -158,6 +158,7 @@ namespace LgcWMS.Business.Controllers.Operation
                             var usId = RequestObj.TransParms.Where(p => p.Key == "usId").FirstOrDefault().Value;
                             var provId = RequestObj.TransParms.Where(p => p.Key == "provId").FirstOrDefault().Value;
                             var NoGuiaAl = RequestObj.TransParms.Where(p => p.Key == "NoGuiaAl").FirstOrDefault().Value;
+                            //var dest = data["DESTINATARIO_NOMBRE"] + 
 
                             string sql = string.Format(SQL_IN_GUIA,
                                                             NoGuia, //GUIA_ID 

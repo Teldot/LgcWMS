@@ -124,7 +124,7 @@ namespace LgcWMS.View.Operation
             {
                 controller.GetData((int)DespachosController.ActionType.IsInDespacho);
 
-                if (cbCliente.SelectedIndex == -1 || cbCliente.SelectedIndex == 0) { throw new Exception("No ha selccionado cliente"); }
+                if (cbCliente.SelectedIndex == -1 || cbCliente.SelectedIndex == 0) { throw new Exception("No ha seleccionado cliente"); }
                 controller.GetData((int)DespachosController.ActionType.LoadCitiesFullName);
 
                 controller.GetData((int)DespachosController.ActionType.LoadProveedores);
@@ -244,7 +244,7 @@ namespace LgcWMS.View.Operation
                 cs = controller.CitiesDeptos.Where(c => c.catVal.Split('(')[0].Contains(city) && c.catVal.Split('(')[1].Contains(depto)).ToList();
                 if (cs.Count > 1)
                     throw new Exception(
-                    string.Format("(Fila: {0})", i + 1) + "La ciudad se encontro mas de una vez. " +
+                    "La ciudad se encontro mas de una vez. " + string.Format("(Fila: {0})", i + 1) +
                     Environment.NewLine + "Modifique por alguno de estos valores:" + Environment.NewLine +
                        string.Join(Environment.NewLine, cs.Select(c => c.catVal).ToArray()));
                 else if (cs == null || cs.Count == 0)
@@ -285,29 +285,50 @@ namespace LgcWMS.View.Operation
 
         public void validateDates(DataRow r, int i)
         {
+            string cD = string.Empty;
             try
             {
+                cD = "FECHA_ENVIO_ARCHIVO";
                 string e = r[DespachosController.COL_FECHA_ENVIO_ARCHIVO].ToString();
                 r[DespachosController.COL_FECHA_ENVIO_ARCHIVO] = validateDate(e);
+                cD = "FECHA_REDENCION";
                 e = r[DespachosController.COL_FECHA_REDENCION].ToString();
                 r[DespachosController.COL_FECHA_REDENCION] = validateDate(e);
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Error validando fecha. (Fila: {0})", i + 1));
+                throw new Exception(string.Format("Error validando fecha. Use 'dd/mm/aaaa' (Fila: {0}, Col: {1})", i + 1, cD));
             }
         }
+
         public string validateDate(string d)
         {
-            string[] df = d.Split('/');
-            int m = int.Parse(df[1]);
-            if (m > DateTime.Now.Month)
+            try
             {
-                string d0 = df[0];
-                df[0] = df[1];
-                df[1] = d0;
+                string[] df = d.Split('/');
+                int m = int.Parse(df[1]);
+                try
+                {
+                    DateTime pru = (new DateTime(int.Parse(df[2]), int.Parse(df[1]), int.Parse(df[0])));
+                    if (pru < DateTime.Now)
+                        return pru.ToString("dd/MM/yyyy");
+                }
+                catch (Exception ex) { }
+                finally
+                {
+                    if (m > DateTime.Now.Month)
+                    {
+                        string d0 = df[0];
+                        df[0] = df[1];
+                        df[1] = d0;
+                    }
+                }
+                return (new DateTime(int.Parse(df[2]), int.Parse(df[1]), int.Parse(df[0]))).ToString("dd/MM/yyyy");
             }
-            return (new DateTime(int.Parse(df[2]), int.Parse(df[1]), int.Parse(df[0]))).ToString("dd/MM/yyyy");
+            catch (Exception ex)
+            {
+                throw new Exception("Formato de fecha no es valido");
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
